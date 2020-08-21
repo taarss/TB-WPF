@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using WPF_gaming_3.CharCreation;
+using WPF_gaming_3.backend;
 
 
 namespace WPF_gaming_3
@@ -22,26 +25,194 @@ namespace WPF_gaming_3
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {/*
+    {
+        
         business businessClass = new business();
+        
         private int skill1 = 0;
         private int skill2 = 0;
         private int skill3 = 0;
-        private int skillPoints = 10;*/
+        private int skillPoints = 10;
+        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
         public MainWindow()
         {
-
             InitializeComponent();
-            //test
-           
-        }
+                 mainBg.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                 mainBg.PlayLooping();
+                 };
+                 mainBg.LoadAsync();
 
+        }
+           
         private void myGif_MediaEnded(object sender, RoutedEventArgs e)
         {
 
             myGif.Position = new TimeSpan(0, 0, 1);
             myGif.Play();
         }
+
+
+
+
+
+        //============================================== main menu buttons ===================================================
+        private void menuStart_Click(object sender, RoutedEventArgs e)
+        {
+            mainMenuCanvas.Visibility = Visibility.Hidden;
+            charCreationMenu.Visibility = Visibility.Visible;
+        }
+
+        private void exitMainBtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(1);
+        }
+
+
+
+
+
+
+
+        //=================================== ADD SKILL BUTTONS ==================================================
+
+        private void sAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints > 0 && skill1 < 10)
+            {
+                skill1++;
+                skillPoints--;
+                sSkillp.Text = skill1.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+        private void sMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints < 10 && skill1 > 0)
+            {
+                skill1--;
+                skillPoints++;
+                sSkillp.Text = skill1.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+
+        private void aAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints > 0 && skill2 < 10)
+            {
+                skill2++;
+                skillPoints--;
+                aSkillp.Text = skill2.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+
+        private void aMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints < 10 && skill2 > 0)
+            {
+                skill2--;
+                skillPoints++;
+                aSkillp.Text = skill2.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+
+        private void lAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints > 0 && skill3 < 10)
+            {
+                skill3++;
+                skillPoints--;
+                lSkillp.Text = skill3.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+
+        private void lMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (skillPoints < 10 && skill3 > 0)
+            {
+                skill3--;
+                skillPoints++;
+                lSkillp.Text = skill3.ToString();
+                skillPointsTxt.Text = skillPoints.ToString();
+            }
+        }
+
+
+
+
+
+
+
+
+
+        //=================================== CREATE AND CLASS BUTTONS ==================================================
+
+        private void createCharBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            if (warriorRadioBtn.IsChecked == true && skillPoints == 0)
+            {
+                if (playerNameInput.Text == "your name")
+                {
+                    MessageBox.Show("I swear to god I will break your knee caps");
+                }
+                businessClass.createClass("warrior", skill1, skill2, skill3, playerNameInput.Text);
+            }
+            if (skillPoints > 0)
+            {
+                MessageBox.Show("Please use all of your skill points.......     You'll need it.");
+            }
+
+            if (warriorRadioBtn.IsChecked == false && deathKnightRadioBtn.IsChecked == false)
+            {
+                MessageBox.Show("Please pick a class!");
+            }
+            if (playerNameInput.Text == "")
+            {
+                MessageBox.Show("Please write your name");
+            }
+            
+        }
+
+
+        private void warriorRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            dkChar.Visibility = Visibility.Hidden;
+            warriorChar.Visibility = Visibility.Visible;
+        }
+
+        private void deathKnightRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            dkChar.Visibility = Visibility.Visible;
+            warriorChar.Visibility = Visibility.Hidden;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /*
         private void Button_Click(object sender, RoutedEventArgs e)

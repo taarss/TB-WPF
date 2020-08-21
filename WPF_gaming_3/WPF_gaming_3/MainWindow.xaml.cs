@@ -22,18 +22,28 @@ namespace WPF_gaming_3
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {/*
         business businessClass = new business();
         private int skill1 = 0;
         private int skill2 = 0;
         private int skill3 = 0;
-        private int skillPoints = 10;
+        private int skillPoints = 10;*/
         public MainWindow()
         {
 
             InitializeComponent();
             //test
+           
         }
+
+        private void myGif_MediaEnded(object sender, RoutedEventArgs e)
+        {
+
+            myGif.Position = new TimeSpan(0, 0, 1);
+            myGif.Play();
+        }
+
+        /*
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (radioWarrior.IsChecked == true)
@@ -187,6 +197,6 @@ namespace WPF_gaming_3
 
         }
 
-
+        */
     }
 }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="font\04B_30__.TTF" />
     <None Remove="font\bit.TTF" />
     <None Remove="font\bit2.ttf" />
     <None Remove="images\bg.gif" />
@@ -21,8 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="font\04B_30__.TTF">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="font\bit.TTF">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="font\bit2.ttf" />
     <Resource Include="images\bg.gif" />

@@ -37,4 +37,4 @@ namespace WPF_gaming_3.CharCreation
         public int Luck { get => luck; set => luck = value; }
     }
 }
-}
+

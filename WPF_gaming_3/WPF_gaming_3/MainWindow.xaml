@@ -8,17 +8,22 @@
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Window.Resources>
-       
+        <Style x:Key="Hatten">
+            <Setter Property="TextElement.FontFamily" Value="font/#bit" />
+        </Style>
+        
     </Window.Resources>
-    <Grid>
+    
+        <Grid>
+        
         <!-- MAIN MENU -->
         <Canvas>
-            <Image Source="/images/bg.gif" Height="174" Width="358" Canvas.Left="412" Canvas.Top="130"></Image>
-            <Image gif:AnimationBehavior.SourceUri="/images/bg.gif" Source="/images/bg.gif" Height="173" Width="335" />
-            <Image Height="100" Width="100" gif:AnimationBehavior.SourceUri="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" gif:AnimationBehavior.RepeatBehavior="Forever" />
+            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="810" Height="497" Canvas.Top="-63"/>
+            <TextBlock FontFamily="{StaticResource bit}"  FontSize="30" Foreground="White">test</TextBlock>
         </Canvas>
-        
+
     </Grid>
 </Window>
     

@@ -10,15 +10,30 @@ namespace WPF_gaming_3.backend
     {
         public List<dungoen> dungoens = new List<dungoen>() 
         { 
-            new dungoen("Chambers of the Unknown Forest", 1, 120, 0, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1Loading.png" , "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1bg.jpg"),
-            new dungoen("Vault of the Nameless Widow", 2, 250, 0, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2Loading.png", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2bg.jpg"),
-            new dungoen("Tunnels of the Mystic Horsemen", 3, 600, 1, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3.png", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg")
+            new dungoen("Chambers of the Unknown Forest", 
+                1, 
+                120, 
+                0, 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1Loading.png", 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1bg.jpg"),
+            new dungoen("Vault of the Nameless Widow", 
+                2, 
+                250, 
+                0, 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2Loading.png", 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2bg.jpg"),
+            new dungoen("Tunnels of the Mystic Horsemen", 
+                3, 
+                600, 
+                1, 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3.png", 
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg")
         };
 
 
 
         public playerClass pClass;
-        public player player;
+        public player playerObject;
         public void createClass(string className, int stregthP, int agilityP, int luckP, string playerName)
         {
             playerClass p1Class = new playerClass(className);
@@ -35,7 +50,7 @@ namespace WPF_gaming_3.backend
                 p1Class.MaxStamina = 163;
             }
             pClass = p1Class;
-            player = new player(playerName, pClass, 1, 0, 100, stregthP, agilityP, luckP);
+            playerObject = new player(playerName, pClass, 1, 0, 100, stregthP, agilityP, luckP);
         
         }
 

@@ -33,35 +33,37 @@ namespace WPF_gaming_3.CharCreation
 
         List<ability> warriorAbilities = new List<ability>()
             {
-                new ability("rend", 4, 5),
-                new ability("heroic strike", 5, 6),
-                new ability("charge", 3, 4),
-                new ability("eat", 8, 10)
+                new ability("rend", 4, 5, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"),
+                new ability("heroic strike", 5, 6, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"),
+                new ability("charge", 3, 4, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"),
+                new ability("eat", 8, 10, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg")
             };
 
         List<ability> deathKnightAbilities = new List<ability>()
             {
-                new ability("death and decay", 7, 4),
-                new ability("death coil", 8, 5),
-                new ability("festering strike", 11, 9),
-                new ability("death strike", 5, 4)
+                new ability("death and decay", 7, 4, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"),
+                new ability("death coil", 8, 5, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"),
+                new ability("festering strike", 11, 9, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"),
+                new ability("death strike", 5, 4, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg")
             };
 
         public void setAbility(string className)
         {
-            if (className == "Warrior")
+            if (className == "warrior")
             {
                 ability1 = warriorAbilities[0];
                 ability2 = warriorAbilities[1];
                 ability3 = warriorAbilities[2];
                 healAbility4 = warriorAbilities[3];
+                
             }
             else
             {
                 ability1 = deathKnightAbilities[0];
-                ability1 = deathKnightAbilities[1];
-                ability1 = deathKnightAbilities[2];
+                ability2 = deathKnightAbilities[1];
+                ability3 = deathKnightAbilities[2];
                 healAbility4 = deathKnightAbilities[3];
+                
             }
         }
 

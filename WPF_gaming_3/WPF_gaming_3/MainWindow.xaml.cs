@@ -27,14 +27,13 @@ namespace WPF_gaming_3
     public partial class MainWindow : Window
     {
         
-        business businessClass = new business();
-        
+        business businessClass = new business();        
         private int skill1 = 0;
         private int skill2 = 0;
         private int skill3 = 0;
+        private int skillActionIndex = 0;
         private int skillPoints = 10;
         private int dungoenGlobalIndex;
-        private MediaPlayer selcect =  new MediaPlayer();
         private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
         public MainWindow()
         {
@@ -171,13 +170,13 @@ namespace WPF_gaming_3
         private void createCharBtn_Click(object sender, RoutedEventArgs e)
         {
             businessClass.selcectSound();
-
             if (warriorRadioBtn.IsChecked == true && skillPoints == 0)
             {
                 if (playerNameInput.Text == "your name")
                 {
                     MessageBox.Show("I swear to god I will break your knee caps");
                 }
+                
                 businessClass.createClass("warrior", skill1, skill2, skill3, playerNameInput.Text);
                 charCreationMenu.Visibility = Visibility.Hidden;
                 map.Visibility = Visibility.Visible;
@@ -237,32 +236,33 @@ namespace WPF_gaming_3
         //============================================ MAP BUTTONS =========================
         private void mapArea1_Click(object sender, RoutedEventArgs e)
         {
+            dungoenGlobalIndex = 0;
             businessClass.selcectSound();
+            preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
 
             confirmEnter.Visibility = Visibility.Visible;
             nameAreaTxt.Text = businessClass.dungoens[0].DungoenName;
             reqLvlTxt.Text = businessClass.dungoens[0].DungoenDifficulty.ToString();
-            dungoenGlobalIndex = 0;
         }
 
         private void mapArea2_Click(object sender, RoutedEventArgs e)
         {
+            dungoenGlobalIndex = 1;
             businessClass.selcectSound();
-
+            preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             confirmEnter.Visibility = Visibility.Visible;
             nameAreaTxt.Text = businessClass.dungoens[1].DungoenName;
             reqLvlTxt.Text = businessClass.dungoens[1].DungoenDifficulty.ToString();
-            dungoenGlobalIndex = 1;
 
         }
         private void mapArea3_Click(object sender, RoutedEventArgs e)
         {
+            dungoenGlobalIndex = 2;
             businessClass.selcectSound();
-
             confirmEnter.Visibility = Visibility.Visible;
+            preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             nameAreaTxt.Text = businessClass.dungoens[2].DungoenName;
             reqLvlTxt.Text = businessClass.dungoens[2].DungoenDifficulty.ToString();
-            dungoenGlobalIndex = 2;
 
         }
 
@@ -308,7 +308,7 @@ namespace WPF_gaming_3
                 action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
             }
         
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 6; i++)
             {
 
             await Task.Delay(500);
@@ -326,6 +326,8 @@ namespace WPF_gaming_3
 
         private void dungoenGui()
         {
+            main.Visibility = Visibility.Hidden;
+            inDungoen.Visibility = Visibility.Visible;
             dungoenBg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgBgPath));
             loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
             if (businessClass.pClass.ClassName == "warrior")
@@ -337,6 +339,75 @@ namespace WPF_gaming_3
                 playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
             }
 
+        }
+
+
+
+
+
+        //===================================== INGAME BUTTONS
+        private void action1_Click(object sender, RoutedEventArgs e)
+        {
+            skillActionIndex = 0;
+            confirmAction.Visibility = Visibility.Visible;
+            actionType.Text = "Damage:";
+            actionDmg.Text = businessClass.playerObject.PlayerClass.Ability1.AbilityDmg.ToString();
+            actionStamina.Text = businessClass.playerObject.PlayerClass.Ability1.AbilityStaminaCost.ToString();
+            abilityNameTxt.Text = businessClass.playerObject.PlayerClass.Ability1.AbilityName;
+            cornfirmActionImg.Source = new BitmapImage(new Uri(businessClass.playerObject.PlayerClass.Ability1.AbilityImgPath));
+
+        }
+
+        private void action2_Click(object sender, RoutedEventArgs e)
+        {
+            skillActionIndex = 1;
+            confirmAction.Visibility = Visibility.Visible;
+            actionType.Text = "Damage:";
+            actionDmg.Text = businessClass.playerObject.PlayerClass.Ability2.AbilityDmg.ToString();
+            actionStamina.Text = businessClass.playerObject.PlayerClass.Ability2.AbilityStaminaCost.ToString();
+            abilityNameTxt.Text = businessClass.playerObject.PlayerClass.Ability2.AbilityName;
+            cornfirmActionImg.Source = new BitmapImage(new Uri(businessClass.playerObject.PlayerClass.Ability2.AbilityImgPath));
+
+        }
+
+        private void action3_Click(object sender, RoutedEventArgs e)
+        {
+            skillActionIndex = 2;
+            confirmAction.Visibility = Visibility.Visible;
+            actionType.Text = "Damage:";
+            actionDmg.Text = businessClass.playerObject.PlayerClass.Ability3.AbilityDmg.ToString();
+            actionStamina.Text = businessClass.playerObject.PlayerClass.Ability3.AbilityStaminaCost.ToString();
+            abilityNameTxt.Text = businessClass.playerObject.PlayerClass.Ability3.AbilityName;
+            cornfirmActionImg.Source = new BitmapImage(new Uri(businessClass.playerObject.PlayerClass.Ability3.AbilityImgPath));
+
+        }
+
+        public void action4_Click(object sender, RoutedEventArgs e)
+        {
+            skillActionIndex = 3;
+            confirmAction.Visibility = Visibility.Visible;
+            actionType.Text = "Heal:";
+            actionDmg.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityDmg.ToString();
+            actionStamina.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityStaminaCost.ToString();
+            abilityNameTxt.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityName;
+            cornfirmActionImg.Source = new BitmapImage(new Uri(businessClass.playerObject.PlayerClass.HealAbility4.AbilityImgPath));
+        }
+
+
+
+
+
+
+        private void cancelActionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            confirmAction.Visibility = Visibility.Hidden;
+
+        }
+
+        private void useActionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            confirmAction.Visibility = Visibility.Hidden;
+            
         }
 
 

@@ -16,7 +16,7 @@
     </Window.Resources>
 
     <Grid>
-        <Canvas Visibility="Visible">
+        <Canvas x:Name="main" Visibility="Hidden">
             <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
 
             <!-- MAIN MENU -->
@@ -150,7 +150,7 @@
 
 
 
-        <Canvas Visibility="Hidden" x:Name="map">
+        <Canvas Visibility="Visible" x:Name="map">
             <Image x:Name="test" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
             <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
@@ -169,13 +169,14 @@
 
             <!-- CONFIRM SCREEN -->
 
-            <Canvas Visibility="Hidden" Background="White" Height="300" Width="350" x:Name="confirmEnter" Canvas.Left="225" Canvas.Top="116">
+            <Canvas Visibility="Hidden" Background="White" Height="370" Width="350" x:Name="confirmEnter" Canvas.Left="225" Canvas.Top="116">
                 <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="26" Canvas.Top="22">Are you sure you want to enter:</TextBlock>
-                <TextBlock x:Name="reqLvlTxt" FontWeight="Bold" FontSize="20" Canvas.Left="207" Width="43" Canvas.Top="123">1</TextBlock>
-                <TextBlock  FontWeight="Bold" FontSize="20" Canvas.Left="116" Width="86" Canvas.Top="123" RenderTransformOrigin="0.879,0.565">Rec LvL:</TextBlock>
+                <TextBlock x:Name="reqLvlTxt" FontWeight="Bold" FontSize="20" Canvas.Left="203" Width="43" Canvas.Top="255">1</TextBlock>
+                <TextBlock  FontWeight="Bold" FontSize="20" Canvas.Left="112" Width="86" Canvas.Top="255" RenderTransformOrigin="0.879,0.565">Rec LvL:</TextBlock>
+                <Image x:Name="preImg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1Loading.png" Height="130" Width="224" Stretch="Fill" Canvas.Left="63" Canvas.Top="120"></Image>
                 <TextBlock x:Name="nameAreaTxt" Width="320" TextAlignment="Center" FontWeight="Bold" FontSize="20" Canvas.Left="18" Canvas.Top="70">Chambers of the Unknown Forest</TextBlock>
-                <Button x:Name="enterAreaBtn" BorderBrush="Black" Width="150" Background="LightGreen" BorderThickness="7" FontSize="30" Canvas.Left="190" Canvas.Top="218" Click="enterAreaBtn_Click" >ENTER</Button>
-                <Button x:Name="cancelAreaBtn" BorderBrush="Black" Width="150" Background="IndianRed" BorderThickness="7" FontSize="30" Canvas.Left="10" Canvas.Top="218" Click="cancelAreaBtn_Click">NOOO!!!</Button>
+                <Button x:Name="enterAreaBtn" BorderBrush="Black" Width="150" Background="LightGreen" BorderThickness="7" FontSize="30" Canvas.Left="190" Canvas.Top="304" Click="enterAreaBtn_Click" RenderTransformOrigin="0.513,0.502" >ENTER</Button>
+                <Button x:Name="cancelAreaBtn" BorderBrush="Black" Width="150" Background="IndianRed" BorderThickness="7" FontSize="30" Canvas.Left="18" Canvas.Top="304" Click="cancelAreaBtn_Click">NOOO!!!</Button>
             </Canvas>
 
 
@@ -198,10 +199,10 @@
 
 
 
-        <Canvas x:Name="inDungoen" Visibility="Hidden">
+        <Canvas x:Name="inDungoen" Visibility="Visible">
             <Image x:Name="dungoenBg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg" Height="524" Width="808"></Image>
-            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="60" Canvas.Top="210"></Image>
-            <Image x:Name="enemyImage"></Image>
+            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
+            <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
         </Canvas>
 
 
@@ -216,17 +217,18 @@
 
 
 
-        <Canvas Visibility="Hidden" x:Name="inGame">
-            <Button x:Name="action1" Background="Transparent" Width="70" Height="70" Canvas.Left="400" Canvas.Top="446">
-                <Image x:Name="action1img"></Image>
-            </Button>
-            <Button x:Name="action2" Background="Transparent" Width="70" Height="70" Canvas.Left="260" Canvas.Top="446">
-                <Image x:Name="action2img"></Image>
-            </Button>
-            <Button x:Name="action3" Background="Transparent" Width="70" Height="70" Canvas.Left="330" Canvas.Top="446">
+        <Canvas Visibility="Visible" x:Name="inGame">
+            <Rectangle Width="800" Height="100" Fill="Gray" Canvas.Top="446"></Rectangle>
+            <Button x:Name="action3" Background="Transparent" Width="70" Height="70" Canvas.Left="400" Canvas.Top="446" Click="action3_Click">
                 <Image x:Name="action3img"></Image>
             </Button>
-            <Button x:Name="action4" Background="Transparent" Width="70" Height="70" Canvas.Left="470" Canvas.Top="446">
+            <Button x:Name="action1" Background="Transparent" Width="70" Height="70" Canvas.Left="260" Canvas.Top="446" Click="action1_Click">
+                <Image x:Name="action1img"></Image>
+            </Button>
+            <Button x:Name="action2" Background="Transparent" Width="70" Height="70" Canvas.Left="330" Canvas.Top="446" Click="action2_Click">
+                <Image x:Name="action2img"></Image>
+            </Button>
+            <Button x:Name="action4" Background="Transparent" Width="70" Height="70" Canvas.Left="470" Canvas.Top="446" Click="action4_Click">
                 <Image x:Name="action4img"></Image>
             </Button>
             <Rectangle Width="800" Height="2" Fill="Black" Canvas.Top="444"></Rectangle>
@@ -234,6 +236,22 @@
             <ProgressBar x:Name="staminaBar" Foreground="Green" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="489"/>
             <ProgressBar Foreground="Blue" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="464" Canvas.Left="600"/>
 
+
+
+
+
+
+            <Canvas Visibility="Hidden" x:Name="confirmAction" Width="444" Height="307" Background="White" Canvas.Left="178" Canvas.Top="110">
+                <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="78" Canvas.Top="10">Are you sure you want to cast:</TextBlock>
+                <TextBlock x:Name="abilityNameTxt" TextAlignment="Center" Width="200" FontWeight="Bold" FontSize="20" Canvas.Left="122" Canvas.Top="42">Death Coil</TextBlock>
+                <Image Height="60" Width="60" x:Name="cornfirmActionImg" Canvas.Left="192" Canvas.Top="86"></Image>
+                <TextBlock x:Name="actionType" FontSize="20" FontWeight="Bold" Canvas.Left="36" Canvas.Top="154">Damage:</TextBlock>
+                <TextBlock x:Name="actionDmg" FontSize="20" FontWeight="Bold" Canvas.Left="141" Canvas.Top="154">00</TextBlock>
+                <TextBlock FontSize="20" FontWeight="Bold" Canvas.Left="36" Canvas.Top="186">Stamina Cost:</TextBlock>
+                <TextBlock x:Name="actionStamina" FontSize="20" FontWeight="Bold" Canvas.Left="184" Canvas.Top="186">00</TextBlock>
+                <Button x:Name="useActionBtn" BorderBrush="Black" Width="150" Background="LightGreen" Canvas.Left="256" Canvas.Top="220" BorderThickness="7" FontSize="30" Click="useActionBtn_Click" >USE</Button>
+                <Button x:Name="cancelActionBtn" BorderBrush="Black" Width="150" Background="IndianRed" Canvas.Left="36" Canvas.Top="220" BorderThickness="7" FontSize="30" Click="cancelActionBtn_Click">CANCEL</Button>
+            </Canvas>
         </Canvas>
     </Grid>
 </Window>

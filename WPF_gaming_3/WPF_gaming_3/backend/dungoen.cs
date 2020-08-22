@@ -15,16 +15,17 @@ namespace WPF_gaming_3.backend
         private int reqLvl;
         private string imgPath;
         private string imgBgPath;
-        private List<enemy> enemyList;
+        private List<enemy> enemies;
 
-        public dungoen(string dungoenName, int dungoenDifficulty, int exReward, int reqLvl, string imgPath, string imgBgPath)
+        public dungoen(string dungoenName, int dungoenDifficulty, int exReward, int reqLvl, string imgPath, string imgBgPath, List<enemy> enemies)
         {
-            this.dungoenName = dungoenName;
-            this.dungoenDifficulty = dungoenDifficulty;
-            this.exReward = exReward;
-            this.reqLvl = reqLvl;
-            this.imgPath = imgPath;
-            this.imgBgPath = imgBgPath;
+            this.DungoenName = dungoenName;
+            this.DungoenDifficulty = dungoenDifficulty;
+            this.ExReward = exReward;
+            this.ReqLvl = reqLvl;
+            this.ImgPath = imgPath;
+            this.ImgBgPath = imgBgPath;
+            this.Enemies = enemies;
         }
 
         public string DungoenName { get => dungoenName; set => dungoenName = value; }
@@ -33,12 +34,7 @@ namespace WPF_gaming_3.backend
         public int ReqLvl { get => reqLvl; set => reqLvl = value; }
         public string ImgPath { get => imgPath; set => imgPath = value; }
         public string ImgBgPath { get => imgBgPath; set => imgBgPath = value; }
-        internal List<enemy> EnemyList { get => enemyList; set => enemyList = value; }
-
-        public List<string> dungoenAtributes(int dungoenDif)
-    {
-            businessClass.dungoens.
-    }
+        public List<enemy> Enemies { get => enemies; set => enemies = value; }
     }
 
 }

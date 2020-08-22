@@ -33,7 +33,11 @@ namespace WPF_gaming_3
         private int skill3 = 0;
         private int skillActionIndex = 0;
         private int skillPoints = 10;
+        Random random = new Random();
         private int dungoenGlobalIndex;
+        private int currentEnemyHp;
+        private int currentPlayerHp;
+        private int currentPlayerStamina;
         private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
         public MainWindow()
         {
@@ -42,7 +46,6 @@ namespace WPF_gaming_3
                  mainBg.PlayLooping();
                  };
                  mainBg.LoadAsync();
-
         }
            
         private void myGif_MediaEnded(object sender, RoutedEventArgs e)
@@ -180,6 +183,7 @@ namespace WPF_gaming_3
                 businessClass.createClass("warrior", skill1, skill2, skill3, playerNameInput.Text);
                 charCreationMenu.Visibility = Visibility.Hidden;
                 map.Visibility = Visibility.Visible;
+                
                 //temp
 
             }
@@ -237,6 +241,7 @@ namespace WPF_gaming_3
         private void mapArea1_Click(object sender, RoutedEventArgs e)
         {
             dungoenGlobalIndex = 0;
+            businessClass.createDungoen(dungoenGlobalIndex);
             businessClass.selcectSound();
             preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
 
@@ -248,6 +253,7 @@ namespace WPF_gaming_3
         private void mapArea2_Click(object sender, RoutedEventArgs e)
         {
             dungoenGlobalIndex = 1;
+            businessClass.createDungoen(dungoenGlobalIndex);
             businessClass.selcectSound();
             preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             confirmEnter.Visibility = Visibility.Visible;
@@ -258,6 +264,7 @@ namespace WPF_gaming_3
         private void mapArea3_Click(object sender, RoutedEventArgs e)
         {
             dungoenGlobalIndex = 2;
+            businessClass.createDungoen(dungoenGlobalIndex);
             businessClass.selcectSound();
             confirmEnter.Visibility = Visibility.Visible;
             preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
@@ -338,7 +345,7 @@ namespace WPF_gaming_3
             {
                 playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
             }
-
+            startCombat(dungoenGlobalIndex);
         }
 
 
@@ -396,194 +403,112 @@ namespace WPF_gaming_3
 
 
 
-
-
+        
         private void cancelActionBtn_Click(object sender, RoutedEventArgs e)
-        {
-            confirmAction.Visibility = Visibility.Hidden;
-
-        }
-
-        private void useActionBtn_Click(object sender, RoutedEventArgs e)
         {
             confirmAction.Visibility = Visibility.Hidden;
             
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void useActionBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (radioWarrior.IsChecked == true)
-            {
-                businessClass.createClass("warrior",
-                    Convert.ToInt32(strengthComboBox.Text),
-                    Convert.ToInt32(agilityComboBox.Text),
-                    Convert.ToInt32(luckComboBox.Text));
-            }
-            else if (radioDK.IsChecked == true)
-            {
-                businessClass.createClass("death knight",
-                    Convert.ToInt32(strengthComboBox.Text),
-                    Convert.ToInt32(agilityComboBox.Text),
-                    Convert.ToInt32(luckComboBox.Text));
+            confirmAction.Visibility = Visibility.Hidden;
+            action1.IsEnabled = false;
+            action2.IsEnabled = false;
+            action3.IsEnabled = false;
+            action4.IsEnabled = false;
+            turn();
 
-            }
-            if (radioDK.IsChecked == false && radioWarrior.IsChecked == false)
-            {
-                MessageBox.Show("Please pick a class!");
+        }
 
-            }
-
+        private void nextTurnBtn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
 
-
-
-
-        public void strengthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private bool battleBegun = true;
+        private bool playersTurn = true;
+        private int enemyCount;
+        private int playerHP;
+        private int playerStamina;
+        public async Task startCombat( int dungoenIndexValue)
         {
-            skillPoints = Convert.ToInt32(createMenuSkillPoints.Text);
-            if (skillPoints > 0)
+            playerHP = businessClass.pClass.MaxHP;
+            playerStamina = businessClass.pClass.MaxStamina;
+            checkHpAndHeal();
+            enemyCount = businessClass.dungoens[dungoenGlobalIndex].DungoenDifficulty * 2;
+            if (battleBegun == true)
             {
-                createMenuSkillPoints.Text = skillPoints.ToString();
-                if (skillPoints - Convert.ToInt32(strengthComboBox.SelectedValue.ToString()) < 1)
-                {
-                    createBtn.IsEnabled = false;
-                    createMenuSkillPoints.Text = skillPoints.ToString();
-                    MessageBox.Show("not enough skill points");
-                }
-                else
-                {
-                    if (skill1 == null)
-                    {
-                        skill1 = 0;
-                    }
-                    skill2 = Convert.ToInt32(agilityComboBox.SelectedValue.ToString());
-                    if (skill2 == null)
-                    {
-                        skill2 = 0;
-                    }
-                    skill3 = Convert.ToInt32(luckComboBox.SelectedValue.ToString());
-                    if (skill3 == null)
-                    {
-                        skill3 = 0;
-                    }
-                    skill1 = Convert.ToInt32(strengthComboBox.SelectedValue.ToString());
-                    skill2 = Convert.ToInt32(agilityComboBox.SelectedValue.ToString());
-                    skill3 = Convert.ToInt32(luckComboBox.SelectedValue.ToString());
-                    skillPoints = 10 - (skill1 + skill2 + skill3);
-                    createMenuSkillPoints.Text = skillPoints.ToString();
-                    createBtn.IsEnabled = true;
-                }
+                monsterName.Text = businessClass.dungoens[dungoenIndexValue].Enemies[0].Name + "has appeared";
+                monsterDamage.Text = "";
+                battleBegun = false;
+                playersTurn = true;
             }
+            
+        }
+        public void checkHpAndHeal()
+        {
+            hpBar.Maximum = businessClass.pClass.MaxHP;
+            hpBar.Minimum = 0;
+            hpBar.Value = playerHP;
+            staminaBar.Value = playerStamina;
+            staminaBar.Maximum = businessClass.pClass.MaxStamina;
+            staminaBar.Minimum = 0;
+            xpBar.Value = businessClass.playerObject.Xp;
+            xpBar.Maximum = businessClass.playerObject.NextLvlUp;
+            xpBar.Minimum = 0;
+            enemyHpBar.Value = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
+            enemyHpBar.Maximum = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
+            enemyHpBar.Minimum = 0;
+            currentEnemyHp = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
+        } 
+
+        public void checkHp()
+        {
+            hpBar.Value = currentPlayerHp;
+            staminaBar.Value = currentPlayerStamina;
+            xpBar.Value = businessClass.playerObject.Xp;
         }
 
-        public void agilityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            skillPoints = Convert.ToInt32(createMenuSkillPoints.Text);
 
-            if (skillPoints > 0)
+        public async Task turn()
+            
+        {
+            checkHp();
+            /*
+            if (random.Next(0, 10) > 6)
             {
-                if (skillPoints - Convert.ToInt32(agilityComboBox.SelectedValue.ToString()) < 1)
+                if (skillIndex < 3)
                 {
-                    createBtn.IsEnabled = false;
-                    MessageBox.Show("not enough skill points");
+                    monsterName.Text = "You hit CRITICAL" + businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Name + "for:";
+                    monsterDamage.Text = (businessClass.playerObject.PlayerClass.Ability3.AbilityDmg + 5).ToString();
+                    currentEnemyHp = currentEnemyHp - businessClass.playerObject.PlayerClass.Ability3.AbilityDmg + 5;
+                    checkHp();
                 }
-                else
-                {
-                    if (skill1 == null)
-                    {
-                        skill1 = 0;
-                    }
-                    skill2 = Convert.ToInt32(agilityComboBox.SelectedValue.ToString());
-                    if (skill2 == null)
-                    {
-                        skill2 = 0;
-                    }
-                    skill3 = Convert.ToInt32(luckComboBox.SelectedValue.ToString());
-                    if (skill3 == null)
-                    {
-                        skill3 = 0;
-                    }
-                    skill1 = Convert.ToInt32(strengthComboBox.SelectedValue.ToString());
-                    skill2 = Convert.ToInt32(agilityComboBox.SelectedValue.ToString());
-                    skill3 = Convert.ToInt32(luckComboBox.SelectedValue.ToString());
-                    createMenuSkillPoints.Text = skillPoints.ToString();
-                    skillPoints = 10 - (skill1 + skill2 + skill3);
-                    createBtn.IsEnabled = true;
-                }
-            }
-        }
 
-        public void luckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            skillPoints = Convert.ToInt32(createMenuSkillPoints.Text);
+            }*/
 
-            if (skillPoints > 0)
+            monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Name;
+                monsterDamage.Text = "for: "+ businessClass.playerObject.PlayerClass.Ability2.AbilityDmg.ToString();
+                currentEnemyHp = currentEnemyHp - businessClass.playerObject.PlayerClass.Ability2.AbilityDmg;
+                MessageBox.Show(currentEnemyHp.ToString());
+                MessageBox.Show(currentPlayerHp.ToString());
+            checkHp();
+            
+            if (currentEnemyHp <= 0)
             {
-                if (skillPoints - Convert.ToInt32(luckComboBox.SelectedValue.ToString()) < 1)
-                {
-                    createBtn.IsEnabled = false;
-                    MessageBox.Show("not enough skill points");
-                }
-                else
-                {
-
-                    skill1 = Convert.ToInt32(strengthComboBox.SelectedValue.ToString());
-                    if (skill1 == null)
-                    {
-                        skill1 = 0;
-                    }
-                    skill2 = Convert.ToInt32(agilityComboBox.SelectedValue.ToString());
-                    if (skill2 == null)
-                    {
-                        skill2 = 0;
-                    }
-                    skill3 = Convert.ToInt32(luckComboBox.SelectedValue.ToString());
-                    if (skill3 == null)
-                    {
-                        skill3 = 0;
-                    }
-                    skillPoints = 10 - (skill1 + skill2 + skill3);
-                    createMenuSkillPoints.Text = skillPoints.ToString();
-                    createBtn.IsEnabled = true;
-                }
+                MessageBox.Show("you won or something like that......");
             }
+            MessageBox.Show("debug 3");
+            await Task.Delay(100);
+            MessageBox.Show("debug 4");
+            action1.IsEnabled = true;
+            action2.IsEnabled = true;
+            action3.IsEnabled = true;
+            action4.IsEnabled = true;
         }
 
-        //Warrior
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            imgShowClass.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/Documents/S2/Klasser oh Objekter/wpf_gaming_3/wpf_gaming_3/Images/warrior.png"));
-        }
-        //DeathKnight
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
-        {
-            imgShowClass.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/Documents/S2/Klasser oh Objekter/wpf_gaming_3/wpf_gaming_3/Images/dk.jpg"));
 
-        }
-
-        */
     }
 }

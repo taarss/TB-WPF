@@ -16,7 +16,7 @@
     </Window.Resources>
 
     <Grid>
-        <Canvas x:Name="main" Visibility="Hidden">
+        <Canvas x:Name="main" Visibility="Visible">
             <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
 
             <!-- MAIN MENU -->
@@ -150,7 +150,7 @@
 
 
 
-        <Canvas Visibility="Visible" x:Name="map">
+        <Canvas Visibility="Hidden" x:Name="map">
             <Image x:Name="test" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
             <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
@@ -198,11 +198,12 @@
 
 
 
-
-        <Canvas x:Name="inDungoen" Visibility="Visible">
+        <Canvas x:Name="inDungoen" Visibility="Hidden">
             <Image x:Name="dungoenBg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg" Height="524" Width="808"></Image>
             <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
             <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
+        </Canvas>
+        <Canvas x:Name="flashCanvas" Background="White" Visibility="Hidden">
         </Canvas>
 
 
@@ -217,7 +218,7 @@
 
 
 
-        <Canvas Visibility="Visible" x:Name="inGame">
+        <Canvas Visibility="Hidden" x:Name="inGame">
             <Rectangle Width="800" Height="100" Fill="Gray" Canvas.Top="446"></Rectangle>
             <Button x:Name="action3" Background="Transparent" Width="70" Height="70" Canvas.Left="400" Canvas.Top="446" Click="action3_Click">
                 <Image x:Name="action3img"></Image>
@@ -232,9 +233,16 @@
                 <Image x:Name="action4img"></Image>
             </Button>
             <Rectangle Width="800" Height="2" Fill="Black" Canvas.Top="444"></Rectangle>
-            <ProgressBar x:Name="hpBar" Foreground="Red" BorderBrush="Black" BorderThickness="2" Width="200" Height="10" Canvas.Top="464"/>
-            <ProgressBar x:Name="staminaBar" Foreground="Green" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="489"/>
-            <ProgressBar Foreground="Blue" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="464" Canvas.Left="600"/>
+            <ProgressBar x:Name="hpBar" Foreground="Red" BorderBrush="Black" BorderThickness="2" Width="200" Height="10" Canvas.Top="203" Canvas.Left="95"/>
+            <ProgressBar x:Name="staminaBar" Foreground="Green" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="471" Canvas.Left="-5"/>
+            <ProgressBar x:Name="xpBar" Foreground="Blue" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="496" Canvas.Left="-5"/>
+            <ProgressBar x:Name="enemyHpBar" Foreground="Red" BorderBrush="Black" BorderThickness="2" Width="200" Height="10" Canvas.Top="203" Canvas.Left="505"/>
+
+            <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="352" Background="White">
+                <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">Gaara of the Sand landed a hit for</TextBlock>
+                <TextBlock Width="302" FontSize="20" x:Name="monsterDamage" Canvas.Left="25" Canvas.Top="43" Height="76">123 DMG</TextBlock>
+                <Button x:Name="nextTurnBtn" FontSize="20" Canvas.Left="222" Canvas.Top="65" Height="41" Width="105" Click="nextTurnBtn_Click">NEXT TURN</Button>
+            </Canvas>
 
 
 

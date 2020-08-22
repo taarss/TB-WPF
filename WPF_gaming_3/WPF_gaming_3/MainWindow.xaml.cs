@@ -33,6 +33,8 @@ namespace WPF_gaming_3
         private int skill2 = 0;
         private int skill3 = 0;
         private int skillPoints = 10;
+        private int dungoenGlobalIndex;
+        private MediaPlayer selcect =  new MediaPlayer();
         private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
         public MainWindow()
         {
@@ -58,12 +60,16 @@ namespace WPF_gaming_3
         //============================================== main menu buttons ===================================================
         private void menuStart_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             mainMenuCanvas.Visibility = Visibility.Hidden;
             charCreationMenu.Visibility = Visibility.Visible;
         }
 
         private void exitMainBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             System.Environment.Exit(1);
         }
 
@@ -77,6 +83,8 @@ namespace WPF_gaming_3
 
         private void sAdd_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints > 0 && skill1 < 10)
             {
                 skill1++;
@@ -87,6 +95,8 @@ namespace WPF_gaming_3
         }
         private void sMinus_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints < 10 && skill1 > 0)
             {
                 skill1--;
@@ -98,6 +108,8 @@ namespace WPF_gaming_3
 
         private void aAdd_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints > 0 && skill2 < 10)
             {
                 skill2++;
@@ -109,6 +121,8 @@ namespace WPF_gaming_3
 
         private void aMinus_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints < 10 && skill2 > 0)
             {
                 skill2--;
@@ -120,6 +134,8 @@ namespace WPF_gaming_3
 
         private void lAdd_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints > 0 && skill3 < 10)
             {
                 skill3++;
@@ -131,6 +147,8 @@ namespace WPF_gaming_3
 
         private void lMinus_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             if (skillPoints < 10 && skill3 > 0)
             {
                 skill3--;
@@ -152,7 +170,7 @@ namespace WPF_gaming_3
 
         private void createCharBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            businessClass.selcectSound();
 
             if (warriorRadioBtn.IsChecked == true && skillPoints == 0)
             {
@@ -161,6 +179,14 @@ namespace WPF_gaming_3
                     MessageBox.Show("I swear to god I will break your knee caps");
                 }
                 businessClass.createClass("warrior", skill1, skill2, skill3, playerNameInput.Text);
+                charCreationMenu.Visibility = Visibility.Hidden;
+                map.Visibility = Visibility.Visible;
+                //temp
+
+            }
+            else
+            {
+                MessageBox.Show("Error 20");
             }
             if (skillPoints > 0)
             {
@@ -178,21 +204,140 @@ namespace WPF_gaming_3
             
         }
 
+        //Back Btn
+        private void backBtnChar_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+
+            mainMenuCanvas.Visibility = Visibility.Visible;
+            charCreationMenu.Visibility = Visibility.Hidden;
+        }
+
 
         private void warriorRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             dkChar.Visibility = Visibility.Hidden;
             warriorChar.Visibility = Visibility.Visible;
         }
 
         private void deathKnightRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
+
             dkChar.Visibility = Visibility.Visible;
             warriorChar.Visibility = Visibility.Hidden;
         }
 
 
 
+
+
+        //============================================ MAP BUTTONS =========================
+        private void mapArea1_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+
+            confirmEnter.Visibility = Visibility.Visible;
+            nameAreaTxt.Text = businessClass.dungoens[0].DungoenName;
+            reqLvlTxt.Text = businessClass.dungoens[0].DungoenDifficulty.ToString();
+            dungoenGlobalIndex = 0;
+        }
+
+        private void mapArea2_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+
+            confirmEnter.Visibility = Visibility.Visible;
+            nameAreaTxt.Text = businessClass.dungoens[1].DungoenName;
+            reqLvlTxt.Text = businessClass.dungoens[1].DungoenDifficulty.ToString();
+            dungoenGlobalIndex = 1;
+
+        }
+        private void mapArea3_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+
+            confirmEnter.Visibility = Visibility.Visible;
+            nameAreaTxt.Text = businessClass.dungoens[2].DungoenName;
+            reqLvlTxt.Text = businessClass.dungoens[2].DungoenDifficulty.ToString();
+            dungoenGlobalIndex = 2;
+
+        }
+
+        private void enterAreaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+            loadDungoen();
+        }
+
+        private void cancelAreaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+            confirmEnter.Visibility = Visibility.Hidden;
+        }
+
+
+
+
+
+        //================================= DUNGOEN LOADER =====================
+        private void loadDungoen()
+        {
+            map.Visibility = Visibility.Hidden;
+            loadingScreen.Visibility = Visibility.Visible;
+            loadingScreenImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
+            loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
+             Shake();
+        }
+        public async Task Shake()
+        {
+            if (businessClass.pClass.ClassName == "warrior")
+            {
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg"));
+            }
+            else
+            {
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
+            }
+        
+            for (int i = 0; i < 20; i++)
+            {
+
+            await Task.Delay(500);
+            Canvas.SetLeft(loadingScreenImg, 0);
+
+            await Task.Delay(500);
+            Canvas.SetLeft(loadingScreenImg, -5);
+
+            }
+            loadingScreen.Visibility = Visibility.Hidden;
+            inGame.Visibility = Visibility.Visible;
+            dungoenGui();
+        }
+
+
+        private void dungoenGui()
+        {
+            dungoenBg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgBgPath));
+            loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
+            if (businessClass.pClass.ClassName == "warrior")
+            {
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
+            }
+            else
+            {
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
+            }
+
+        }
 
 
 

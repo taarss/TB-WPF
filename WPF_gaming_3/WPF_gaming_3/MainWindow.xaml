@@ -16,17 +16,192 @@
     </Window.Resources>
 
     <Grid>
-        <Canvas >
+        <Canvas Visibility="Visible">
             <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
 
             <!-- MAIN MENU -->
-        <Canvas Visibility="Hidden"   x:Name="mainMenuCanvas">
-            <Button x:Name="menuStart" FontSize="30" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4" Background="White" Height="50"  Width="140" Canvas.Left="335" Canvas.Top="68" Click="menuStart_Click" >
-                start
+            <Canvas    x:Name="mainMenuCanvas">
+                <Button x:Name="menuStart" FontSize="30" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4" Background="White" Height="50"  Width="140" Canvas.Left="335" Canvas.Top="68" Click="menuStart_Click" >
+                    start
+                </Button>
+                <Button x:Name="exitMainBtn" FontSize="30" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4" Background="White" Height="50"  Width="140" Canvas.Left="335" Canvas.Top="168" Click="exitMainBtn_Click" >
+                    exit
+                </Button>
+            </Canvas>
+
+
+
+
+
+
+
+
+            <!-- CHAR CREATION MENU -->
+            <Canvas >
+                <Border Visibility="Hidden" Canvas.Top="15" Canvas.Left="170" x:Name="charCreationMenu"  BorderBrush="Black" BorderThickness="3" Width="450" Height="400">
+                    <Canvas   Background="LightGray">
+                        <Image  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Button x:Name="backBtnChar" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10" Click="backBtnChar_Click">BACK</Button>
+
+
+
+
+                        <!-- STRENGTH -->
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="60">Strength</TextBlock>
+                        <TextBlock x:Name="sSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="60">0</TextBlock>
+                        <Button x:Name="sAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="60" Click="sAdd_Click">
+                            <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+                        <Button x:Name="sMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="60" Click="sMinus_Click">
+                            <Path Data="M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+
+
+
+
+
+                        <!-- AGILITY -->
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="100">Agility</TextBlock>
+                        <TextBlock x:Name="aSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="100">0</TextBlock>
+                        <Button x:Name="aAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="100" Click="aAdd_Click">
+                            <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+                        <Button x:Name="aMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="100" Click="aMinus_Click">
+                            <Path Data="M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+
+
+
+
+
+                        <!-- LUCK -->
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="140">Luck</TextBlock>
+                        <TextBlock x:Name="lSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="140">0</TextBlock>
+                        <Button x:Name="lAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="140" Click="lAdd_Click">
+                            <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+                        <Button x:Name="lMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="140" Click="lMinus_Click">
+                            <Path Data="M0,0.5 L1,0.5"
+                          StrokeThickness="4"
+                          Stretch="Fill"
+                          Stroke="Black" Height="20" Width="20" />
+                        </Button>
+
+
+
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="220">NAME</TextBlock>
+                        <TextBox x:Name="playerNameInput" FontSize="20" Background="White" Height="30" Width="100" TextAlignment="Center" Canvas.Left="128" Canvas.Top="220"></TextBox>
+
+
+
+
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="140" TextAlignment="Center" Canvas.Left="28" Canvas.Top="260">WARRIOR</TextBlock>
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="140" TextAlignment="Center" Canvas.Left="28" Canvas.Top="300">DEATH KNIGHT</TextBlock>
+
+                        <Viewbox Height="30" Canvas.Left="178" Canvas.Top="300" Width="44">
+                            <RadioButton x:Name="deathKnightRadioBtn" GroupName="classPick" Checked="deathKnightRadioBtn_Checked"></RadioButton>
+                        </Viewbox>
+                        <Viewbox Height="30" Canvas.Left="178" Canvas.Top="260" Width="44">
+                            <RadioButton x:Name="warriorRadioBtn" GroupName="classPick" RenderTransformOrigin="1.071,1.071" Checked="warriorRadioBtn_Checked"></RadioButton>
+                        </Viewbox>
+
+                        <TextBlock FontSize="20" Background="White" Height="30" Width="100" TextAlignment="Center" Canvas.Left="267" Canvas.Top="205" RenderTransformOrigin="0.51,0.635">Skill points</TextBlock>
+                        <TextBlock x:Name="skillPointsTxt" Background="White" Width="30" Height="30" FontSize="20" Canvas.Left="381" Canvas.Top="205">10</TextBlock>
+                        <Button x:Name="createCharBtn" FontSize="20" Background="White" Canvas.Left="304" Canvas.Top="298" Click="createCharBtn_Click">CREATE</Button>
+
+
+                    </Canvas>
+                </Border>
+            </Canvas>
+        </Canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- MAP -->
+
+
+
+
+
+        <Canvas Visibility="Hidden" x:Name="map">
+            <Image x:Name="test" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
+            <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
+            <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
+                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
-            <Button x:Name="exitMainBtn" FontSize="30" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4" Background="White" Height="50"  Width="140" Canvas.Left="335" Canvas.Top="168" Click="exitMainBtn_Click" >
-                exit
+            <Button x:Name="mapArea2" Canvas.Left="536" Canvas.Top="110" Background="Transparent" BorderBrush="Transparent" Height="52" Width="41" Click="mapArea2_Click">
+                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
+            <Button x:Name="mapArea3" Canvas.Left="636" Canvas.Top="346" Background="Transparent" BorderBrush="Transparent" Height="58" Width="42" Click="mapArea3_Click">
+                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+            </Button>
+
+
+
+
+
+            <!-- CONFIRM SCREEN -->
+
+            <Canvas Visibility="Hidden" Background="White" Height="300" Width="350" x:Name="confirmEnter" Canvas.Left="225" Canvas.Top="116">
+                <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="26" Canvas.Top="22">Are you sure you want to enter:</TextBlock>
+                <TextBlock x:Name="reqLvlTxt" FontWeight="Bold" FontSize="20" Canvas.Left="207" Width="43" Canvas.Top="123">1</TextBlock>
+                <TextBlock  FontWeight="Bold" FontSize="20" Canvas.Left="116" Width="86" Canvas.Top="123" RenderTransformOrigin="0.879,0.565">Rec LvL:</TextBlock>
+                <TextBlock x:Name="nameAreaTxt" Width="320" TextAlignment="Center" FontWeight="Bold" FontSize="20" Canvas.Left="18" Canvas.Top="70">Chambers of the Unknown Forest</TextBlock>
+                <Button x:Name="enterAreaBtn" BorderBrush="Black" Width="150" Background="LightGreen" BorderThickness="7" FontSize="30" Canvas.Left="190" Canvas.Top="218" Click="enterAreaBtn_Click" >ENTER</Button>
+                <Button x:Name="cancelAreaBtn" BorderBrush="Black" Width="150" Background="IndianRed" BorderThickness="7" FontSize="30" Canvas.Left="10" Canvas.Top="218" Click="cancelAreaBtn_Click">NOOO!!!</Button>
+            </Canvas>
+
+
+
+
+
+
+
+            <!-- LOADING SCREEN -->
+
+        </Canvas>
+
+        <Canvas Visibility="Hidden" x:Name="loadingScreen">
+            <Image Canvas.Left="-10" Stretch="Fill" Width="801" x:Name="loadingScreenImg" Height="516"></Image>
+            <TextBlock x:Name="loadingDungoenName" Foreground="White" FontWeight="Bold" FontSize="30" Canvas.Left="45" Canvas.Top="374">THIS IS TEXT</TextBlock>
+        </Canvas>
+
+
+
+
+
+
+        <Canvas x:Name="inDungoen" Visibility="Hidden">
+            <Image x:Name="dungoenBg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg" Height="524" Width="808"></Image>
+            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="60" Canvas.Top="210"></Image>
+            <Image x:Name="enemyImage"></Image>
         </Canvas>
 
 
@@ -36,102 +211,30 @@
 
 
 
-        <!-- CHAR CREATION MENU -->
-        <Canvas >
-            <Border Visibility="Visible" Canvas.Top="15" Canvas.Left="170" x:Name="charCreationMenu"  BorderBrush="Black" BorderThickness="3" Width="450" Height="400">
-                <Canvas   Background="LightGray">
-                    <Image  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg2.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                    <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                    <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                    
-
-
-
-
-                    <!-- STRENGTH -->
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="60">Strength</TextBlock>
-                    <TextBlock x:Name="sSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="60">0</TextBlock>
-                    <Button x:Name="sAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="60" Click="sAdd_Click">
-                        <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
-                    <Button x:Name="sMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="60" Click="sMinus_Click">
-                        <Path Data="M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
 
 
 
 
 
-                    <!-- AGILITY -->
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="100">Agility</TextBlock>
-                    <TextBlock x:Name="aSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="100">0</TextBlock>
-                    <Button x:Name="aAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="100" Click="aAdd_Click">
-                        <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
-                    <Button x:Name="aMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="100" Click="aMinus_Click">
-                        <Path Data="M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
+        <Canvas Visibility="Hidden" x:Name="inGame">
+            <Button x:Name="action1" Background="Transparent" Width="70" Height="70" Canvas.Left="400" Canvas.Top="446">
+                <Image x:Name="action1img"></Image>
+            </Button>
+            <Button x:Name="action2" Background="Transparent" Width="70" Height="70" Canvas.Left="260" Canvas.Top="446">
+                <Image x:Name="action2img"></Image>
+            </Button>
+            <Button x:Name="action3" Background="Transparent" Width="70" Height="70" Canvas.Left="330" Canvas.Top="446">
+                <Image x:Name="action3img"></Image>
+            </Button>
+            <Button x:Name="action4" Background="Transparent" Width="70" Height="70" Canvas.Left="470" Canvas.Top="446">
+                <Image x:Name="action4img"></Image>
+            </Button>
+            <Rectangle Width="800" Height="2" Fill="Black" Canvas.Top="444"></Rectangle>
+            <ProgressBar x:Name="hpBar" Foreground="Red" BorderBrush="Black" BorderThickness="2" Width="200" Height="10" Canvas.Top="464"/>
+            <ProgressBar x:Name="staminaBar" Foreground="Green" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="489"/>
+            <ProgressBar Foreground="Blue" Width="200" BorderBrush="Black" BorderThickness="2" Height="10" Canvas.Top="464" Canvas.Left="600"/>
 
-
-
-
-
-                    <!-- LUCK -->
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="140">Luck</TextBlock>
-                    <TextBlock x:Name="lSkillp" FontSize="20" Background="White" Height="30" Width="30" TextAlignment="Center" Canvas.Left="128" Canvas.Top="140">0</TextBlock>
-                    <Button x:Name="lAdd" Background="White" Width="30" Height="30" Canvas.Left="168" Canvas.Top="140" Click="lAdd_Click">
-                        <Path Data="M0.5,0 L0.5,1 M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
-                    <Button x:Name="lMinus" Background="White"  Width="30"  Height="30" Canvas.Left="207" Canvas.Top="140" Click="lMinus_Click">
-                        <Path Data="M0,0.5 L1,0.5"
-                          StrokeThickness="4"
-                          Stretch="Fill"
-                          Stroke="Black" Height="20" Width="20" />
-                    </Button>
-
-
-
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="80" TextAlignment="Center" Canvas.Left="28" Canvas.Top="220">NAME</TextBlock>
-                    <TextBox x:Name="playerNameInput" FontSize="20" Background="White" Height="30" Width="100" TextAlignment="Center" Canvas.Left="128" Canvas.Top="220"></TextBox>
-
-
-
-
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="140" TextAlignment="Center" Canvas.Left="28" Canvas.Top="260">WARRIOR</TextBlock>
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="140" TextAlignment="Center" Canvas.Left="28" Canvas.Top="300">DEATH KNIGHT</TextBlock>
-
-                    <Viewbox Height="30" Canvas.Left="178" Canvas.Top="300" Width="44">
-                        <RadioButton x:Name="deathKnightRadioBtn" GroupName="classPick" Checked="deathKnightRadioBtn_Checked"></RadioButton>
-                    </Viewbox>
-                    <Viewbox Height="30" Canvas.Left="178" Canvas.Top="260" Width="44">
-                        <RadioButton x:Name="warriorRadioBtn" GroupName="classPick" RenderTransformOrigin="1.071,1.071" Checked="warriorRadioBtn_Checked"></RadioButton>
-                    </Viewbox>
-
-                    <TextBlock FontSize="20" Background="White" Height="30" Width="100" TextAlignment="Center" Canvas.Left="267" Canvas.Top="205" RenderTransformOrigin="0.51,0.635">Skill points</TextBlock>
-                    <TextBlock x:Name="skillPointsTxt" Background="White" Width="30" Height="30" FontSize="20" Canvas.Left="381" Canvas.Top="205">10</TextBlock>
-                    <Button x:Name="createCharBtn" FontSize="20" Background="White" Canvas.Left="304" Canvas.Top="298" Click="createCharBtn_Click">CREATE</Button>
-
-
-                </Canvas>
-            </Border>
         </Canvas>
-        </Canvas>
-
     </Grid>
 </Window>
     

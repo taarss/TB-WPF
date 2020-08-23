@@ -45,6 +45,7 @@ namespace WPF_gaming_3
         private SoundPlayer battle = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
         private SoundPlayer victory = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
         private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
+        private SoundPlayer healSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
 
         public MainWindow()
         {
@@ -66,6 +67,13 @@ namespace WPF_gaming_3
 
 
 
+
+
+
+
+
+
+
         //============================================== main menu buttons ===================================================
         private void menuStart_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +89,15 @@ namespace WPF_gaming_3
 
             System.Environment.Exit(1);
         }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -175,12 +192,23 @@ namespace WPF_gaming_3
 
 
 
+
+
+
+
+
+
+
+
+
+
+
         //=================================== CREATE AND CLASS BUTTONS ==================================================
 
         private void createCharBtn_Click(object sender, RoutedEventArgs e)
         {
             businessClass.selcectSound();
-            if (warriorRadioBtn.IsChecked == true && skillPoints == 0 || deathKnightRadioBtn.IsChecked == true && skillPoints == 0)
+            if (warriorRadioBtn.IsChecked == true && skillPoints == 0)
             {
                 if (playerNameInput.Text == "your name")
                 {
@@ -198,10 +226,22 @@ namespace WPF_gaming_3
                 //temp
 
             }
-            else
+            else if (deathKnightRadioBtn.IsChecked == true && skillPoints == 0)
             {
-                MessageBox.Show("Error 20");
+                if (playerNameInput.Text == "your name")
+                {
+                    MessageBox.Show("I swear to god I will break your knee caps");
+                }
+
+                businessClass.createClass("death knight", skill1, skill2, skill3, playerNameInput.Text);
+                charCreationMenu.Visibility = Visibility.Hidden;
+                map.Visibility = Visibility.Visible;
+                mapMusic.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                    mapMusic.PlayLooping();
+                };
+                mapMusic.LoadAsync();
             }
+           
             if (skillPoints > 0)
             {
                 MessageBox.Show("Please use all of your skill points.......     You'll need it.");
@@ -248,6 +288,26 @@ namespace WPF_gaming_3
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //============================================ MAP BUTTONS =========================
         private void mapArea1_Click(object sender, RoutedEventArgs e)
         {
@@ -287,6 +347,7 @@ namespace WPF_gaming_3
         private void enterAreaBtn_Click(object sender, RoutedEventArgs e)
         {
             businessClass.selcectSound();
+            battleBegun = true;
             loadDungoen();
         }
 
@@ -300,13 +361,31 @@ namespace WPF_gaming_3
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //================================= DUNGOEN LOADER =====================
         private void loadDungoen()
         {
+            enemyIndex = 0;
             map.Visibility = Visibility.Hidden;
             loadingScreen.Visibility = Visibility.Visible;
             loadingScreenImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
+            dungoenBg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgBgPath));
             gameLoad.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
                 gameLoad.PlayLooping();
             };
@@ -356,6 +435,7 @@ namespace WPF_gaming_3
             inDungoen.Visibility = Visibility.Visible;
             dungoenBg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgBgPath));
             loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
+            enemyImage.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].ImgPath));
             if (businessClass.pClass.ClassName == "warrior")
             {
                 playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
@@ -371,7 +451,20 @@ namespace WPF_gaming_3
 
 
 
-        //===================================== INGAME BUTTONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //===================================== INGAME BUTTONS =======================================
         private void action1_Click(object sender, RoutedEventArgs e)
         {
             skillActionIndex = 0;
@@ -412,7 +505,7 @@ namespace WPF_gaming_3
         {
             skillActionIndex = 3;
             confirmAction.Visibility = Visibility.Visible;
-            actionType.Text = "Heal:";
+            actionType.Text = "Heal";
             actionDmg.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityDmg.ToString();
             actionStamina.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityStaminaCost.ToString();
             abilityNameTxt.Text = businessClass.playerObject.PlayerClass.HealAbility4.AbilityName;
@@ -422,7 +515,7 @@ namespace WPF_gaming_3
         private void skipTurnBtn_Click(object sender, RoutedEventArgs e)
         {
             skipTurn.Visibility = Visibility.Visible;
-            staminaRegainTxt.Text = (5 * businessClass.playerObject.Agility).ToString();
+            staminaRegainTxt.Text = (5+(5 * businessClass.playerObject.Agility)).ToString();
         }
 
         private void skipBtn_Click(object sender, RoutedEventArgs e)
@@ -433,7 +526,7 @@ namespace WPF_gaming_3
             }
             else
             {
-                currentPlayerStamina = currentPlayerStamina + 5 * businessClass.playerObject.Agility;
+                currentPlayerStamina = currentPlayerStamina + 5 +(5 * businessClass.playerObject.Agility);
             }
             skipTurn.Visibility = Visibility.Hidden;
             checkHp();
@@ -453,20 +546,56 @@ namespace WPF_gaming_3
 
         private void useActionBtn_Click(object sender, RoutedEventArgs e)
         {
-            confirmAction.Visibility = Visibility.Hidden;
-            action1.IsEnabled = false;
-            action2.IsEnabled = false;
-            action3.IsEnabled = false;
-            action4.IsEnabled = false;
-            turn();
-
+            List<ability> abilities = new List<ability>()
+            {
+                businessClass.pClass.Ability1,
+                businessClass.pClass.Ability2,
+                businessClass.pClass.Ability3,
+                businessClass.pClass.HealAbility4
+            };
+            if (currentPlayerStamina >= abilities[skillActionIndex].AbilityStaminaCost)
+            {
+                checkHp();
+                confirmAction.Visibility = Visibility.Hidden;
+                action1.IsEnabled = false;
+                action2.IsEnabled = false;
+                action3.IsEnabled = false;
+                action4.IsEnabled = false;
+                turn();
+            }
+            else
+            {
+                MessageBox.Show("not enough stamina");
+            }
         }
 
-     
 
+        private void restartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gameOverScreen.Visibility = Visibility.Hidden;
+            main.Visibility = Visibility.Visible;
+            mainMenuCanvas.Visibility = Visibility.Visible;
+            mainBg.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                mainBg.PlayLooping();
+            };
+            mainBg.LoadAsync();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //======================================== COMBAT =================================
 
         private bool battleBegun = true;
-        private bool playersTurn = true;
         private int enemyCount;
         private int playerHP;
         private int playerStamina;
@@ -482,7 +611,6 @@ namespace WPF_gaming_3
                 monsterName.Text = businessClass.dungoens[dungoenIndexValue].Enemies[enemyIndex].Name + "has appeared";
                 monsterDamage.Text = "";
                 battleBegun = false;
-                playersTurn = true;
             }
             
         }
@@ -532,7 +660,7 @@ namespace WPF_gaming_3
             {
                 enemyHpCount.Text = currentEnemyHp.ToString();
             }
-            if (currentPlayerHp <= 100)
+            if (currentPlayerHp <= 0)
             {
                 gameOver();
             }
@@ -551,12 +679,23 @@ namespace WPF_gaming_3
                 businessClass.pClass.Ability3,
                 businessClass.pClass.HealAbility4
             };
-            monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name;
+            if (actionType.Text == "Heal")
+            {
+                monsterName.Text = "You healed yourself";
+                monsterDamage.Text = "for: " + abilities[skillActionIndex].AbilityDmg.ToString() + " HP";
+                currentPlayerHp = currentPlayerHp + abilities[skillActionIndex].AbilityDmg;
+                currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
+                healSound.LoadAsync();
+            }
+            else
+            {
+                monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name;
                 monsterDamage.Text = "for: "+ abilities[skillActionIndex].AbilityDmg.ToString()+ " DMG";
                 currentEnemyHp = currentEnemyHp - abilities[skillActionIndex].AbilityDmg;
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
+                shakeEnemy();
+            }
             checkHp();
-            shakeEnemy();
             await Task.Delay(2000);
             enemyTurn();
             action1.IsEnabled = true;
@@ -566,14 +705,14 @@ namespace WPF_gaming_3
             checkHp();
         }
 
-       public void enemyTurn()
+       public async Task enemyTurn()
         {
             bool isMiss = false;
             bool isCrit = false;
-           
+            await Task.Delay(2000);
             int damageDone = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Power;
             damageDone = damageDone - businessClass.playerObject.Strength;
-            if (random.Next(0, 10) > 5 - businessClass.playerObject.Luck)
+            if (random.Next(0, 10) > 5 + businessClass.playerObject.Luck)
             {
                 isCrit = true;
                 damageDone = damageDone + 10;
@@ -606,7 +745,11 @@ namespace WPF_gaming_3
         {
             inGame.Visibility = Visibility.Hidden;
             inDungoen.Visibility = Visibility.Hidden;
-            map.Visibility = Visibility.Visible;
+            gameOverScreen.Visibility = Visibility.Visible;
+            gameOverSound.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                gameOverSound.PlayLooping();
+            };
+            gameOverSound.LoadAsync();
         }
 
         public async Task shakeEnemy()
@@ -650,5 +793,21 @@ namespace WPF_gaming_3
             selcect.Open(selectPath);
             selcect.Play();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 }

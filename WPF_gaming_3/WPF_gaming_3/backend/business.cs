@@ -14,22 +14,20 @@ namespace WPF_gaming_3.backend
         public playerClass pClass;
         public player playerObject;
         public List<dungoen> dungoens;
-
-
         public void createClass(string className, int stregthP, int agilityP, int luckP, string playerName)
         {
             playerClass p1Class = new playerClass(className);
             if (p1Class.ClassName == "warrior")
             {
                 p1Class.Def = 11;
-                p1Class.MaxHP = 212;
-                p1Class.MaxStamina = 71;
+                p1Class.MaxHP = 153;
+                p1Class.MaxStamina = 41;
             }
             else
             {
                 p1Class.Def = 6;
-                p1Class.MaxHP = 186;
-                p1Class.MaxStamina = 163;
+                p1Class.MaxHP = 79;
+                p1Class.MaxStamina = 54;
             }
             pClass = p1Class;
             playerObject = new player(playerName, pClass, 1, 0, 100, stregthP, agilityP, luckP);
@@ -66,11 +64,11 @@ namespace WPF_gaming_3.backend
                 250,
                 0,
                 "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2Loading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2bg.jpg",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2bg2.jpg",
                 new List<enemy>
                 {
-                    new enemy(80, "Gaara of the Sand", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 3),
-                    new enemy(120, "Primitive Sand Howler", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand.gif", true, 4),
+                    new enemy(80, "Gaara of the Sand", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 17),
+                    new enemy(120, "Primitive Sand Howler", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand.gif", true, 20),
 
                 }
                 ),
@@ -83,13 +81,13 @@ namespace WPF_gaming_3.backend
                 new List<enemy>
                 {
                      new enemy(80, "Lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy.gif", false, 20),
-                     new enemy(120, "Super lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss.gif", true, 3),
+                     new enemy(120, "Super lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss.gif", true, 27),
                 }
                 )
             };
         }
 
-        
+       
 
         
 

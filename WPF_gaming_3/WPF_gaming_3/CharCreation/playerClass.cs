@@ -44,7 +44,7 @@ namespace WPF_gaming_3.CharCreation
                 new ability("death and decay", 7, 4, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"),
                 new ability("death coil", 8, 5, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"),
                 new ability("festering strike", 11, 9, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"),
-                new ability("death strike", 5, 4, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg")
+                new ability("death strike", 11, 14, "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg")
             };
 
         public void setAbility(string className)

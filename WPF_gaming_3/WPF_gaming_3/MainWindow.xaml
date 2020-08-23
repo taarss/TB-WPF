@@ -276,6 +276,21 @@
                 <Button x:Name="useActionBtn" BorderBrush="Black" Width="150" Background="LightGreen" Canvas.Left="256" Canvas.Top="220" BorderThickness="7" FontSize="30" Click="useActionBtn_Click" >USE</Button>
                 <Button x:Name="cancelActionBtn" BorderBrush="Black" Width="150" Background="IndianRed" Canvas.Left="36" Canvas.Top="220" BorderThickness="7" FontSize="30" Click="cancelActionBtn_Click">CANCEL</Button>
             </Canvas>
+
+
+
+        </Canvas>
+
+        <Canvas x:Name="gameOverScreen" Background="Black" Visibility="Hidden">
+            <Canvas Width="400" Height="399" Background="White" Canvas.Left="205" Canvas.Top="53">
+                <TextBlock FontSize="40" FontWeight="Bold" Canvas.Left="84" Canvas.Top="33">GAME OVER</TextBlock>
+                <Button FontSize="30" FontWeight="Bold" BorderBrush="Black" BorderThickness="4" Background="White" Height="65"  Width="158" Canvas.Left="42" Canvas.Top="295" Click="exitMainBtn_Click" >
+                    EXIT
+                </Button>
+                <Button x:Name="restartBtn" FontSize="30" FontWeight="Bold" BorderBrush="Black" BorderThickness="4" Background="White" Height="65"  Width="158" Canvas.Left="205" Canvas.Top="295" Click="restartBtn_Click" >
+                    NEW
+                </Button>
+            </Canvas>
         </Canvas>
     </Grid>
 </Window>

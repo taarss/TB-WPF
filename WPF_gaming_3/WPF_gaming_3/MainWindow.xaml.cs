@@ -45,7 +45,6 @@ namespace WPF_gaming_3
         private SoundPlayer battle = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
         private SoundPlayer victory = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
         private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
-        private SoundPlayer healSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
 
         public MainWindow()
         {
@@ -604,16 +603,13 @@ namespace WPF_gaming_3
         //======================================== COMBAT =================================
 
         private bool battleBegun = true;
-        private int enemyCount;
         private int playerHP;
         private int playerStamina;
         public async Task startCombat( int dungoenIndexValue)
         {
-            enemyIndex = 0;
             checkHpAndHeal();
             playerHP = businessClass.pClass.MaxHP;
             playerStamina = businessClass.pClass.MaxStamina;
-            enemyCount = businessClass.dungoens[dungoenGlobalIndex].DungoenDifficulty * 2;
             if (battleBegun == true)
             {
                 monsterName.Text = businessClass.dungoens[dungoenIndexValue].Enemies[enemyIndex].Name + "has appeared";
@@ -659,10 +655,8 @@ namespace WPF_gaming_3
             if (currentEnemyHp < 0)
             {
                 enemyHpCount.Text = "0";
-                enemyIndex++;
                 battleBegun = false;
-                MessageBox.Show("you won or something like that......");
-
+                battleWin();
             }
             else
             {
@@ -671,6 +665,12 @@ namespace WPF_gaming_3
             if (currentPlayerHp <= 0)
             {
                 gameOver();
+            }
+            if (businessClass.playerObject.Xp >= businessClass.playerObject.NextLvlUp)
+            {
+                businessClass.playerObject.PlayerLvl++;
+                businessClass.playerObject.Xp = 0;
+                MessageBox.Show("You leveled up!");
             }
         }
 
@@ -693,7 +693,10 @@ namespace WPF_gaming_3
                 monsterDamage.Text = "for: " + abilities[skillActionIndex].AbilityDmg.ToString() + " HP";
                 currentPlayerHp = currentPlayerHp + abilities[skillActionIndex].AbilityDmg;
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
-                healSound.LoadAsync();
+                MediaPlayer heal = new MediaPlayer();
+                Uri healPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
+                heal.Open(healPath);
+                heal.Play();
             }
             else
             {
@@ -705,7 +708,10 @@ namespace WPF_gaming_3
             }
             checkHp();
             await Task.Delay(2000);
-            enemyTurn();
+            if (currentEnemyHp > 0)
+            {
+                enemyTurn();
+            }
             action1.IsEnabled = true;
             action2.IsEnabled = true;
             action3.IsEnabled = true;
@@ -730,6 +736,7 @@ namespace WPF_gaming_3
                 isMiss = true;
                 monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " MISSED";
                 monsterDamage.Text = "0 DMG";
+                missSound();
             }
             if (isMiss == false && isCrit == false)
             {
@@ -801,20 +808,50 @@ namespace WPF_gaming_3
             selcect.Play();
         }
 
+        public void missSound()
+        {
+            MediaPlayer miss = new MediaPlayer();
+            Uri missPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/miss.wav");
+            miss.Open(missPath);
+            miss.Play();
+        }
 
 
+        public void battleWin()
+        {
+            enemyIndex++;
+            if (enemyIndex + 1 == businessClass.dungoens[dungoenGlobalIndex].Enemies.Count())
+            {
+                //Was last enemy
+            }
+            else
+            {
+                battleWinScreen.Visibility = Visibility.Visible;
+                goldRewardedTxt.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].GoldReward.ToString();
+                xpRewardedTxt.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward.ToString();
+                businessClass.playerObject.Xp = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward;
+                businessClass.playerObject.Gold = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].GoldReward;
+                checkHp();
+
+            }
+        }
 
 
+        private void nextEncounterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            battleBegun = true;
+            flashScreen();
+            dungoenGui();
+            checkHpAndHeal();
+            flashCanvas.Visibility = Visibility.Hidden;
+        }
 
+        private async Task flashScreen()
+        {
+            flashCanvas.Visibility = Visibility.Visible;
+            await Task.Delay(500);
+            flashCanvas.Visibility = Visibility.Hidden;
 
-
-
-
-
-
-
-
-
-        
+        }
     }
 }

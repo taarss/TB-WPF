@@ -204,8 +204,7 @@
             <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
 
         </Canvas>
-        <Canvas x:Name="flashCanvas" Background="White" Visibility="Hidden">
-        </Canvas>
+        
 
 
 
@@ -280,6 +279,12 @@
 
 
 
+            
+            
+            
+            
+            
+            
         </Canvas>
 
         <Canvas x:Name="gameOverScreen" Background="Black" Visibility="Hidden">
@@ -292,6 +297,39 @@
                     NEW
                 </Button>
             </Canvas>
+        </Canvas>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <Border Visibility="Hidden" x:Name="battleWinScreen" Width="350" Height="350"  BorderBrush="Black" BorderThickness="2">
+            <Canvas  Width=" 350" Height="350" Background="White">
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="85" Canvas.Top="10">You defeated:</TextBlock>
+                <TextBlock x:Name="anemyDefeatedTxt" TextAlignment="Center" FontWeight="Bold" FontSize="30" Canvas.Left="10" Canvas.Top="55" Width="340">Lava guy</TextBlock>
+                <Rectangle Fill="Black" Height="3" Width="250" Canvas.Top="100" Canvas.Left="50"></Rectangle>
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="118" Canvas.Top="108">Reward:</TextBlock>
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="50" Canvas.Top="143">XP:</TextBlock>
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="50" Canvas.Top="188">GOLD:</TextBlock>
+                <TextBlock x:Name="goldRewardedTxt" FontWeight="Bold" FontSize="30" Canvas.Left="227" Canvas.Top="143">200</TextBlock>
+                <TextBlock x:Name="xpRewardedTxt" FontWeight="Bold" FontSize="30" Canvas.Left="227" Canvas.Top="188">350</TextBlock>
+                <Button x:Name="nextEncounterBtn" BorderBrush="Black" BorderThickness="3" FontSize="30"  Canvas.Left="46" Canvas.Top="264" Click="nextEncounterBtn_Click" >NEXT ENCOUNTER</Button>
+
+            </Canvas>
+        </Border>
+
+
+
+
+
+
+        <Canvas x:Name="flashCanvas" Background="White" Visibility="Hidden">
         </Canvas>
     </Grid>
 </Window>

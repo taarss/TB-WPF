@@ -14,8 +14,9 @@ namespace WPF_gaming_3.CharCreation
         private int strength;
         private int agility;
         private int luck;
+        private int gold;
 
-        public player(string playerName, playerClass playerClass, int playerLvl, int xp, int nextLvlUp, int strength, int agility, int luck)
+        public player(string playerName, playerClass playerClass, int playerLvl, int xp, int nextLvlUp, int strength, int agility, int luck, int gold)
         {
             this.PlayerName = playerName;
             this.PlayerClass = playerClass;
@@ -25,6 +26,7 @@ namespace WPF_gaming_3.CharCreation
             this.Strength = strength;
             this.Agility = agility;
             this.Luck = luck;
+            this.Gold = gold;
         }
 
         public string PlayerName { get => playerName; set => playerName = value; }
@@ -35,6 +37,7 @@ namespace WPF_gaming_3.CharCreation
         public int Strength { get => strength; set => strength = value; }
         public int Agility { get => agility; set => agility = value; }
         public int Luck { get => luck; set => luck = value; }
+        public int Gold { get => gold; set => gold = value; }
     }
 }
 

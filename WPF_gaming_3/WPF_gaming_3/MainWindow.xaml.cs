@@ -39,7 +39,13 @@ namespace WPF_gaming_3
         private int currentPlayerHp;
         private int currentPlayerStamina;
         private int enemyIndex = 0;
-        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
+        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
+        private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
+        private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
+        private SoundPlayer battle = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
+        private SoundPlayer victory = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
+        private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -174,7 +180,7 @@ namespace WPF_gaming_3
         private void createCharBtn_Click(object sender, RoutedEventArgs e)
         {
             businessClass.selcectSound();
-            if (warriorRadioBtn.IsChecked == true && skillPoints == 0)
+            if (warriorRadioBtn.IsChecked == true && skillPoints == 0 || deathKnightRadioBtn.IsChecked == true && skillPoints == 0)
             {
                 if (playerNameInput.Text == "your name")
                 {
@@ -184,7 +190,11 @@ namespace WPF_gaming_3
                 businessClass.createClass("warrior", skill1, skill2, skill3, playerNameInput.Text);
                 charCreationMenu.Visibility = Visibility.Hidden;
                 map.Visibility = Visibility.Visible;
-                
+                mapMusic.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                    mapMusic.PlayLooping();
+                };
+                mapMusic.LoadAsync();
+
                 //temp
 
             }
@@ -297,7 +307,11 @@ namespace WPF_gaming_3
             loadingScreen.Visibility = Visibility.Visible;
             loadingScreenImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             loadingDungoenName.Text = businessClass.dungoens[dungoenGlobalIndex].DungoenName;
-             Shake();
+            gameLoad.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                gameLoad.PlayLooping();
+            };
+            gameLoad.LoadAsync();
+            Shake();
         }
         public async Task Shake()
         {
@@ -334,6 +348,10 @@ namespace WPF_gaming_3
 
         private void dungoenGui()
         {
+            battle.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                battle.PlayLooping();
+            };
+            battle.LoadAsync();
             main.Visibility = Visibility.Hidden;
             inDungoen.Visibility = Visibility.Visible;
             dungoenBg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgBgPath));
@@ -514,6 +532,10 @@ namespace WPF_gaming_3
             {
                 enemyHpCount.Text = currentEnemyHp.ToString();
             }
+            if (currentPlayerHp <= 100)
+            {
+                gameOver();
+            }
         }
 
         
@@ -534,6 +556,7 @@ namespace WPF_gaming_3
                 currentEnemyHp = currentEnemyHp - abilities[skillActionIndex].AbilityDmg;
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
             checkHp();
+            shakeEnemy();
             await Task.Delay(2000);
             enemyTurn();
             action1.IsEnabled = true;
@@ -567,14 +590,65 @@ namespace WPF_gaming_3
                 monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " hit for:";
                 monsterDamage.Text = Convert.ToInt32(damageDone).ToString() + " DMG";
                 currentPlayerHp = currentPlayerHp - Convert.ToInt32(damageDone);
+                shakePlayer();
             }
-                if (isCrit == true && isMiss == false)
+            if (isCrit == true && isMiss == false)
                 {
                     monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " hit CRITICAL for:";
                     monsterDamage.Text = damageDone.ToString() + " DMG";
                     currentPlayerHp = currentPlayerHp - Convert.ToInt32(damageDone);
+                    shakePlayer();
                 }
             checkHp();
+        }
+
+        public void gameOver()
+        {
+            inGame.Visibility = Visibility.Hidden;
+            inDungoen.Visibility = Visibility.Hidden;
+            map.Visibility = Visibility.Visible;
+        }
+
+        public async Task shakeEnemy()
+        {
+            enemySlash.Visibility = Visibility.Visible;
+            slashSound();
+            for (int i = 0; i < 2; i++)
+            {
+
+                await Task.Delay(200);
+                Canvas.SetLeft(enemyImage, Canvas.GetLeft(enemyImage) + 10);
+
+                await Task.Delay(200);
+                Canvas.SetLeft(enemyImage, Canvas.GetLeft(enemyImage) - 10);
+
+            }
+            enemySlash.Visibility = Visibility.Hidden;
+        }
+
+        public async Task shakePlayer()
+        {
+            playerSlash.Visibility = Visibility.Visible;
+            slashSound();
+            for (int i = 0; i < 2; i++)
+            {
+
+                await Task.Delay(200);
+                Canvas.SetLeft(playerImage, Canvas.GetLeft(playerImage)+10);
+
+                await Task.Delay(200);
+                Canvas.SetLeft(playerImage, Canvas.GetLeft(playerImage)-10);
+
+            }
+            playerSlash.Visibility = Visibility.Hidden;
+        }
+
+        public void slashSound()
+        {
+            MediaPlayer selcect = new MediaPlayer();
+            Uri selectPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/slash.wav");
+            selcect.Open(selectPath);
+            selcect.Play();
         }
     }
 }

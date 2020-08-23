@@ -244,12 +244,13 @@
 
             <TextBlock x:Name="hpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="60" Canvas.Top="174">100</TextBlock>
             <TextBlock x:Name="enemyHpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="710" Canvas.Top="170">100</TextBlock>
+            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
+            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
 
             <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="352" Background="White">
                 <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">Gaara of the Sand landed a hit for</TextBlock>
                 <TextBlock Width="302" FontSize="20" x:Name="monsterDamage" Canvas.Left="25" Canvas.Top="43" Height="76">123 DMG</TextBlock>
-                <Button x:Name="nextTurnBtn" FontSize="20" Canvas.Left="222" Canvas.Top="77" Height="41" Width="105">NEXT TURN</Button>
-                <Button x:Name="skipTurnBtn" FontSize="20" Canvas.Left="25" Canvas.Top="77" Height="41" Width="105" Click="skipTurnBtn_Click" >SKIP TURN</Button>
+                <Button x:Name="skipTurnBtn" FontSize="20" Canvas.Left="222" Canvas.Top="78" Height="41" Width="105" Click="skipTurnBtn_Click" >SKIP TURN</Button>
 
             </Canvas>
 

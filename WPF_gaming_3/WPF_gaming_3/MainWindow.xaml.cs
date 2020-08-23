@@ -38,6 +38,7 @@ namespace WPF_gaming_3
         private int currentEnemyHp;
         private int currentPlayerHp;
         private int currentPlayerStamina;
+        private int enemyIndex = 0;
         private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/mainBgMusic.wav");
         public MainWindow()
         {
@@ -46,8 +47,8 @@ namespace WPF_gaming_3
                  mainBg.PlayLooping();
                  };
                  mainBg.LoadAsync();
+        
         }
-           
         private void myGif_MediaEnded(object sender, RoutedEventArgs e)
         {
 
@@ -400,10 +401,32 @@ namespace WPF_gaming_3
             cornfirmActionImg.Source = new BitmapImage(new Uri(businessClass.playerObject.PlayerClass.HealAbility4.AbilityImgPath));
         }
 
+        private void skipTurnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            skipTurn.Visibility = Visibility.Visible;
+            staminaRegainTxt.Text = (5 * businessClass.playerObject.Agility).ToString();
+        }
 
+        private void skipBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPlayerStamina >= businessClass.pClass.MaxStamina)
+            {
+                currentPlayerStamina = businessClass.pClass.MaxStamina;
+            }
+            else
+            {
+                currentPlayerStamina = currentPlayerStamina + 5 * businessClass.playerObject.Agility;
+            }
+            skipTurn.Visibility = Visibility.Hidden;
+            checkHp();
+            enemyTurn();
+        }
 
+        private void cancelSkipBtn_Click(object sender, RoutedEventArgs e)
+        {
+            skipTurn.Visibility = Visibility.Hidden;
+        }
 
-        
         private void cancelActionBtn_Click(object sender, RoutedEventArgs e)
         {
             confirmAction.Visibility = Visibility.Hidden;
@@ -421,10 +444,7 @@ namespace WPF_gaming_3
 
         }
 
-        private void nextTurnBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
 
         private bool battleBegun = true;
@@ -434,13 +454,14 @@ namespace WPF_gaming_3
         private int playerStamina;
         public async Task startCombat( int dungoenIndexValue)
         {
+            enemyIndex = 0;
             playerHP = businessClass.pClass.MaxHP;
             playerStamina = businessClass.pClass.MaxStamina;
             checkHpAndHeal();
             enemyCount = businessClass.dungoens[dungoenGlobalIndex].DungoenDifficulty * 2;
             if (battleBegun == true)
             {
-                monsterName.Text = businessClass.dungoens[dungoenIndexValue].Enemies[0].Name + "has appeared";
+                monsterName.Text = businessClass.dungoens[dungoenIndexValue].Enemies[enemyIndex].Name + "has appeared";
                 monsterDamage.Text = "";
                 battleBegun = false;
                 playersTurn = true;
@@ -449,66 +470,111 @@ namespace WPF_gaming_3
         }
         public void checkHpAndHeal()
         {
+            currentPlayerStamina = businessClass.pClass.MaxStamina;
+            currentPlayerHp = businessClass.pClass.MaxHP;
             hpBar.Maximum = businessClass.pClass.MaxHP;
             hpBar.Minimum = 0;
-            hpBar.Value = playerHP;
-            staminaBar.Value = playerStamina;
+            hpBar.Value = businessClass.pClass.MaxHP;
+            staminaBar.Value = businessClass.pClass.MaxStamina;
             staminaBar.Maximum = businessClass.pClass.MaxStamina;
             staminaBar.Minimum = 0;
             xpBar.Value = businessClass.playerObject.Xp;
             xpBar.Maximum = businessClass.playerObject.NextLvlUp;
             xpBar.Minimum = 0;
-            enemyHpBar.Value = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
-            enemyHpBar.Maximum = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
+         
+            enemyHpBar.Value = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Hp;
+            enemyHpBar.Maximum = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Hp;
             enemyHpBar.Minimum = 0;
-            currentEnemyHp = businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Hp;
-        } 
+            currentEnemyHp = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Hp;
+            hpCount.Text = currentPlayerHp.ToString();
+            staminaCount.Text = currentPlayerStamina.ToString();
+            xpCount.Text = businessClass.playerObject.Xp.ToString();
+            enemyHpCount.Text = currentEnemyHp.ToString();
+
+        }
 
         public void checkHp()
         {
             hpBar.Value = currentPlayerHp;
+            hpCount.Text = currentPlayerHp.ToString();
             staminaBar.Value = currentPlayerStamina;
+            staminaCount.Text = currentPlayerStamina.ToString();
             xpBar.Value = businessClass.playerObject.Xp;
+            xpCount.Text = businessClass.playerObject.Xp.ToString();
+            enemyHpBar.Value = currentEnemyHp;
+            if (currentEnemyHp < 0)
+            {
+                enemyHpCount.Text = "0";
+                enemyIndex++;
+                battleBegun = false;
+                MessageBox.Show("you won or something like that......");
+
+            }
+            else
+            {
+                enemyHpCount.Text = currentEnemyHp.ToString();
+            }
         }
 
-
+        
         public async Task turn()
             
         {
             checkHp();
-            /*
-            if (random.Next(0, 10) > 6)
+
+            List<ability> abilities = new List<ability>()
             {
-                if (skillIndex < 3)
-                {
-                    monsterName.Text = "You hit CRITICAL" + businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Name + "for:";
-                    monsterDamage.Text = (businessClass.playerObject.PlayerClass.Ability3.AbilityDmg + 5).ToString();
-                    currentEnemyHp = currentEnemyHp - businessClass.playerObject.PlayerClass.Ability3.AbilityDmg + 5;
-                    checkHp();
-                }
-
-            }*/
-
-            monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[0].Name;
-                monsterDamage.Text = "for: "+ businessClass.playerObject.PlayerClass.Ability2.AbilityDmg.ToString();
-                currentEnemyHp = currentEnemyHp - businessClass.playerObject.PlayerClass.Ability2.AbilityDmg;
-                MessageBox.Show(currentEnemyHp.ToString());
-                MessageBox.Show(currentPlayerHp.ToString());
+                businessClass.pClass.Ability1,
+                businessClass.pClass.Ability2,
+                businessClass.pClass.Ability3,
+                businessClass.pClass.HealAbility4
+            };
+            monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name;
+                monsterDamage.Text = "for: "+ abilities[skillActionIndex].AbilityDmg.ToString()+ " DMG";
+                currentEnemyHp = currentEnemyHp - abilities[skillActionIndex].AbilityDmg;
+                currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
             checkHp();
-            
-            if (currentEnemyHp <= 0)
-            {
-                MessageBox.Show("you won or something like that......");
-            }
-            MessageBox.Show("debug 3");
-            await Task.Delay(100);
-            MessageBox.Show("debug 4");
+            await Task.Delay(2000);
+            enemyTurn();
             action1.IsEnabled = true;
             action2.IsEnabled = true;
             action3.IsEnabled = true;
             action4.IsEnabled = true;
+            checkHp();
         }
 
-
+       public void enemyTurn()
+        {
+            bool isMiss = false;
+            bool isCrit = false;
+           
+            int damageDone = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Power;
+            damageDone = damageDone - businessClass.playerObject.Strength;
+            if (random.Next(0, 10) > 5 - businessClass.playerObject.Luck)
+            {
+                isCrit = true;
+                damageDone = damageDone + 10;
+                 
+            }
+            if (random.Next(0, 20) < 2 + businessClass.playerObject.Agility)
+            {
+                isMiss = true;
+                monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " MISSED";
+                monsterDamage.Text = "0 DMG";
+            }
+            if (isMiss == false && isCrit == false)
+            {
+                monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " hit for:";
+                monsterDamage.Text = Convert.ToInt32(damageDone).ToString() + " DMG";
+                currentPlayerHp = currentPlayerHp - Convert.ToInt32(damageDone);
+            }
+                if (isCrit == true && isMiss == false)
+                {
+                    monsterName.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name + " hit CRITICAL for:";
+                    monsterDamage.Text = damageDone.ToString() + " DMG";
+                    currentPlayerHp = currentPlayerHp - Convert.ToInt32(damageDone);
+                }
+            checkHp();
+        }
     }
 }

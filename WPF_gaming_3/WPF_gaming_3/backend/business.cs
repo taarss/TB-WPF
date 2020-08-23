@@ -48,23 +48,24 @@ namespace WPF_gaming_3.backend
           dungoens  = new List<dungoen>()
             {
             new dungoen("Chambers of the Unknown Forest",
-                1,
+                2,
                 120,
                 0,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1Loading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1bg.jpg",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areaLoading.png",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areabg.png",
                 new List<enemy>
                 {
-                    new enemy(60, "Wild Goblin", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/goblin.gif", false, 2),
+                    new enemy(60, "Wild Goblin", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/download.png", false, 13),
                     new enemy(80, "Rouge Pumpkin Famer", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/goblin.gif", true, 3)
                 }
-                ),
-            new dungoen("Vault of the Nameless Widow",
+                )
+                ,
+              new dungoen("Vault of the Nameless Widow",
                 2,
                 250,
                 0,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2Loading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2bg2.jpg",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaLoading.png",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaBg.png",
                 new List<enemy>
                 {
                     new enemy(80, "Gaara of the Sand", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 17),
@@ -72,17 +73,20 @@ namespace WPF_gaming_3.backend
 
                 }
                 ),
+                
             new dungoen("Tunnels of the Mystic Horsemen",
-                3,
+                2,
                 600,
-                1,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg",
+                0,
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png",
+                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaBg.png",
                 new List<enemy>
                 {
-                     new enemy(80, "Lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy.gif", false, 20),
-                     new enemy(120, "Super lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss.gif", true, 27),
-                }
+                    
+                     new enemy(80, "Lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif", false, 20),
+                     new enemy(120, "Super lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss.gif", true, 27)
+                
+                    }
                 )
             };
         }

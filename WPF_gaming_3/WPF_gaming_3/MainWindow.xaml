@@ -202,6 +202,7 @@
             <Image x:Name="dungoenBg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg" Height="524" Width="808"></Image>
             <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
             <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
+
         </Canvas>
         <Canvas x:Name="flashCanvas" Background="White" Visibility="Hidden">
         </Canvas>
@@ -248,7 +249,7 @@
             <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
 
             <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="352" Background="White">
-                <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">Gaara of the Sand landed a hit for</TextBlock>
+                <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">monster name landed a hit</TextBlock>
                 <TextBlock Width="302" FontSize="20" x:Name="monsterDamage" Canvas.Left="25" Canvas.Top="43" Height="76">123 DMG</TextBlock>
                 <Button x:Name="skipTurnBtn" FontSize="20" Canvas.Left="222" Canvas.Top="78" Height="41" Width="105" Click="skipTurnBtn_Click" >SKIP TURN</Button>
 

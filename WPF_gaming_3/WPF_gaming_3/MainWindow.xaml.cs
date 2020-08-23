@@ -337,10 +337,18 @@ namespace WPF_gaming_3
             dungoenGlobalIndex = 2;
             businessClass.createDungoen(dungoenGlobalIndex);
             businessClass.selcectSound();
+            preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
+            confirmEnter.Visibility = Visibility.Visible;
+            nameAreaTxt.Text = businessClass.dungoens[2].DungoenName;
+            reqLvlTxt.Text = businessClass.dungoens[2].DungoenDifficulty.ToString();
+            /*
+            dungoenGlobalIndex = 2;
+            businessClass.createDungoen(dungoenGlobalIndex);
+            businessClass.selcectSound();
             confirmEnter.Visibility = Visibility.Visible;
             preImg.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].ImgPath));
             nameAreaTxt.Text = businessClass.dungoens[2].DungoenName;
-            reqLvlTxt.Text = businessClass.dungoens[2].DungoenDifficulty.ToString();
+            reqLvlTxt.Text = businessClass.dungoens[2].DungoenDifficulty.ToString();*/
 
         }
 
@@ -602,9 +610,9 @@ namespace WPF_gaming_3
         public async Task startCombat( int dungoenIndexValue)
         {
             enemyIndex = 0;
+            checkHpAndHeal();
             playerHP = businessClass.pClass.MaxHP;
             playerStamina = businessClass.pClass.MaxStamina;
-            checkHpAndHeal();
             enemyCount = businessClass.dungoens[dungoenGlobalIndex].DungoenDifficulty * 2;
             if (battleBegun == true)
             {
@@ -705,11 +713,10 @@ namespace WPF_gaming_3
             checkHp();
         }
 
-       public async Task enemyTurn()
+       public void enemyTurn()
         {
             bool isMiss = false;
             bool isCrit = false;
-            await Task.Delay(2000);
             int damageDone = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Power;
             damageDone = damageDone - businessClass.playerObject.Strength;
             if (random.Next(0, 10) > 5 + businessClass.playerObject.Luck)

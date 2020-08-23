@@ -28,4 +28,9 @@
     <Resource Include="images\bg.gif" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images\area1\" />
+    <Folder Include="images\area2\" />
+  </ItemGroup>
+
 </Project>

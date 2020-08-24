@@ -38,7 +38,7 @@ namespace WPF_gaming_3.backend
         public void selcectSound()
         {
             MediaPlayer selcect = new MediaPlayer();
-            Uri selectPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/select.wav");
+            Uri selectPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/select.wav");
             selcect.Open(selectPath);
             selcect.Play();
         }
@@ -51,40 +51,40 @@ namespace WPF_gaming_3.backend
                 2,
                 120,
                 0,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areaLoading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areabg.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areaLoading.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areabg.png",
                 new List<enemy>
                 {
-                    new enemy(60, "Wild Goblin", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/download.png", false, 13, 60, 50),
-                    new enemy(80, "Rouge Pumpkin Famer", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/goblin.gif", true, 3, 150, 120)
+                    new enemy(60, "Wild Goblin", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/download.png", false, 13, 60, 50),
+                    new enemy(80, "Rouge Pumpkin Famer", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/pumpkinMan.png", true, 3, 150, 120)
                 }
                 )
                 ,
-              new dungoen("Vault of the Nameless Widow",
+              new dungoen("The Desert Caverns",
                 2,
                 250,
                 0,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaLoading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaBg.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaLoading.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaBg.png",
                 new List<enemy>
                 {
-                    new enemy(80, "Gaara of the Sand", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 17, 250, 200),
-                    new enemy(120, "Primitive Sand Howler", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand.gif", true, 20, 320, 240),
+                    new enemy(80, "Gaara of the Sand", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 17, 250, 200),
+                    new enemy(120, "Primitive Sand Howler", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand.gif", true, 20, 320, 240),
 
                 }
                 ),
                 
-            new dungoen("Tunnels of the Mystic Horsemen",
+            new dungoen("The Bloodfall Catacombs",
                 2,
                 600,
                 0,
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png",
-                "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaBg.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png",
+                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaBg.png",
                 new List<enemy>
                 {
                     
-                     new enemy(80, "Lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif", false, 20, 400, 300),
-                     new enemy(120, "Super lava guy", "C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss.gif", true, 27, 500, 380)
+                     new enemy(80, "Scarred Flame Bison", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif", false, 20, 400, 300),
+                     new enemy(120, "Cinder Monster ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss3.png", true, 27, 500, 380)
                 
                     }
                 )

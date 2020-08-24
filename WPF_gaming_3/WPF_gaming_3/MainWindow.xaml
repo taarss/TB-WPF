@@ -17,7 +17,7 @@
 
     <Grid>
         <Canvas x:Name="main" Visibility="Visible">
-            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
+            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
 
             <!-- MAIN MENU -->
             <Canvas    x:Name="mainMenuCanvas">
@@ -40,9 +40,9 @@
             <Canvas >
                 <Border Visibility="Hidden" Canvas.Top="15" Canvas.Left="170" x:Name="charCreationMenu"  BorderBrush="Black" BorderThickness="3" Width="450" Height="400">
                     <Canvas   Background="LightGray">
-                        <Image  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                        <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
                         <Button x:Name="backBtnChar" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10" Click="backBtnChar_Click">BACK</Button>
 
 
@@ -150,19 +150,33 @@
 
 
 
-        <Canvas Visibility="Hidden" x:Name="map">
-            <Image x:Name="test" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
-            <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
-            <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
-                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
-            </Button>
-            <Button x:Name="mapArea2" Canvas.Left="536" Canvas.Top="110" Background="Transparent" BorderBrush="Transparent" Height="52" Width="41" Click="mapArea2_Click">
-                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
-            </Button>
-            <Button x:Name="mapArea3" Canvas.Left="636" Canvas.Top="346" Background="Transparent" BorderBrush="Transparent" Height="58" Width="42" Click="mapArea3_Click">
-                <Image Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+        <Canvas Visibility="Visible" x:Name="map">
+            <Image x:Name="test" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
+            <Button x:Name="statsBtn" BorderBrush="Black" BorderThickness="3" FontSize="30" Canvas.Left="691" Canvas.Top="466" Click="statsBtn_Click">STATS</Button>
+            <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shop.png"></Image>
             </Button>
 
+            <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
+            <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+            </Button>
+            <Button x:Name="mapArea2" Canvas.Left="136" Canvas.Top="350" Background="Transparent" BorderBrush="Transparent" Height="52" Width="41" Click="mapArea2_Click">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+            </Button>
+            <Button x:Name="mapArea3" Canvas.Left="636" Canvas.Top="346" Background="Transparent" BorderBrush="Transparent" Height="58" Width="42" Click="mapArea3_Click">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+            </Button>
+
+
+
+
+            <Canvas Visibility="Hidden" Width="300" Height="400" Background="White" x:Name="stats" Canvas.Left="255" Canvas.Top="52">
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="108" Canvas.Top="21">STATS</TextBlock>
+                <Rectangle Fill="Black" Height="1" Width="216" Canvas.Left="44" Canvas.Top="69"></Rectangle>
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="81">LvL:</TextBlock>
+                <Button x:Name="statsBackBtn" FontSize="20" Canvas.Left="234" Canvas.Top="357" Click="statsBackBtn_Click">BACK</Button>
+            </Canvas>
 
 
 
@@ -173,7 +187,7 @@
                 <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="26" Canvas.Top="22">Are you sure you want to enter:</TextBlock>
                 <TextBlock x:Name="reqLvlTxt" FontWeight="Bold" FontSize="20" Canvas.Left="203" Width="43" Canvas.Top="255">1</TextBlock>
                 <TextBlock  FontWeight="Bold" FontSize="20" Canvas.Left="112" Width="86" Canvas.Top="255" RenderTransformOrigin="0.879,0.565">Rec LvL:</TextBlock>
-                <Image x:Name="preImg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1Loading.png" Height="130" Width="224" Stretch="Fill" Canvas.Left="63" Canvas.Top="120"></Image>
+                <Image x:Name="preImg" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png" Height="130" Width="224" Stretch="Fill" Canvas.Left="63" Canvas.Top="120"></Image>
                 <TextBlock x:Name="nameAreaTxt" Width="320" TextAlignment="Center" FontWeight="Bold" FontSize="20" Canvas.Left="18" Canvas.Top="70">Chambers of the Unknown Forest</TextBlock>
                 <Button x:Name="enterAreaBtn" BorderBrush="Black" Width="150" Background="LightGreen" BorderThickness="7" FontSize="30" Canvas.Left="190" Canvas.Top="304" Click="enterAreaBtn_Click" RenderTransformOrigin="0.513,0.502" >ENTER</Button>
                 <Button x:Name="cancelAreaBtn" BorderBrush="Black" Width="150" Background="IndianRed" BorderThickness="7" FontSize="30" Canvas.Left="18" Canvas.Top="304" Click="cancelAreaBtn_Click">NOOO!!!</Button>
@@ -199,12 +213,11 @@
 
 
         <Canvas x:Name="inDungoen" Visibility="Hidden">
-            <Image x:Name="dungoenBg" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3bg.jpg" Height="524" Width="808"></Image>
-            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
-            <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
-
+            <Image x:Name="dungoenBg" Stretch="Fill" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areabg.png" Height="524" Width="808"></Image>
+            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
+            <Image x:Name="enemyImage" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
         </Canvas>
-        
+
 
 
 
@@ -244,8 +257,8 @@
 
             <TextBlock x:Name="hpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="60" Canvas.Top="174">100</TextBlock>
             <TextBlock x:Name="enemyHpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="710" Canvas.Top="170">100</TextBlock>
-            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
-            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
+            <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
+            <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
 
             <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="352" Background="White">
                 <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">monster name landed a hit</TextBlock>
@@ -279,12 +292,12 @@
 
 
 
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
         </Canvas>
 
         <Canvas x:Name="gameOverScreen" Background="Black" Visibility="Hidden">
@@ -298,17 +311,17 @@
                 </Button>
             </Canvas>
         </Canvas>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
         <Border Visibility="Hidden" x:Name="battleWinScreen" Width="350" Height="350"  BorderBrush="Black" BorderThickness="2">
             <Canvas  Width=" 350" Height="350" Background="White">
                 <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="85" Canvas.Top="10">You defeated:</TextBlock>
@@ -330,6 +343,25 @@
 
 
         <Canvas x:Name="flashCanvas" Background="White" Visibility="Hidden">
+        </Canvas>
+
+
+
+
+
+
+
+
+        <Canvas x:Name="dungoenCompleted" Visibility="Hidden"  Background="White" >
+            <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="166" Canvas.Top="79">YOU COMPLETED THE DUNGOEN</TextBlock>
+            <TextBlock FontSize="30"  Canvas.Left="338" Canvas.Top="145" Height="41" Width="154">REWARDS:</TextBlock>
+            <Rectangle Fill="Black" Height="2" Width="666" Canvas.Left="72" Canvas.Top="200"></Rectangle>
+            <TextBlock FontSize="30"  Canvas.Left="105" Canvas.Top="242" Height="41" Width="154">GOLD:</TextBlock>
+            <TextBlock FontSize="30"  Canvas.Left="105" Canvas.Top="299" Height="41" Width="154">XP:</TextBlock>
+            <TextBlock x:Name="goldRewardTxt" FontSize="30" Canvas.Left="636" Canvas.Top="299">2323</TextBlock>
+            <TextBlock x:Name="xpRewardTxt" FontSize="30" Canvas.Left="636" Canvas.Top="242">23232</TextBlock>
+            <Button FontSize="30" FontWeight="Bold" BorderThickness="4" BorderBrush="Black" Height="89" Width="512" Canvas.Left="148" Canvas.Top="369" Click="Button_Click">BACK TO MAP</Button>
+
         </Canvas>
     </Grid>
 </Window>

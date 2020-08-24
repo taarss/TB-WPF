@@ -39,12 +39,13 @@ namespace WPF_gaming_3
         private int currentPlayerHp;
         private int currentPlayerStamina;
         private int enemyIndex = 0;
-        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
-        private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
-        private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
-        private SoundPlayer battle = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
-        private SoundPlayer victory = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
-        private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
+        private bool enemyIsDead = false;
+        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
+        private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
+        private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
+        private SoundPlayer battle = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
+        private SoundPlayer victory = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
+        private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
 
         public MainWindow()
         {
@@ -403,17 +404,17 @@ namespace WPF_gaming_3
         {
             if (businessClass.pClass.ClassName == "warrior")
             {
-                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"));
-                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"));
-                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"));
-                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg"));
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg"));
             }
             else
             {
-                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"));
-                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"));
-                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"));
-                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
             }
         
             for (int i = 0; i < 6; i++)
@@ -445,11 +446,11 @@ namespace WPF_gaming_3
             enemyImage.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].ImgPath));
             if (businessClass.pClass.ClassName == "warrior")
             {
-                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
             }
             else
             {
-                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
             }
             startCombat(dungoenGlobalIndex);
         }
@@ -640,7 +641,7 @@ namespace WPF_gaming_3
             staminaCount.Text = currentPlayerStamina.ToString();
             xpCount.Text = businessClass.playerObject.Xp.ToString();
             enemyHpCount.Text = currentEnemyHp.ToString();
-
+            enemyIsDead = false;
         }
 
         public void checkHp()
@@ -651,17 +652,9 @@ namespace WPF_gaming_3
             staminaCount.Text = currentPlayerStamina.ToString();
             xpBar.Value = businessClass.playerObject.Xp;
             xpCount.Text = businessClass.playerObject.Xp.ToString();
-            enemyHpBar.Value = currentEnemyHp;
-            if (currentEnemyHp < 0)
-            {
-                enemyHpCount.Text = "0";
-                battleBegun = false;
-                battleWin();
-            }
-            else
-            {
+            enemyHpBar.Value = currentEnemyHp;           
                 enemyHpCount.Text = currentEnemyHp.ToString();
-            }
+            
             if (currentPlayerHp <= 0)
             {
                 gameOver();
@@ -671,7 +664,7 @@ namespace WPF_gaming_3
                 businessClass.playerObject.PlayerLvl++;
                 businessClass.playerObject.Xp = 0;
                 MessageBox.Show("You leveled up!");
-            }
+            }           
         }
 
         
@@ -694,7 +687,7 @@ namespace WPF_gaming_3
                 currentPlayerHp = currentPlayerHp + abilities[skillActionIndex].AbilityDmg;
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
                 MediaPlayer heal = new MediaPlayer();
-                Uri healPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
+                Uri healPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
                 heal.Open(healPath);
                 heal.Play();
             }
@@ -703,10 +696,17 @@ namespace WPF_gaming_3
                 monsterName.Text = "You hit " + businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].Name;
                 monsterDamage.Text = "for: "+ abilities[skillActionIndex].AbilityDmg.ToString()+ " DMG";
                 currentEnemyHp = currentEnemyHp - abilities[skillActionIndex].AbilityDmg;
+                if (currentEnemyHp <= 0 && enemyIsDead == false)
+                {
+                    enemyIsDead = true;
+                    enemyHpCount.Text = "0";
+                    battleBegun = false;
+                    battleWin();
+                }
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
                 shakeEnemy();
-            }
-            checkHp();
+            }            
+            checkHp();           
             await Task.Delay(2000);
             if (currentEnemyHp > 0)
             {
@@ -803,7 +803,7 @@ namespace WPF_gaming_3
         public void slashSound()
         {
             MediaPlayer selcect = new MediaPlayer();
-            Uri selectPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/slash.wav");
+            Uri selectPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/slash.wav");
             selcect.Open(selectPath);
             selcect.Play();
         }
@@ -811,7 +811,7 @@ namespace WPF_gaming_3
         public void missSound()
         {
             MediaPlayer miss = new MediaPlayer();
-            Uri missPath = new Uri(@"C:/Users/chris/source/repos/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/miss.wav");
+            Uri missPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/miss.wav");
             miss.Open(missPath);
             miss.Play();
         }
@@ -820,9 +820,15 @@ namespace WPF_gaming_3
         public void battleWin()
         {
             enemyIndex++;
-            if (enemyIndex + 1 == businessClass.dungoens[dungoenGlobalIndex].Enemies.Count())
+            if (enemyIndex == businessClass.dungoens[dungoenGlobalIndex].Enemies.Count())
             {
-                //Was last enemy
+                dungoenCompleted.Visibility = Visibility.Visible;
+                goldRewardTxt.Text = businessClass.dungoens[dungoenGlobalIndex].ExReward.ToString();
+                xpRewardTxt.Text = (businessClass.dungoens[dungoenGlobalIndex].ExReward * 2).ToString();
+                battle.Stop();
+                victory.Play();
+
+
             }
             else
             {
@@ -831,8 +837,6 @@ namespace WPF_gaming_3
                 xpRewardedTxt.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward.ToString();
                 businessClass.playerObject.Xp = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward;
                 businessClass.playerObject.Gold = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].GoldReward;
-                checkHp();
-
             }
         }
 
@@ -842,6 +846,7 @@ namespace WPF_gaming_3
             battleBegun = true;
             flashScreen();
             dungoenGui();
+            battleWinScreen.Visibility = Visibility.Hidden;
             checkHpAndHeal();
             flashCanvas.Visibility = Visibility.Hidden;
         }
@@ -852,6 +857,37 @@ namespace WPF_gaming_3
             await Task.Delay(500);
             flashCanvas.Visibility = Visibility.Hidden;
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            inGame.Visibility = Visibility.Hidden;
+            inDungoen.Visibility = Visibility.Hidden;
+            dungoenCompleted.Visibility = Visibility.Hidden;
+            map.Visibility = Visibility.Visible;
+            mapMusic.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
+                mapMusic.PlayLooping();
+            };
+            mapMusic.LoadAsync();
+        }
+
+
+
+
+
+        private void shopBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void statsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            stats.Visibility = Visibility.Visible;
+        }
+
+        private void statsBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            stats.Visibility = Visibility.Hidden;
         }
     }
 }

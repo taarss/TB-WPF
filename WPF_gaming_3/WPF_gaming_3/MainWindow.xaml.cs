@@ -400,6 +400,9 @@ namespace WPF_gaming_3
             gameLoad.LoadAsync();
             Shake();
         }
+
+
+        //SHAKE LOADING SCREEN AND LOAD ACTION BUTTONS
         public async Task Shake()
         {
             if (businessClass.pClass.ClassName == "warrior")
@@ -475,6 +478,7 @@ namespace WPF_gaming_3
         //===================================== INGAME BUTTONS =======================================
         private void action1_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skillActionIndex = 0;
             confirmAction.Visibility = Visibility.Visible;
             actionType.Text = "Damage:";
@@ -487,6 +491,7 @@ namespace WPF_gaming_3
 
         private void action2_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skillActionIndex = 1;
             confirmAction.Visibility = Visibility.Visible;
             actionType.Text = "Damage:";
@@ -499,6 +504,7 @@ namespace WPF_gaming_3
 
         private void action3_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skillActionIndex = 2;
             confirmAction.Visibility = Visibility.Visible;
             actionType.Text = "Damage:";
@@ -511,6 +517,7 @@ namespace WPF_gaming_3
 
         public void action4_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skillActionIndex = 3;
             confirmAction.Visibility = Visibility.Visible;
             actionType.Text = "Heal";
@@ -522,12 +529,14 @@ namespace WPF_gaming_3
 
         private void skipTurnBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skipTurn.Visibility = Visibility.Visible;
             staminaRegainTxt.Text = (5+(5 * businessClass.playerObject.Agility)).ToString();
         }
 
         private void skipBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             if (currentPlayerStamina >= businessClass.pClass.MaxStamina)
             {
                 currentPlayerStamina = businessClass.pClass.MaxStamina;
@@ -543,17 +552,20 @@ namespace WPF_gaming_3
 
         private void cancelSkipBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             skipTurn.Visibility = Visibility.Hidden;
         }
 
         private void cancelActionBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             confirmAction.Visibility = Visibility.Hidden;
             
         }
 
         private void useActionBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             List<ability> abilities = new List<ability>()
             {
                 businessClass.pClass.Ability1,
@@ -580,6 +592,7 @@ namespace WPF_gaming_3
 
         private void restartBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             gameOverScreen.Visibility = Visibility.Hidden;
             main.Visibility = Visibility.Visible;
             mainMenuCanvas.Visibility = Visibility.Visible;
@@ -606,6 +619,9 @@ namespace WPF_gaming_3
         private bool battleBegun = true;
         private int playerHP;
         private int playerStamina;
+
+
+        //SET COMBAT STATS AND GET ENEMY
         public async Task startCombat( int dungoenIndexValue)
         {
             checkHpAndHeal();
@@ -619,6 +635,8 @@ namespace WPF_gaming_3
             }
             
         }
+
+        //CHECK HP AND FULLY HEAL ENEMY AND PLAYER
         public void checkHpAndHeal()
         {
             currentPlayerStamina = businessClass.pClass.MaxStamina;
@@ -644,6 +662,9 @@ namespace WPF_gaming_3
             enemyIsDead = false;
         }
 
+
+
+        //CHECKS HP/OTHER   AND EVENTS RELATED
         public void checkHp()
         {
             hpBar.Value = currentPlayerHp;
@@ -661,6 +682,7 @@ namespace WPF_gaming_3
             }
             if (businessClass.playerObject.Xp >= businessClass.playerObject.NextLvlUp)
             {
+                businessClass.playerObject.NextLvlUp = businessClass.playerObject.NextLvlUp * 2;
                 businessClass.playerObject.PlayerLvl++;
                 businessClass.playerObject.Xp = 0;
                 MessageBox.Show("You leveled up!");
@@ -668,6 +690,8 @@ namespace WPF_gaming_3
         }
 
         
+
+        //PLAYERS TURN         
         public async Task turn()
             
         {
@@ -719,6 +743,15 @@ namespace WPF_gaming_3
             checkHp();
         }
 
+
+
+        // ENEMY TURN + PLAYER STATS IMPACT ON COMBAT CALCULATION
+
+        // STRENGTH = EVERY STRENGTH IS 1- DMG
+
+        // AGILITY = HIGH ENEMY MISS CHANCE
+
+        // LUCK = LOWER CRIT CHANCE
        public void enemyTurn()
         {
             bool isMiss = false;
@@ -728,8 +761,7 @@ namespace WPF_gaming_3
             if (random.Next(0, 10) > 5 + businessClass.playerObject.Luck)
             {
                 isCrit = true;
-                damageDone = damageDone + 10;
-                 
+                damageDone = damageDone + 10;               
             }
             if (random.Next(0, 20) < 2 + businessClass.playerObject.Agility)
             {
@@ -755,6 +787,8 @@ namespace WPF_gaming_3
             checkHp();
         }
 
+
+        // GAME OVER METHOD
         public void gameOver()
         {
             inGame.Visibility = Visibility.Hidden;
@@ -766,6 +800,9 @@ namespace WPF_gaming_3
             gameOverSound.LoadAsync();
         }
 
+
+
+        //SHAKE ENEMY ANIMATION
         public async Task shakeEnemy()
         {
             enemySlash.Visibility = Visibility.Visible;
@@ -783,6 +820,8 @@ namespace WPF_gaming_3
             enemySlash.Visibility = Visibility.Hidden;
         }
 
+
+        // SHAKE PLAYER ANIMATION
         public async Task shakePlayer()
         {
             playerSlash.Visibility = Visibility.Visible;
@@ -800,6 +839,8 @@ namespace WPF_gaming_3
             playerSlash.Visibility = Visibility.Hidden;
         }
 
+
+        //PLAY SLASH SOUND
         public void slashSound()
         {
             MediaPlayer selcect = new MediaPlayer();
@@ -808,6 +849,8 @@ namespace WPF_gaming_3
             selcect.Play();
         }
 
+
+        // PLAY MISS SOUND
         public void missSound()
         {
             MediaPlayer miss = new MediaPlayer();
@@ -816,7 +859,7 @@ namespace WPF_gaming_3
             miss.Play();
         }
 
-
+        // BATTLEWIN
         public void battleWin()
         {
             enemyIndex++;
@@ -825,8 +868,13 @@ namespace WPF_gaming_3
                 dungoenCompleted.Visibility = Visibility.Visible;
                 goldRewardTxt.Text = businessClass.dungoens[dungoenGlobalIndex].ExReward.ToString();
                 xpRewardTxt.Text = (businessClass.dungoens[dungoenGlobalIndex].ExReward * 2).ToString();
+                businessClass.playerObject.Gold = businessClass.dungoens[dungoenGlobalIndex].ExReward;
+                businessClass.playerObject.Xp = businessClass.dungoens[dungoenGlobalIndex].ExReward * 2;
                 battle.Stop();
-                victory.Play();
+                MediaPlayer selcect = new MediaPlayer();
+                Uri selectPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
+                selcect.Open(selectPath);
+                selcect.Play();
 
 
             }
@@ -837,20 +885,25 @@ namespace WPF_gaming_3
                 xpRewardedTxt.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward.ToString();
                 businessClass.playerObject.Xp = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].XpReward;
                 businessClass.playerObject.Gold = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].GoldReward;
+                enemyDefeatedTxt.Text = businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex - 1].Name;
             }
         }
 
 
+        //NEXT ENCOUNTER IN DUNGOEN
         private void nextEncounterBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             battleBegun = true;
-            flashScreen();
+           
             dungoenGui();
             battleWinScreen.Visibility = Visibility.Hidden;
             checkHpAndHeal();
             flashCanvas.Visibility = Visibility.Hidden;
         }
 
+
+        // DOES NOT WORK
         private async Task flashScreen()
         {
             flashCanvas.Visibility = Visibility.Visible;
@@ -859,8 +912,12 @@ namespace WPF_gaming_3
 
         }
 
+
+
+        //RETURN TO MAP AFTER DUNGOEN BUTTON
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             inGame.Visibility = Visibility.Hidden;
             inDungoen.Visibility = Visibility.Hidden;
             dungoenCompleted.Visibility = Visibility.Hidden;
@@ -874,20 +931,42 @@ namespace WPF_gaming_3
 
 
 
-
+        // ENTER SHOP BUTTON
         private void shopBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            businessClass.selcectSound();
         }
 
+
+
+        //SHOW STATS BUTTON
         private void statsBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             stats.Visibility = Visibility.Visible;
+            playerStatsTxt.Text = businessClass.playerObject.PlayerLvl.ToString();
+            goldStatsTxt.Text = businessClass.playerObject.Gold.ToString();
+            xpStatsTxt.Text = businessClass.playerObject.Xp.ToString();
+            nextLvlStatsTxt.Text = businessClass.playerObject.NextLvlUp.ToString();
         }
 
+        //LEAVE STATS MENU
         private void statsBackBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             stats.Visibility = Visibility.Hidden;
+            deatilStats.Visibility = Visibility.Hidden;
+        }
+
+
+        //SHOW DEATILED STATS
+        private void showDetailStats_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+            deatilStats.Visibility = Visibility.Visible;
+            AgilityStatsTxt.Text = businessClass.playerObject.Agility.ToString();
+            luckStatsTxt.Text = businessClass.playerObject.Luck.ToString();
+            strengthStatsTxt.Text = businessClass.playerObject.Strength.ToString();
         }
     }
 }

@@ -17,7 +17,7 @@
 
     <Grid>
         <Canvas x:Name="main" Visibility="Visible">
-            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="800" Height="500"/>
+            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="810" Height="553"/>
 
             <!-- MAIN MENU -->
             <Canvas    x:Name="mainMenuCanvas">
@@ -150,7 +150,7 @@
 
 
 
-        <Canvas Visibility="Visible" x:Name="map">
+        <Canvas Visibility="Hidden" x:Name="map">
             <Image x:Name="test" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="statsBtn" BorderBrush="Black" BorderThickness="3" FontSize="30" Canvas.Left="691" Canvas.Top="466" Click="statsBtn_Click">STATS</Button>
             <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76">
@@ -173,11 +173,33 @@
 
             <Canvas Visibility="Hidden" Width="300" Height="400" Background="White" x:Name="stats" Canvas.Left="255" Canvas.Top="52">
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="108" Canvas.Top="21">STATS</TextBlock>
+                <TextBlock x:Name="playerStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="167" Canvas.Top="85">STATS</TextBlock>
+
+                <TextBlock x:Name="goldStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="167" Canvas.Top="162">STATS</TextBlock>
+                <TextBlock x:Name="xpStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="167" Canvas.Top="124">STATS</TextBlock>
+                <TextBlock x:Name="nextLvlStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="183" Canvas.Top="238">STATS</TextBlock>
+
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="53" Canvas.Top="120">XP:</TextBlock>
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="159">GOLD:</TextBlock>
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="32" Canvas.Top="238">NEXT LVL</TextBlock>
+
+
+                <Button x:Name="showDetailStats" FontSize="30" FontWeight="Bold" Canvas.Left="75" Canvas.Top="291" Click="showDetailStats_Click">Player Stats</Button>
                 <Rectangle Fill="Black" Height="1" Width="216" Canvas.Left="44" Canvas.Top="69"></Rectangle>
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="81">LvL:</TextBlock>
                 <Button x:Name="statsBackBtn" FontSize="20" Canvas.Left="234" Canvas.Top="357" Click="statsBackBtn_Click">BACK</Button>
             </Canvas>
+            <Canvas Visibility="Hidden" Width="300" Height="400" Background="White" x:Name="deatilStats" Canvas.Left="255" Canvas.Top="52">
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="108" Canvas.Top="21">STATS</TextBlock>
+                <Button FontSize="20" Canvas.Left="234" Canvas.Top="357" Click="statsBackBtn_Click">BACK</Button>
+                <TextBlock  FontSize="30" FontWeight="Bold" Canvas.Left="53" Canvas.Top="120">Agility:</TextBlock>
+                <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="57" Canvas.Top="165">Luck:</TextBlock>
+                <TextBlock  FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="81">Strength:</TextBlock>
+                <TextBlock x:Name="strengthStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="187" Canvas.Top="84" RenderTransformOrigin="0.457,0.467">LvL:</TextBlock>
+                <TextBlock x:Name="AgilityStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="185" Canvas.Top="125">LvL:</TextBlock>
+                <TextBlock x:Name="luckStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="185" Canvas.Top="167">LvL:</TextBlock>
 
+            </Canvas>
 
 
 
@@ -204,7 +226,7 @@
         </Canvas>
 
         <Canvas Visibility="Hidden" x:Name="loadingScreen">
-            <Image Canvas.Left="-10" Stretch="Fill" Width="801" x:Name="loadingScreenImg" Height="516"></Image>
+            <Image Canvas.Left="-10" Stretch="Fill" Width="818" x:Name="loadingScreenImg" Height="537"></Image>
             <TextBlock x:Name="loadingDungoenName" Foreground="White" FontWeight="Bold" FontSize="30" Canvas.Left="45" Canvas.Top="374">THIS IS TEXT</TextBlock>
         </Canvas>
 
@@ -260,9 +282,9 @@
             <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
             <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
 
-            <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="352" Background="White">
-                <TextBlock Width="302" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">monster name landed a hit</TextBlock>
-                <TextBlock Width="302" FontSize="20" x:Name="monsterDamage" Canvas.Left="25" Canvas.Top="43" Height="76">123 DMG</TextBlock>
+            <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="362" Background="White">
+                <TextBlock Width="312" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">monster name landed a hit</TextBlock>
+                <TextBlock Width="312" FontSize="20" x:Name="monsterDamage" Canvas.Left="25" Canvas.Top="43" Height="76">123 DMG</TextBlock>
                 <Button x:Name="skipTurnBtn" FontSize="20" Canvas.Left="222" Canvas.Top="78" Height="41" Width="105" Click="skipTurnBtn_Click" >SKIP TURN</Button>
 
             </Canvas>
@@ -325,11 +347,11 @@
         <Border Visibility="Hidden" x:Name="battleWinScreen" Width="350" Height="350"  BorderBrush="Black" BorderThickness="2">
             <Canvas  Width=" 350" Height="350" Background="White">
                 <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="85" Canvas.Top="10">You defeated:</TextBlock>
-                <TextBlock x:Name="anemyDefeatedTxt" TextAlignment="Center" FontWeight="Bold" FontSize="30" Canvas.Left="10" Canvas.Top="55" Width="340">Lava guy</TextBlock>
+                <TextBlock x:Name="enemyDefeatedTxt" TextAlignment="Center" FontWeight="Bold" FontSize="30" Canvas.Left="10" Canvas.Top="55" Width="340">Lava guy</TextBlock>
                 <Rectangle Fill="Black" Height="3" Width="250" Canvas.Top="100" Canvas.Left="50"></Rectangle>
                 <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="118" Canvas.Top="108">Reward:</TextBlock>
-                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="50" Canvas.Top="143">XP:</TextBlock>
-                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="50" Canvas.Top="188">GOLD:</TextBlock>
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="34" Canvas.Top="183">XP:</TextBlock>
+                <TextBlock FontWeight="Bold" FontSize="30" Canvas.Left="34" Canvas.Top="146">GOLD:</TextBlock>
                 <TextBlock x:Name="goldRewardedTxt" FontWeight="Bold" FontSize="30" Canvas.Left="227" Canvas.Top="143">200</TextBlock>
                 <TextBlock x:Name="xpRewardedTxt" FontWeight="Bold" FontSize="30" Canvas.Left="227" Canvas.Top="188">350</TextBlock>
                 <Button x:Name="nextEncounterBtn" BorderBrush="Black" BorderThickness="3" FontSize="30"  Canvas.Left="46" Canvas.Top="264" Click="nextEncounterBtn_Click" >NEXT ENCOUNTER</Button>

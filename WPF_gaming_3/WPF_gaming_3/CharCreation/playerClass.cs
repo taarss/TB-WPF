@@ -49,6 +49,8 @@ namespace WPF_gaming_3.CharCreation
 
         public void setAbility(string className)
         {
+
+             
             if (className == "warrior")
             {
                 ability1 = warriorAbilities[0];

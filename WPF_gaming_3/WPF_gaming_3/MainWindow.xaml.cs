@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using WPF_gaming_3.CharCreation;
 using WPF_gaming_3.backend;
-
+using System.Reflection;
 
 namespace WPF_gaming_3
 {
@@ -40,6 +40,7 @@ namespace WPF_gaming_3
         private int currentPlayerStamina;
         private int enemyIndex = 0;
         private bool enemyIsDead = false;
+        private int shopIndex;
         private SoundPlayer mainBg = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
         private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
         private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
@@ -49,6 +50,7 @@ namespace WPF_gaming_3
 
         public MainWindow()
         {
+
             InitializeComponent();
                  mainBg.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e) {
                  mainBg.PlayLooping();
@@ -934,9 +936,75 @@ namespace WPF_gaming_3
         // ENTER SHOP BUTTON
         private void shopBtn_Click(object sender, RoutedEventArgs e)
         {
-            businessClass.selcectSound();
+            shop.Visibility = Visibility.Visible;
         }
 
+        private void generateShop()
+        {
+
+            shopItemContainer.Children.Clear();
+
+            int loopIndex = 0;
+            List<item> items = new List<item>();
+            if (shopIndex == 0)
+            {
+                foreach (var item in businessClass.consumes)
+                {
+                    items.Add(item);
+                }
+
+            }
+            else if (shopIndex == 1)
+            {
+                foreach (var item in businessClass.weaponItems)
+                {
+                    items.Add(item);
+                }
+            }
+            else if (shopIndex == 2)
+            {
+                foreach (var item in businessClass.armourItems)
+                {
+                    items.Add(item);
+                }
+            }
+                    
+                   foreach (var item in items)
+                        {
+                            Button button = new Button();
+                            Image image = new Image();
+                            if (shopIndex == 0)
+                            {
+                                image.Source = new BitmapImage(new Uri(businessClass.consumes[loopIndex].IconPath));
+
+
+                            }
+                            else if (shopIndex == 1)
+                            {
+                                image.Source = new BitmapImage(new Uri(businessClass.weaponItems[loopIndex].IconPath));
+
+                            }
+                            else if (shopIndex == 2)
+                            {
+                                image.Source =  new BitmapImage(new Uri(businessClass.armourItems[loopIndex].IconPath));
+                                
+                            }
+                            image.Height = 60;
+                            image.Width = 60;
+                            loopIndex++;
+                            image.Stretch = Stretch.Fill;
+                            button.Content = image;
+                            button.BorderBrush = Brushes.White;
+                            button.BorderThickness = new Thickness(2);
+                            button.Margin = new 
+                            shopItemContainer.Children.Add(button);
+
+                        }                        
+
+        }
+
+
+     
 
 
         //SHOW STATS BUTTON
@@ -962,11 +1030,34 @@ namespace WPF_gaming_3
         //SHOW DEATILED STATS
         private void showDetailStats_Click(object sender, RoutedEventArgs e)
         {
-            businessClass.selcectSound();
+            businessClass.selcectSound();  
             deatilStats.Visibility = Visibility.Visible;
             AgilityStatsTxt.Text = businessClass.playerObject.Agility.ToString();
             luckStatsTxt.Text = businessClass.playerObject.Luck.ToString();
             strengthStatsTxt.Text = businessClass.playerObject.Strength.ToString();
+        }
+
+        private void shopBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            shop.Visibility = Visibility.Hidden;
+        }
+
+        private void shopConsumeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            shopIndex = 0;
+            generateShop();
+        }
+
+        private void shopArmourBtn_Click(object sender, RoutedEventArgs e)
+        {
+            shopIndex = 2;
+            generateShop();
+        }
+
+        private void shopWeaponBtn_Click(object sender, RoutedEventArgs e)
+        {
+            shopIndex = 1;
+            generateShop();
         }
     }
 }

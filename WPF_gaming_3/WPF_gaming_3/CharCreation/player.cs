@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WPF_gaming_3.backend;
 
 namespace WPF_gaming_3.CharCreation
 {
@@ -15,6 +16,8 @@ namespace WPF_gaming_3.CharCreation
         private int agility;
         private int luck;
         private int gold;
+        private List<item> inventory;
+        
 
         public player(string playerName, playerClass playerClass, int playerLvl, int xp, int nextLvlUp, int strength, int agility, int luck, int gold)
         {
@@ -38,6 +41,7 @@ namespace WPF_gaming_3.CharCreation
         public int Agility { get => agility; set => agility = value; }
         public int Luck { get => luck; set => luck = value; }
         public int Gold { get => gold; set => gold = value; }
+        public List<item> Inventory { get => inventory; set => inventory = value; }
     }
 }
 

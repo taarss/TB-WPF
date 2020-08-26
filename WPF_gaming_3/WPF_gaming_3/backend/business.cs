@@ -6,11 +6,15 @@ using WPF_gaming_3.CharCreation;
 using WPF_gaming_3.backend;
 using WPF_gaming_3;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
 
 namespace WPF_gaming_3.backend
 {
     public class business
     {
+        
+
         public playerClass pClass;
         public player playerObject;
         public List<dungoen> dungoens;
@@ -89,9 +93,40 @@ namespace WPF_gaming_3.backend
                     }
                 )
             };
+
+
+            
         }
 
-       
+            public List<consumeItem> consumes = new List<consumeItem>()
+            {
+                new consumeItem(40, 60, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/potion1.png", "Small Healing Potion"),
+                new consumeItem(80, 130, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/potion2.png", "Large Healing Postion"),
+                new consumeItem(30, 40, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png", "Small Chunk of Meat"),
+                new consumeItem(50, 70, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food2.png", "Medium Chunk of Meat"),
+                new consumeItem(70, 100, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food3.png", "Large Chunk of Meat"),
+            };
+
+
+
+        public List<armourItem> armourItems = new List<armourItem>()
+            {
+                new armourItem(1, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour1helm.png", ""),
+                new armourItem(3, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour1chest.png", ""),
+                new armourItem(3, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour2helm.png", ""),
+                new armourItem(5, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour2chest.png", ""),
+                new armourItem(6, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour3helm.png", ""),
+                new armourItem(7, 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/armourItems/armour3chest.png", ""),
+        };
+
+        public List<weaponItem> weaponItems = new List<weaponItem>()
+        {
+            new weaponItem(5, false, "", 200, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/weaponItems/sword1.png", "Peasent Sword"),
+            new weaponItem(8, false, "", 350, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/weaponItems/sword2.png", "Solid Iron Sword"),
+            new weaponItem(11, false, "", 700, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/weaponItems/sword3.png", "Blessed Iron Sword"),
+            new weaponItem(16, true, "A holy sword blessed by the frost gods. A hit from this sword will result in the enemy facing the mighty frost gods waith", 8000, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/weaponItems/sword4.png", "Holy Frost Sword"),
+            new weaponItem(20, true, "A sword made of the rarest minerals from the deepest depts of hell. A hit from this sword will cast your eneimes in hell fire!", 30000, "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/weaponItems/sword5.png", "Blessed Iron Sword"),
+        };
 
         
 

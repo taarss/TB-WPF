@@ -150,14 +150,13 @@
 
 
 
-        <Canvas Visibility="Hidden" x:Name="map">
+        <Canvas Visibility="Visible" x:Name="map">
             <Image x:Name="test" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="statsBtn" BorderBrush="Black" BorderThickness="3" FontSize="30" Canvas.Left="691" Canvas.Top="466" Click="statsBtn_Click">STATS</Button>
             <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76">
                 <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shop.png"></Image>
             </Button>
 
-            <Button x:Name="backBtnMap" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10">BACK</Button>
             <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
                 <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
@@ -201,6 +200,33 @@
 
             </Canvas>
 
+
+
+
+
+
+
+            <Canvas Visibility="Visible" x:Name="shop" Width="700" Height="450" Background="White" Canvas.Left="45" Canvas.Top="36">
+                <Button x:Name="shopBackBtn" FontSize="20" Canvas.Left="8" Canvas.Top="412" Click="shopBackBtn_Click">BACK</Button>
+                <Button x:Name="shopConsumeBtn" FontSize="20" Canvas.Left="76" Canvas.Top="9" Click="shopConsumeBtn_Click">FOOD</Button>
+                <Button x:Name="shopWeaponBtn" FontSize="20" Canvas.Left="286" Canvas.Top="11" Click="shopWeaponBtn_Click">WEAPONS</Button>
+                <Button x:Name="shopArmourBtn" FontSize="20" Canvas.Left="524" Canvas.Top="13" Click="shopArmourBtn_Click">ARMOUR</Button>
+                <Border Canvas.Left="76" Canvas.Top="75" BorderBrush="Black" BorderThickness="2">
+                    <WrapPanel x:Name="shopItemContainer" Background="Gray" Height="255" Width="280" Canvas.Left="76" Canvas.Top="75">
+
+                    </WrapPanel>
+
+
+                </Border>
+               
+
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shopKeeper.png" Height="231" Width="328" Canvas.Left="363" Canvas.Top="47" RenderTransformOrigin="0.5,0.5">
+
+                </Image>
+                <TextBlock FontSize="20" Canvas.Left="500" Canvas.Top="405">GOLD:</TextBlock>
+                <TextBlock FontSize="20" Canvas.Left="558" Canvas.Top="405">1234</TextBlock>
+
+            </Canvas>
 
 
             <!-- CONFIRM SCREEN -->

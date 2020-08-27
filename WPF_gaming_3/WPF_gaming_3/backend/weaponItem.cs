@@ -6,9 +6,9 @@ namespace WPF_gaming_3.backend
 {
     public class weaponItem : item
     {
-        private int attackEffect;
-        private bool isLegendary;
-        private string descreption;
+        public int attackEffect;
+        public bool isLegendary;
+        public string descreption;
 
         public weaponItem(int attackEffect, bool isLegendary, string descreption, int value, string iconPath, string itemName) : base(value, iconPath, itemName)
         {

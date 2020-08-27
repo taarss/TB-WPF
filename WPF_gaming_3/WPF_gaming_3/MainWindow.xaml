@@ -151,9 +151,10 @@
 
 
         <Canvas Visibility="Visible" x:Name="map">
+
             <Image x:Name="test" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="statsBtn" BorderBrush="Black" BorderThickness="3" FontSize="30" Canvas.Left="691" Canvas.Top="466" Click="statsBtn_Click">STATS</Button>
-            <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76">
+            <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76" Click="shopBtn_Click_1">
                 <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shop.png"></Image>
             </Button>
 
@@ -166,7 +167,7 @@
             <Button x:Name="mapArea3" Canvas.Left="636" Canvas.Top="346" Background="Transparent" BorderBrush="Transparent" Height="58" Width="42" Click="mapArea3_Click">
                 <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
-
+            <Button x:Name="openInventory" FontSize="30" BorderBrush="Black" BorderThickness="3" Canvas.Left="551" Canvas.Top="466" Click="openInventory_Click">Inventory</Button>
 
 
 
@@ -178,12 +179,12 @@
                 <TextBlock x:Name="xpStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="167" Canvas.Top="124">STATS</TextBlock>
                 <TextBlock x:Name="nextLvlStatsTxt" FontSize="30" FontWeight="Bold" Canvas.Left="183" Canvas.Top="238">STATS</TextBlock>
 
+
+                <Button x:Name="showDetailStats" FontSize="30" FontWeight="Bold" Canvas.Left="75" Canvas.Top="291" Click="showDetailStats_Click">Player Stats</Button>
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="53" Canvas.Top="120">XP:</TextBlock>
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="159">GOLD:</TextBlock>
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="32" Canvas.Top="238">NEXT LVL</TextBlock>
 
-
-                <Button x:Name="showDetailStats" FontSize="30" FontWeight="Bold" Canvas.Left="75" Canvas.Top="291" Click="showDetailStats_Click">Player Stats</Button>
                 <Rectangle Fill="Black" Height="1" Width="216" Canvas.Left="44" Canvas.Top="69"></Rectangle>
                 <TextBlock FontSize="30" FontWeight="Bold" Canvas.Left="50" Canvas.Top="81">LvL:</TextBlock>
                 <Button x:Name="statsBackBtn" FontSize="20" Canvas.Left="234" Canvas.Top="357" Click="statsBackBtn_Click">BACK</Button>
@@ -206,27 +207,64 @@
 
 
 
-            <Canvas Visibility="Visible" x:Name="shop" Width="700" Height="450" Background="White" Canvas.Left="45" Canvas.Top="36">
+            <Canvas Visibility="Hidden" x:Name="shop" Width="700" Height="450" Background="White" Canvas.Left="45" Canvas.Top="36">
                 <Button x:Name="shopBackBtn" FontSize="20" Canvas.Left="8" Canvas.Top="412" Click="shopBackBtn_Click">BACK</Button>
                 <Button x:Name="shopConsumeBtn" FontSize="20" Canvas.Left="76" Canvas.Top="9" Click="shopConsumeBtn_Click">FOOD</Button>
                 <Button x:Name="shopWeaponBtn" FontSize="20" Canvas.Left="286" Canvas.Top="11" Click="shopWeaponBtn_Click">WEAPONS</Button>
                 <Button x:Name="shopArmourBtn" FontSize="20" Canvas.Left="524" Canvas.Top="13" Click="shopArmourBtn_Click">ARMOUR</Button>
-                <Border Canvas.Left="76" Canvas.Top="75" BorderBrush="Black" BorderThickness="2">
-                    <WrapPanel x:Name="shopItemContainer" Background="Gray" Height="255" Width="280" Canvas.Left="76" Canvas.Top="75">
+                <Border Canvas.Left="36" Canvas.Top="75" BorderBrush="Black" BorderThickness="2">
+                    <WrapPanel x:Name="shopItemContainer" Background="Gray" Height="255" Width="240" Canvas.Left="76" Canvas.Top="75">
 
                     </WrapPanel>
 
 
                 </Border>
-               
+                <Rectangle Fill="Black" Width="700" Height="2" Canvas.Top="50"></Rectangle>
+                <Rectangle Fill="Black" Width="700" Height="2" Canvas.Top="370"></Rectangle>
 
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shopKeeper.png" Height="231" Width="328" Canvas.Left="363" Canvas.Top="47" RenderTransformOrigin="0.5,0.5">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shopKeeper.png" Height="222" Width="328" Canvas.Left="363" Canvas.Top="56" RenderTransformOrigin="0.5,0.5">
 
                 </Image>
+                <Border Canvas.Top="200" Canvas.Left="300" Margin="68,67,60,67" BorderBrush="Black" BorderThickness="1" >
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                    <Button Width="100" FontSize="30" BorderThickness="4" BorderBrush="Black" Background="White" Canvas.Left="361" Canvas.Top="284">BUY</Button>
+
+                </Border>
                 <TextBlock FontSize="20" Canvas.Left="500" Canvas.Top="405">GOLD:</TextBlock>
                 <TextBlock FontSize="20" Canvas.Left="558" Canvas.Top="405">1234</TextBlock>
-
+                <Border  x:Name="confirmBuy" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
+                    <Canvas>
+                        <TextBlock FontSize="20" Canvas.Left="65" Canvas.Top="4">Are you sure you want to buy:</TextBlock>
+                        <Image x:Name="confirmBuyImg" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" Canvas.Left="27" Canvas.Top="40"></Image>
+                        <TextBlock x:Name="buyItemTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
+                        <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
+                        <TextBlock x:Name="descriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
+                        <Button x:Name="confirmBuyCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="confirmBuyCancel_Click">BACK</Button>
+                        <Button x:Name="confirmBuyBuy" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255" Click="confirmBuyBuy_Click">BUY</Button>
+                        <TextBlock x:Name="typeEffect" FontWeight="Bold" FontSize="20" Canvas.Left="52" Canvas.Top="199">DMG</TextBlock>
+                        <TextBlock x:Name="effect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200" RenderTransformOrigin="0.898,0.415">123</TextBlock>
+                        <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="53" Canvas.Top="222">GOLD:</TextBlock>
+                        <TextBlock x:Name="goldCost" FontWeight="Bold" FontSize="20" Canvas.Left="122" Canvas.Top="223">123</TextBlock>
+                    </Canvas>
+                </Border>
             </Canvas>
+
+
+
+
+            <Canvas x:Name="inventory" Width="650" Height="450" Background="White" Canvas.Left="71" Canvas.Top="12">
+                <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
+                <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
+                <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="600" Canvas.Left="25" Canvas.Top="25">
+    
+                </WrapPanel>
+            </Canvas>
+
+
+
+
 
 
             <!-- CONFIRM SCREEN -->

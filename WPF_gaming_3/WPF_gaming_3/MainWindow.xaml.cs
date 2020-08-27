@@ -971,7 +971,7 @@ namespace WPF_gaming_3
                     
                    foreach (var item in items)
                         {
-                            Button button = new Button();
+                           Button button = new Button();
                             Image image = new Image();
                             if (shopIndex == 0)
                             {
@@ -996,15 +996,52 @@ namespace WPF_gaming_3
                             button.Content = image;
                             button.BorderBrush = Brushes.White;
                             button.BorderThickness = new Thickness(2);
-                            button.Margin = new 
+                            button.Margin = new Thickness(5, 5, 5, 5);
+                        button.Tag = loopIndex.ToString();
+                            button.Click += new RoutedEventHandler(btnTest_Click);                            
                             shopItemContainer.Children.Add(button);
 
                         }                        
 
         }
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+                Button button = sender as Button;
+              //  MessageBox.Show(button.Tag.ToString());
+                if (shopIndex == 0)
+                {
+                    confirmBuy.Visibility = Visibility.Visible;
+                    buyItemTxt.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].itemName;
+                    confirmBuyImg.Source = new BitmapImage(new Uri(businessClass.consumes[Convert.ToInt32(button.Tag) - 1].IconPath.ToString()));
+                    descriptionTxt.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].description;
+                    typeEffect.Text = "Heal:";
+                    effect.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].HealEffect.ToString();
+                    goldCost.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].Value.ToString();
+            }
+            else if (shopIndex == 1)
+                {
+                    confirmBuy.Visibility = Visibility.Visible;
+                    buyItemTxt.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].ItemName;
+                    confirmBuyImg.Source = new BitmapImage(new Uri(businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].IconPath.ToString()));
+                    descriptionTxt.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].Descreption;
+                    typeEffect.Text = "Def:";
+                    effect.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].DefEffect.ToString();
+                    goldCost.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].Value.ToString();
+
+            }
+            else if (shopIndex == 2)
+                {
+                    confirmBuy.Visibility = Visibility.Visible;
+                    buyItemTxt.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].ItemName;
+                    confirmBuyImg.Source = new BitmapImage(new Uri(businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].IconPath.ToString()));
+                    descriptionTxt.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].Description;
+                    typeEffect.Text = "DMG:";
+                    effect.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].DefEffect.ToString();
+                    goldCost.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].Value.ToString();
 
 
-     
+            }
+        }
 
 
         //SHOW STATS BUTTON
@@ -1059,5 +1096,103 @@ namespace WPF_gaming_3
             shopIndex = 1;
             generateShop();
         }
+        private void shopBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            shop.Visibility = Visibility.Visible;
+
+        }
+
+        private void confirmBuyBuy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void confirmBuyCancel_Click(object sender, RoutedEventArgs e)
+        {
+            confirmBuy.Visibility = Visibility.Hidden;   
+        }
+
+        private void openInventory_Click(object sender, RoutedEventArgs e)
+        {
+            List<item> items = new List<item>();
+
+                        
+                    foreach (var item in businessClass.consumes)
+                    {
+                        items.Add(item);
+                    }             
+                
+                    foreach (var item in businessClass.weaponItems)
+                    {
+                        items.Add(item);
+                    }               
+               
+                    foreach (var item in businessClass.armourItems)
+                    {
+                        items.Add(item);
+                    }
+            int loopIndex = 0;
+            foreach (var item in items)
+            {
+                Button button = new Button();
+                Image image = new Image();
+                image.Height = 60;
+                image.Width = 60;
+                loopIndex++;
+                image.Stretch = Stretch.Fill;
+                button.Content = image;
+                button.BorderBrush = Brushes.White;
+                button.BorderThickness = new Thickness(2);
+                button.Margin = new Thickness(5, 5, 5, 5);
+                button.Tag = loopIndex.ToString();
+                button.Click += new RoutedEventHandler(btnTest_Click);
+                shopItemContainer.Children.Add(button);
+            }
+            
+        }
+
+        private void closeInventoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            inventory.Visibility = Visibility.Hidden;
+
+        }
     }
 }
+
+
+/* 
+ 
+     foreach (var item in items)
+                        {
+                           Button button = new Button();
+                            Image image = new Image();
+                            if (shopIndex == 0)
+                            {
+                                image.Source = new BitmapImage(new Uri(businessClass.consumes[loopIndex].IconPath));
+
+
+                            }
+                            else if (shopIndex == 1)
+                            {
+                                image.Source = new BitmapImage(new Uri(businessClass.weaponItems[loopIndex].IconPath));
+
+                            }
+                            else if (shopIndex == 2)
+                            {
+                                image.Source =  new BitmapImage(new Uri(businessClass.armourItems[loopIndex].IconPath));
+                                
+                            }
+                            image.Height = 60;
+                            image.Width = 60;
+                            loopIndex++;
+                            image.Stretch = Stretch.Fill;
+                            button.Content = image;
+                            button.BorderBrush = Brushes.White;
+                            button.BorderThickness = new Thickness(2);
+                            button.Margin = new Thickness(5, 5, 5, 5);
+                            button.Tag = loopIndex.ToString();
+                            button.Click += new RoutedEventHandler(btnTest_Click);                            
+                            shopItemContainer.Children.Add(button);
+
+                        }       
+     */

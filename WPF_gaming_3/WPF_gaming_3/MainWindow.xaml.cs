@@ -1114,6 +1114,7 @@ namespace WPF_gaming_3
 
         private void openInventory_Click(object sender, RoutedEventArgs e)
         {
+            inventory.Visibility = Visibility.Visible;
             List<item> items = new List<item>();
 
                         
@@ -1145,8 +1146,7 @@ namespace WPF_gaming_3
                 button.BorderThickness = new Thickness(2);
                 button.Margin = new Thickness(5, 5, 5, 5);
                 button.Tag = loopIndex.ToString();
-                button.Click += new RoutedEventHandler(btnTest_Click);
-                shopItemContainer.Children.Add(button);
+                inventoryContainer.Children.Add(button);
             }
             
         }

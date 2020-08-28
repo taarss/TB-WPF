@@ -257,9 +257,19 @@
             <Canvas x:Name="inventory" Width="650" Height="450" Background="White" Canvas.Left="71" Canvas.Top="12">
                 <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
                 <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
-                <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="600" Canvas.Left="25" Canvas.Top="25">
-    
+                <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="279" Canvas.Left="25" Canvas.Top="25">
+
                 </WrapPanel>
+                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="29" Width="80">
+                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/noHelm.png" Height="54" Width="54" Canvas.Left="12" Canvas.Top="10"></Image>
+                </Canvas>
+                <Canvas Background="LightGray"  Height="72" Canvas.Left="342" Canvas.Top="238" Width="80">
+                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/swordIcon.png" Height="58" Width="56" Canvas.Left="12" Canvas.Top="8"></Image>
+                </Canvas>
+                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="137" Width="80">
+                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/chestPlate.png" Height="58" Width="58" Canvas.Left="12" Canvas.Top="8"></Image>
+                </Canvas>
+
             </Canvas>
 
 

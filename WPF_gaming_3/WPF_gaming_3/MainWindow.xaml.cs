@@ -1139,6 +1139,7 @@ namespace WPF_gaming_3
                 Image image = new Image();
                 image.Height = 60;
                 image.Width = 60;
+                image.Source = new BitmapImage(new Uri(items[loopIndex].IconPath));
                 loopIndex++;
                 image.Stretch = Stretch.Fill;
                 button.Content = image;

@@ -9,7 +9,7 @@ namespace WPF_gaming_3.backend
         private int defEffect;
         private string description;
 
-        public armourItem(int defEffect, int value, string iconPath, string itemName, string description) : base(value, iconPath, itemName)
+        public armourItem(int defEffect, int value, string iconPath, string itemName, string description, string typeItem) : base(value, iconPath, itemName, typeItem)
         {
             this.DefEffect = defEffect;
             this.Description = description;

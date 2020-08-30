@@ -10,7 +10,7 @@ namespace WPF_gaming_3.backend
         public readonly string itemName;
         public string description;
 
-        public consumeItem(int healEffect, int value, string iconPath, string itemName, string description) : base(value, iconPath, itemName)
+        public consumeItem(int healEffect, int value, string iconPath, string itemName, string descriptionm, string typeItem) : base(value, iconPath, itemName, typeItem)
         {
             this.HealEffect = healEffect;
             this.itemName = itemName;

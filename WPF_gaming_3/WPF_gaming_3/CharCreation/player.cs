@@ -17,6 +17,9 @@ namespace WPF_gaming_3.CharCreation
         private int luck;
         private int gold;
         private List<item> inventory;
+        private weaponItem equipedWeapon;
+        private armourItem equipedHelm;
+        private armourItem equipedChestplate;
 
 
         public player(string playerName, playerClass playerClass, int playerLvl, int xp, int nextLvlUp, int strength, int agility, int luck, int gold, List<item> inventory)
@@ -31,6 +34,9 @@ namespace WPF_gaming_3.CharCreation
             this.Luck = luck;
             this.Gold = gold;
             this.inventory = inventory;
+            this.equipedWeapon = equipedWeapon;
+            this.equipedHelm = equipedHelm;
+            this.equipedChestplate = equipedChestplate;
         }
 
         public string PlayerName { get => playerName; set => playerName = value; }

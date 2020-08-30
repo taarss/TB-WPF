@@ -41,12 +41,14 @@ namespace WPF_gaming_3
         private int enemyIndex = 0;
         private bool enemyIsDead = false;
         private int shopIndex;
-        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
-        private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
-        private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
-        private SoundPlayer battle = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
-        private SoundPlayer victory = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
-        private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
+        private bool inventoryIsLoaded = false;
+        private int itemIndex;
+        private SoundPlayer mainBg = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/startMenu.wav");
+        private SoundPlayer mapMusic = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/map.wav");
+        private SoundPlayer gameLoad = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battleLoad.wav");
+        private SoundPlayer battle = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/battle.wav");
+        private SoundPlayer victory = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
+        private SoundPlayer gameOverSound = new SoundPlayer("C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/gameOver.wav");
 
         public MainWindow()
         {
@@ -409,17 +411,17 @@ namespace WPF_gaming_3
         {
             if (businessClass.pClass.ClassName == "warrior")
             {
-                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"));
-                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"));
-                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"));
-                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg"));
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/warrior4.jpg"));
             }
             else
             {
-                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"));
-                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"));
-                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"));
-                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
+                action1img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk1.jpg"));
+                action2img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk2.jpg"));
+                action3img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk3.jpg"));
+                action4img.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/dk4.jpg"));
             }
         
             for (int i = 0; i < 6; i++)
@@ -451,11 +453,11 @@ namespace WPF_gaming_3
             enemyImage.Source = new BitmapImage(new Uri(businessClass.dungoens[dungoenGlobalIndex].Enemies[enemyIndex].ImgPath));
             if (businessClass.pClass.ClassName == "warrior")
             {
-                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png"));
             }
             else
             {
-                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
+                playerImage.Source = new BitmapImage(new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"));
             }
             startCombat(dungoenGlobalIndex);
         }
@@ -713,7 +715,7 @@ namespace WPF_gaming_3
                 currentPlayerHp = currentPlayerHp + abilities[skillActionIndex].AbilityDmg;
                 currentPlayerStamina = currentPlayerStamina - abilities[skillActionIndex].AbilityStaminaCost;
                 MediaPlayer heal = new MediaPlayer();
-                Uri healPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
+                Uri healPath = new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/heal.wav");
                 heal.Open(healPath);
                 heal.Play();
             }
@@ -846,7 +848,7 @@ namespace WPF_gaming_3
         public void slashSound()
         {
             MediaPlayer selcect = new MediaPlayer();
-            Uri selectPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/slash.wav");
+            Uri selectPath = new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/slash.wav");
             selcect.Open(selectPath);
             selcect.Play();
         }
@@ -856,7 +858,7 @@ namespace WPF_gaming_3
         public void missSound()
         {
             MediaPlayer miss = new MediaPlayer();
-            Uri missPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/miss.wav");
+            Uri missPath = new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/miss.wav");
             miss.Open(missPath);
             miss.Play();
         }
@@ -874,7 +876,7 @@ namespace WPF_gaming_3
                 businessClass.playerObject.Xp = businessClass.dungoens[dungoenGlobalIndex].ExReward * 2;
                 battle.Stop();
                 MediaPlayer selcect = new MediaPlayer();
-                Uri selectPath = new Uri(@"C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
+                Uri selectPath = new Uri(@"C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/sounds/victory.wav");
                 selcect.Open(selectPath);
                 selcect.Play();
 
@@ -997,7 +999,7 @@ namespace WPF_gaming_3
                             button.BorderBrush = Brushes.White;
                             button.BorderThickness = new Thickness(2);
                             button.Margin = new Thickness(5, 5, 5, 5);
-                        button.Tag = loopIndex.ToString();
+                            button.Tag = loopIndex.ToString();
                             button.Click += new RoutedEventHandler(btnTest_Click);                            
                             shopItemContainer.Children.Add(button);
 
@@ -1005,9 +1007,9 @@ namespace WPF_gaming_3
 
         }
         private void btnTest_Click(object sender, RoutedEventArgs e)
-        {
+        {           
                 Button button = sender as Button;
-              //  MessageBox.Show(button.Tag.ToString());
+                businessClass.selcectSound();
                 if (shopIndex == 0)
                 {
                     confirmBuy.Visibility = Visibility.Visible;
@@ -1017,6 +1019,7 @@ namespace WPF_gaming_3
                     typeEffect.Text = "Heal:";
                     effect.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].HealEffect.ToString();
                     goldCost.Text = businessClass.consumes[Convert.ToInt32(button.Tag) - 1].Value.ToString();
+                itemIndex = Convert.ToInt32(button.Tag);
             }
             else if (shopIndex == 1)
                 {
@@ -1024,10 +1027,10 @@ namespace WPF_gaming_3
                     buyItemTxt.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].ItemName;
                     confirmBuyImg.Source = new BitmapImage(new Uri(businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].IconPath.ToString()));
                     descriptionTxt.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].Descreption;
-                    typeEffect.Text = "Def:";
-                    effect.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].DefEffect.ToString();
+                    typeEffect.Text = "DMG:";
+                    effect.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].AttackEffect.ToString();
                     goldCost.Text = businessClass.weaponItems[Convert.ToInt32(button.Tag) - 1].Value.ToString();
-
+                itemIndex = Convert.ToInt32(button.Tag);
             }
             else if (shopIndex == 2)
                 {
@@ -1035,11 +1038,10 @@ namespace WPF_gaming_3
                     buyItemTxt.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].ItemName;
                     confirmBuyImg.Source = new BitmapImage(new Uri(businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].IconPath.ToString()));
                     descriptionTxt.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].Description;
-                    typeEffect.Text = "DMG:";
+                    typeEffect.Text = "Def:";
                     effect.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].DefEffect.ToString();
                     goldCost.Text = businessClass.armourItems[Convert.ToInt32(button.Tag) - 1].Value.ToString();
-
-
+                itemIndex = Convert.ToInt32(button.Tag);
             }
         }
 
@@ -1076,86 +1078,182 @@ namespace WPF_gaming_3
 
         private void shopBackBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             shop.Visibility = Visibility.Hidden;
         }
 
         private void shopConsumeBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             shopIndex = 0;
             generateShop();
         }
 
         private void shopArmourBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             shopIndex = 2;
             generateShop();
         }
 
         private void shopWeaponBtn_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             shopIndex = 1;
             generateShop();
         }
         private void shopBtn_Click_1(object sender, RoutedEventArgs e)
         {
             shop.Visibility = Visibility.Visible;
+            businessClass.selcectSound();
 
         }
 
         private void confirmBuyBuy_Click(object sender, RoutedEventArgs e)
         {
+            
+            businessClass.selcectSound();
+            if (shopIndex == 0)
+            {
+                if (businessClass.playerObject.Gold >= businessClass.consumes[itemIndex - 1].Value && businessClass.playerObject.Inventory.Count < 16)
+                {
+                    businessClass.playerObject.Inventory.Add(businessClass.consumes[itemIndex - 1]);
+                    businessClass.playerObject.Gold = businessClass.playerObject.Gold - businessClass.consumes[itemIndex - 1].Value;
+                }
+                else if (businessClass.playerObject.Inventory.Count == 16)
+                {
+                    MessageBox.Show("You don't have enough space in ur inventory for this.");
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough gold for this.");
+                }
+            }
+            else if (shopIndex == 1)
+            {
+                if (businessClass.playerObject.Gold >= businessClass.weaponItems[itemIndex - 1].Value && businessClass.playerObject.Inventory.Count < 16)
+                {
+                    businessClass.playerObject.Inventory.Add(businessClass.weaponItems[itemIndex - 1]);
+                    businessClass.playerObject.Gold = businessClass.playerObject.Gold - businessClass.weaponItems[itemIndex - 1].Value;
+                }
+                else if (businessClass.playerObject.Inventory.Count == 16)
+                {
+                    MessageBox.Show("You don't have enough space in ur inventory for this.");
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough gold for this.");
+                }
+            }
+            else if (shopIndex == 2)
+            {
+                if (businessClass.playerObject.Gold >= businessClass.armourItems[itemIndex - 1].Value && businessClass.playerObject.Inventory.Count < 16)
+                {
+                    businessClass.playerObject.Inventory.Add(businessClass.armourItems[itemIndex - 1]);
+                    businessClass.playerObject.Gold = businessClass.playerObject.Gold - businessClass.armourItems[itemIndex - 1].Value;
+                }
+                else if (businessClass.playerObject.Inventory.Count == 16)
+                {
+                    MessageBox.Show("You don't have enough space in ur inventory for this.");
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough gold for this.");
+                }
+
+            }
 
         }
 
         private void confirmBuyCancel_Click(object sender, RoutedEventArgs e)
         {
-            confirmBuy.Visibility = Visibility.Hidden;   
+            confirmBuy.Visibility = Visibility.Hidden;
+            businessClass.selcectSound();
         }
 
         private void openInventory_Click(object sender, RoutedEventArgs e)
         {
             inventory.Visibility = Visibility.Visible;
-            List<item> items = new List<item>();
-
-                        
-                    foreach (var item in businessClass.consumes)
-                    {
-                        items.Add(item);
-                    }             
-                
-                    foreach (var item in businessClass.weaponItems)
-                    {
-                        items.Add(item);
-                    }               
-               
-                    foreach (var item in businessClass.armourItems)
-                    {
-                        items.Add(item);
-                    }
+            businessClass.selcectSound();
             int loopIndex = 0;
-            foreach (var item in items)
-            {
-                Button button = new Button();
-                Image image = new Image();
-                image.Height = 60;
-                image.Width = 60;
-                image.Source = new BitmapImage(new Uri(items[loopIndex].IconPath));
-                loopIndex++;
-                image.Stretch = Stretch.Fill;
-                button.Content = image;
-                button.BorderBrush = Brushes.White;
-                button.BorderThickness = new Thickness(2);
-                button.Margin = new Thickness(5, 5, 5, 5);
-                button.Tag = loopIndex.ToString();
-                inventoryContainer.Children.Add(button);
-            }
+            int loopIndex2 = 0;
+            inventoryContainer.Children.Clear();
+                foreach (var item in businessClass.playerObject.Inventory)
+                {
+                    Button button = new Button();
+                    Image image = new Image();
+                    image.Source = new BitmapImage(new Uri(businessClass.playerObject.Inventory[loopIndex2].IconPath));
+                    image.Height = 60;
+                    image.Width = 60;
+                    image.Stretch = Stretch.Fill;
+                    button.Content = image;
+                    button.BorderBrush = Brushes.White;
+                    button.BorderThickness = new Thickness(2);
+                    button.Margin = new Thickness(5, 5, 5, 5);
+                    button.Tag = loopIndex.ToString();
+                    button.Name = "openDetailBtn";
+                    button.Click += new RoutedEventHandler(openItemDetail_Click);
+
+                    inventoryContainer.Children.Add(button);
+                    loopIndex2++;
+                
+                }
+            
             
         }
+
+        private void openItemDetail_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int index = Convert.ToInt32(button.Tag);
+            itemDetail.Visibility = Visibility.Visible;
+
+
+            // Dynamic cast using 'as' operator
+            weaponItem w = businessClass.playerObject.Inventory[index] as weaponItem;  
+            if (w != null)
+            {
+                itemDetailImg.Source = new BitmapImage(new Uri(w.IconPath));
+                itemDetailTxt.Text = w.ItemName;
+                detailDescriptionTxt.Text = w.Descreption;
+                detailTypeEffect.Text = "DMG:";
+                detailEffect.Text = w.AttackEffect.ToString();
+                itemDetailValue.Text = w.Value.ToString();
+            }
+
+            armourItem a = businessClass.playerObject.Inventory[index] as armourItem;
+            if (a != null)
+            {
+                itemDetailImg.Source = new BitmapImage(new Uri(a.IconPath));
+                itemDetailTxt.Text = a.ItemName;
+                detailDescriptionTxt.Text = a.Description;
+                detailTypeEffect.Text = "DEF:";
+                detailEffect.Text = a.DefEffect.ToString();
+                itemDetailValue.Text = a.Value.ToString();
+            }
+            consumeItem c = businessClass.playerObject.Inventory[index] as consumeItem;
+            if (c != null)
+            {
+                itemDetailImg.Source = new BitmapImage(new Uri(c.IconPath));
+                itemDetailTxt.Text = c.ItemName;
+                detailDescriptionTxt.Text = c.description;
+                detailTypeEffect.Text = "HEAL:";
+                detailEffect.Text = c.HealEffect.ToString();
+                itemDetailValue.Text = c.Value.ToString();
+            }            
+        }
+
 
         private void closeInventoryBtn_Click(object sender, RoutedEventArgs e)
         {
             inventory.Visibility = Visibility.Hidden;
+            businessClass.selcectSound();
 
+        }
+
+        private void equipCancel_Click(object sender, RoutedEventArgs e)
+        {
+            itemDetail.Visibility = Visibility.Hidden;
         }
     }
 }

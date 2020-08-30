@@ -10,7 +10,7 @@ namespace WPF_gaming_3.backend
         public bool isLegendary;
         public string descreption;
 
-        public weaponItem(int attackEffect, bool isLegendary, string descreption, int value, string iconPath, string itemName) : base(value, iconPath, itemName)
+        public weaponItem(int attackEffect, bool isLegendary, string descreption, int value, string iconPath, string itemName, string typeItem) : base(value, iconPath, itemName, typeItem)
         {
             this.AttackEffect = attackEffect;
             this.IsLegendary = isLegendary;

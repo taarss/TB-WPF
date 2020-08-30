@@ -17,7 +17,7 @@
 
     <Grid>
         <Canvas x:Name="main" Visibility="Visible">
-            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="810" Height="553"/>
+            <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual"     Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/bg.gif" LoadedBehavior="Play" Stretch="Fill" Width="810" Height="553"/>
 
             <!-- MAIN MENU -->
             <Canvas    x:Name="mainMenuCanvas">
@@ -40,9 +40,9 @@
             <Canvas >
                 <Border Visibility="Hidden" Canvas.Top="15" Canvas.Left="170" x:Name="charCreationMenu"  BorderBrush="Black" BorderThickness="3" Width="450" Height="400">
                     <Canvas   Background="LightGray">
-                        <Image  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                        <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image  Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:\Users\chris\Source\Repos\taarss\WPF_gaming_3\WPF_gaming_3\WPF_gaming_3\images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
                         <Button x:Name="backBtnChar" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10" Click="backBtnChar_Click">BACK</Button>
 
 
@@ -150,22 +150,22 @@
 
 
 
-        <Canvas Visibility="Visible" x:Name="map">
+        <Canvas Visibility="Hidden" x:Name="map">
 
-            <Image x:Name="test" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
+            <Image x:Name="test" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/map.png" Height="532" Width="800"></Image>
             <Button x:Name="statsBtn" BorderBrush="Black" BorderThickness="3" FontSize="30" Canvas.Left="691" Canvas.Top="466" Click="statsBtn_Click">STATS</Button>
             <Button Canvas.Left="545" Canvas.Top="78" Background="Transparent" BorderBrush="Transparent" x:Name="shopBtn" Height="63" Width="76" Click="shopBtn_Click_1">
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shop.png"></Image>
+                <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shop.png"></Image>
             </Button>
 
             <Button x:Name="mapArea1" Canvas.Left="36" Canvas.Top="46" Background="Transparent" BorderBrush="Transparent" Height="60" Width="51" Click="mapArea1_Click">
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+                <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="92" Width="34" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
             <Button x:Name="mapArea2" Canvas.Left="136" Canvas.Top="350" Background="Transparent" BorderBrush="Transparent" Height="52" Width="41" Click="mapArea2_Click">
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+                <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
             <Button x:Name="mapArea3" Canvas.Left="636" Canvas.Top="346" Background="Transparent" BorderBrush="Transparent" Height="58" Width="42" Click="mapArea3_Click">
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
+                <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/check2.png" Height="49" Width="40" RenderTransformOrigin="0.793,1.351" Canvas.Left="135" Canvas.Top="233"></Image>
             </Button>
             <Button x:Name="openInventory" FontSize="30" BorderBrush="Black" BorderThickness="3" Canvas.Left="551" Canvas.Top="466" Click="openInventory_Click">Inventory</Button>
 
@@ -222,7 +222,7 @@
                 <Rectangle Fill="Black" Width="700" Height="2" Canvas.Top="50"></Rectangle>
                 <Rectangle Fill="Black" Width="700" Height="2" Canvas.Top="370"></Rectangle>
 
-                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shopKeeper.png" Height="222" Width="328" Canvas.Left="363" Canvas.Top="56" RenderTransformOrigin="0.5,0.5">
+                <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/shopKeeper.png" Height="222" Width="328" Canvas.Left="363" Canvas.Top="56" RenderTransformOrigin="0.5,0.5">
 
                 </Image>
                 <Border Canvas.Top="200" Canvas.Left="300" Margin="68,67,60,67" BorderBrush="Black" BorderThickness="1" >
@@ -237,7 +237,7 @@
                 <Border  x:Name="confirmBuy" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
                     <Canvas>
                         <TextBlock FontSize="20" Canvas.Left="65" Canvas.Top="4">Are you sure you want to buy:</TextBlock>
-                        <Image x:Name="confirmBuyImg" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" Canvas.Left="27" Canvas.Top="40"></Image>
+                        <Image x:Name="confirmBuyImg" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" Canvas.Left="27" Canvas.Top="40"></Image>
                         <TextBlock x:Name="buyItemTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
                         <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
                         <TextBlock x:Name="descriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
@@ -253,26 +253,6 @@
 
 
 
-           
-            <Canvas x:Name="inventory" Width="650" Height="450" Background="White" Canvas.Left="71" Canvas.Top="12">
-                <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
-                <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
-                <Border Canvas.Left="">
-                    <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="305" Canvas.Left="25" Canvas.Top="25">
-
-                    </WrapPanel>
-                </Border>
-                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="29" Width="80">
-                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/noHelm.png" Height="54" Width="54" Canvas.Left="12" Canvas.Top="10"></Image>
-                </Canvas>
-                <Canvas Background="LightGray"  Height="72" Canvas.Left="342" Canvas.Top="238" Width="80">
-                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/swordIcon.png" Height="58" Width="56" Canvas.Left="12" Canvas.Top="8"></Image>
-                </Canvas>
-                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="137" Width="80">
-                    <Image Source="C:/Users/chri45n5\Source/Repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/chestPlate.png" Height="58" Width="58" Canvas.Left="12" Canvas.Top="8"></Image>
-                </Canvas>
-
-            </Canvas>
 
 
 
@@ -285,7 +265,7 @@
                 <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="26" Canvas.Top="22">Are you sure you want to enter:</TextBlock>
                 <TextBlock x:Name="reqLvlTxt" FontWeight="Bold" FontSize="20" Canvas.Left="203" Width="43" Canvas.Top="255">1</TextBlock>
                 <TextBlock  FontWeight="Bold" FontSize="20" Canvas.Left="112" Width="86" Canvas.Top="255" RenderTransformOrigin="0.879,0.565">Rec LvL:</TextBlock>
-                <Image x:Name="preImg" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png" Height="130" Width="224" Stretch="Fill" Canvas.Left="63" Canvas.Top="120"></Image>
+                <Image x:Name="preImg" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png" Height="130" Width="224" Stretch="Fill" Canvas.Left="63" Canvas.Top="120"></Image>
                 <TextBlock x:Name="nameAreaTxt" Width="320" TextAlignment="Center" FontWeight="Bold" FontSize="20" Canvas.Left="18" Canvas.Top="70">Chambers of the Unknown Forest</TextBlock>
                 <Button x:Name="enterAreaBtn" BorderBrush="Black" Width="150" Background="LightGreen" BorderThickness="7" FontSize="30" Canvas.Left="190" Canvas.Top="304" Click="enterAreaBtn_Click" RenderTransformOrigin="0.513,0.502" >ENTER</Button>
                 <Button x:Name="cancelAreaBtn" BorderBrush="Black" Width="150" Background="IndianRed" BorderThickness="7" FontSize="30" Canvas.Left="18" Canvas.Top="304" Click="cancelAreaBtn_Click">NOOO!!!</Button>
@@ -297,9 +277,42 @@
 
 
 
-            <!-- LOADING SCREEN -->
 
         </Canvas>
+        <Canvas Visibility="Hidden" x:Name="inventory" Width="650" Height="450" Background="White" Canvas.Left="71" Canvas.Top="12">
+                <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
+                <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
+                <Border Canvas.Left="25" Canvas.Top="25">
+                    <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="305" >
+
+                    </WrapPanel>
+                </Border>
+                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="29" Width="80">
+                    <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/noHelm.png" Height="54" Width="54" Canvas.Left="12" Canvas.Top="10"></Image>
+                </Canvas>
+                <Canvas Background="LightGray"  Height="72" Canvas.Left="342" Canvas.Top="238" Width="80">
+                    <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/swordIcon.png" Height="58" Width="56" Canvas.Left="12" Canvas.Top="8"></Image>
+                </Canvas>
+                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="137" Width="80">
+                    <Image Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/chestPlate.png" Height="58" Width="58" Canvas.Left="12" Canvas.Top="8"></Image>
+                </Canvas>
+                <Border  x:Name="itemDetail" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
+                <Canvas>
+                    <Border Canvas.Left="27" Canvas.Top="40" BorderBrush="Black" BorderThickness="2">
+                        <Image x:Name="itemDetailImg" Margin="3" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" ></Image>
+                    </Border>
+                        <TextBlock x:Name="itemDetailTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
+                        <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
+                        <TextBlock x:Name="detailDescriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
+                        <Button x:Name="equipCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="equipCancel_Click">BACK</Button>
+                        <Button x:Name="confirmEquip" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255">EQUIP</Button>
+                        <TextBlock x:Name="detailTypeEffect" FontWeight="Bold" FontSize="20" Canvas.Left="52" Canvas.Top="199">DMG</TextBlock>
+                        <TextBlock x:Name="detailEffect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200" RenderTransformOrigin="0.898,0.415">123</TextBlock>
+                        <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="53" Canvas.Top="222">VALUE:</TextBlock>
+                        <TextBlock x:Name="itemDetailValue" FontWeight="Bold" FontSize="20" Canvas.Left="122" Canvas.Top="223">123</TextBlock>
+                    </Canvas>
+                </Border>
+            </Canvas>
 
         <Canvas Visibility="Hidden" x:Name="loadingScreen">
             <Image Canvas.Left="-10" Stretch="Fill" Width="818" x:Name="loadingScreenImg" Height="537"></Image>
@@ -311,9 +324,9 @@
 
 
         <Canvas x:Name="inDungoen" Visibility="Hidden">
-            <Image x:Name="dungoenBg" Stretch="Fill" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areabg.png" Height="524" Width="808"></Image>
-            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
-            <Image x:Name="enemyImage" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
+            <Image x:Name="dungoenBg" Stretch="Fill" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areabg.png" Height="524" Width="808"></Image>
+            <Image x:Name="playerImage" Height="214" Width="182" Canvas.Left="104" Canvas.Top="210" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png"></Image>
+            <Image x:Name="enemyImage" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif" Height="397" Canvas.Left="456" Canvas.Top="99" Width="240"></Image>
         </Canvas>
 
 
@@ -355,8 +368,8 @@
 
             <TextBlock x:Name="hpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="60" Canvas.Top="174">100</TextBlock>
             <TextBlock x:Name="enemyHpCount" FontSize="20" TextAlignment="Center" Background="White" Width="35" Canvas.Left="710" Canvas.Top="170">100</TextBlock>
-            <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
-            <Image Visibility="Hidden" Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
+            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="enemySlash" Canvas.Left="506" Canvas.Top="223" Height="194" Width="204"></Image>
+            <Image Visibility="Hidden" Source="C:/Users/chris/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/slash.png" x:Name="playerSlash" Canvas.Left="72" Canvas.Top="223" Height="194" Width="204"></Image>
 
             <Canvas Canvas.Left="230" Canvas.Top="30" Height="130" Width="362" Background="White">
                 <TextBlock Width="312" FontSize="20" x:Name="monsterName" Canvas.Left="25" Canvas.Top="10" Height="76">monster name landed a hit</TextBlock>

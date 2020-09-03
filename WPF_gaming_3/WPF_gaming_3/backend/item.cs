@@ -9,19 +9,19 @@ namespace WPF_gaming_3.backend
         private int value;
         private string iconPath;
         private string itemName;
-        private string typeItem;
+        private string description;
 
         public int Value { get => value; set => this.value = value; }
         public string IconPath { get => iconPath; set => iconPath = value; }
         public string ItemName { get => itemName; set => itemName = value; }
-        public string TypeItem { get => typeItem; set => typeItem = value; }
+        public string Description { get => description; set => description = value; }
 
-        public item(int value, string iconPath, string itemName, string typeItem)
+        public item(int value, string iconPath, string itemName, string description)
         {
             this.Value = value;
             this.IconPath = iconPath;
             this.ItemName = itemName;
-            this.TypeItem = typeItem;
+            this.Description = description;
         }
 
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WPF_gaming_3.backend
 {
-    public class enemy
+    public class Enemy
     {
         private int hp;
         private string name;
@@ -14,15 +14,15 @@ namespace WPF_gaming_3.backend
         private int xpReward;
         private int goldReward;
 
-        public enemy(int hp, string name, string imgPath, bool isBoss, int power, int xpReward, int goldReward)
+        public Enemy(int hp, string name, string imgPath, bool isBoss, int power, int xpReward, int goldReward)
         {
-            this.Hp = hp;
-            this.Name = name;
-            this.ImgPath = imgPath;
-            this.IsBoss = isBoss;
-            this.Power = power;
-            this.XpReward = xpReward;
-            this.GoldReward = goldReward;
+            Hp = hp;
+            Name = name;
+            ImgPath = imgPath;
+            IsBoss = isBoss;
+            Power = power;
+            XpReward = xpReward;
+            GoldReward = goldReward;
         }
 
         public int Hp { get => hp; set => hp = value; }

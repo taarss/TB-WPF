@@ -15,9 +15,9 @@ namespace WPF_gaming_3.backend
         private int reqLvl;
         private string imgPath;
         private string imgBgPath;
-        private List<enemy> enemies;
+        private List<Enemy> enemies;
 
-        public dungoen(string dungoenName, int dungoenDifficulty, int exReward, int reqLvl, string imgPath, string imgBgPath, List<enemy> enemies)
+        public dungoen(string dungoenName, int dungoenDifficulty, int exReward, int reqLvl, string imgPath, string imgBgPath, List<Enemy> enemies)
         {
             this.DungoenName = dungoenName;
             this.DungoenDifficulty = dungoenDifficulty;
@@ -34,7 +34,7 @@ namespace WPF_gaming_3.backend
         public int ReqLvl { get => reqLvl; set => reqLvl = value; }
         public string ImgPath { get => imgPath; set => imgPath = value; }
         public string ImgBgPath { get => imgBgPath; set => imgBgPath = value; }
-        public List<enemy> Enemies { get => enemies; set => enemies = value; }
+        public List<Enemy> Enemies { get => enemies; set => enemies = value; }
     }
 
 }

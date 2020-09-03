@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="XamlAnimatedGif" Version="1.2.3" />
   </ItemGroup>
 

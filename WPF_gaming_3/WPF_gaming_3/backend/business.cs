@@ -19,7 +19,7 @@ namespace WPF_gaming_3.backend
 
         public playerClass pClass;
         public player playerObject;
-        public List<dungoen> dungoens;
+        public List<dungoen> dungoens = new List<dungoen>();
         public List<consumeItem> consumes = new List<consumeItem>();        
         public List<armourItem> armourItems = new List<armourItem>();
         public List<weaponItem> weaponItems = new List<weaponItem>();
@@ -55,7 +55,7 @@ namespace WPF_gaming_3.backend
             }
             List<item> inventory = new List<item>() { };
             pClass = p1Class;
-            playerObject = new player(playerName, pClass, 1, 0, 100, stregthP, agilityP, luckP, 10000,  inventory);
+            playerObject = new player(playerName, pClass, 1, 0, 100, stregthP, agilityP, luckP, 100000,  inventory);
            // Execute($"INSERT INTO Player (playerLvl, xp, nextLvlUp, strength, agility, luck, gold) VALUES('{playerName}', 0, 0, 100, {stregthP}, {agilityP}, {luckP})");
         
         }
@@ -93,56 +93,39 @@ namespace WPF_gaming_3.backend
             selcect.Open(selectPath);
             selcect.Play();
         }
+        public List<Enemy> GetEnemies(int dungoenIndex)
+        {
+            List<Enemy> enemies = new List<Enemy>(); 
+            DataSet dataSet = Execute("SELECT * FROM Enemy WHERE dungoenId = "+(dungoenIndex+1));
+            DataTable enemyIndexTable = dataSet.Tables[0];
+            foreach (DataRow item in enemyIndexTable.Rows)
+            {
+                enemies.Add(new Enemy(Convert.ToInt32(item["hp"]), item["name"].ToString(), item["imgPath"].ToString(), Convert.ToBoolean(item["isBoss"]), Convert.ToInt32(item["power"]), Convert.ToInt32(item["xpReward"]), Convert.ToInt32(item["goldReward"])));
+            }
+            return enemies;
+        }
+
+
+
+
+
 
         public void createDungoen(int dungoenIndex)
         {
-          dungoens  = new List<dungoen>()
+            dungoens = new List<dungoen>();
+            DataSet dataSet = Execute("SELECT * FROM Dungoen");
+            DataTable dungoenTable = dataSet.Tables[0];
+            foreach (DataRow item in dungoenTable.Rows)
             {
-            new dungoen("Chambers of the Unknown Forest",
-                1,
-                120,
-                0,
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areaLoading.png",
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area1/areabg.png",
-                new List<Enemy>
-                {
-                    new Enemy(60, " Wild Goblin ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/download.png", false, 13, 20, 50),
-                    new Enemy(80, " Rogue Pumpkin Farmer ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/pumpkinMan.png", true, 3, 40, 120)
-                }
-                )
-                ,
-              new dungoen("The Desert Caverns",
-                3,
-                250,
-                0,
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaLoading.png",
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area2/areaBg.png",
-                new List<Enemy>
-                {
-                    new Enemy(80, " Gaara of Sand ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand2.gif", false, 17, 50, 200),
-                    new Enemy(120, " Sand Howler ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/sand.gif", true, 20, 70, 240),
-
-                }
-                ),
-                
-            new dungoen("The Bloodfall Catacombs",
-                5,
-                600,
-                0,
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaLoading.png",
-                "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/area3/areaBg.png",
-                new List<Enemy>
-                {
-                    
-                     new Enemy(100, " Flame Bison ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaEnemy1.gif", false, 20, 100, 300),
-                     new Enemy(150, "Cinder Monster ", "C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/Enemy/lavaBoss3.png", true, 27, 140, 380)
-                
-                    }
-                )
-            };
-
-
-            
+                dungoens.Add(new dungoen(
+                    item["dungoenName"].ToString(),
+                    Convert.ToInt32(item["dungoenDifficulty"]),
+                    Convert.ToInt32(item["exReward"]),
+                    Convert.ToInt32(item["reqLvl"]),
+                    item["imgPath"].ToString(),
+                    item["imgBgPath"].ToString(),
+                    GetEnemies(dungoenIndex)));
+            }              
         }     
     }
 }

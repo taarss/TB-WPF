@@ -27,7 +27,6 @@
                 <Button x:Name="exitMainBtn" FontSize="30" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4" Background="White" Height="50"  Width="140" Canvas.Left="335" Canvas.Top="168" Click="exitMainBtn_Click" >
                     exit
                 </Button>
-                <TextBlock x:Name="databaseTest" Foreground="White" FontSize="20">fdfdf</TextBlock>
             </Canvas>
 
 
@@ -43,7 +42,7 @@
                     <Canvas   Background="LightGray">
                         <Image  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/charBg3.jpg" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
                         <Image Visibility="Hidden" x:Name="dkChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k1.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
-                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:\Users\chris\Source\Repos\taarss\WPF_gaming_3\WPF_gaming_3\WPF_gaming_3\images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
+                        <Image Visibility="Hidden" x:Name="warriorChar"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/k2.png" Stretch="Fill" Height="172" Width="144" Canvas.Left="267" Canvas.Top="25"></Image>
                         <Button x:Name="backBtnChar" Background="White" FontSize="20" Canvas.Left="10" Canvas.Top="10" Click="backBtnChar_Click">BACK</Button>
 
 
@@ -316,7 +315,9 @@
 
         <Canvas Visibility="Hidden" x:Name="loadingScreen">
             <Image Canvas.Left="-10" Stretch="Fill" Width="818" x:Name="loadingScreenImg" Height="537"></Image>
-            <TextBlock x:Name="loadingDungoenName" Foreground="White" FontWeight="Bold" FontSize="30" Canvas.Left="45" Canvas.Top="374">THIS IS TEXT</TextBlock>
+            <Border Canvas.Left="100" Canvas.Top="400" Background="White" BorderBrush="Black" BorderThickness="5">
+                <TextBlock x:Name="loadingDungoenName" Foreground="Black" FontWeight="Bold" FontSize="30" Canvas.Left="45" Canvas.Top="374">THIS IS TEXT</TextBlock>
+            </Border>
         </Canvas>
 
 
@@ -379,7 +380,7 @@
                 <Button x:Name="useItemBtn" FontSize="20" Canvas.Left="35" Canvas.Top="78" Height="41" Width="105" Click="useItemBtn_Click">USE ITEM</Button>
             </Canvas>
 
-            <Border x:Name="useItemMenu" Canvas.Top="60" Canvas.Left="150" Background="White" BorderBrush="Black" BorderThickness="2" Width="500" Height="302">
+            <Border x:Name="useItemMenu" Visibility="Hidden" Canvas.Top="60" Canvas.Left="150" Background="White" BorderBrush="Black" BorderThickness="2" Width="500" Height="302">
                 <Canvas>
                     <WrapPanel Name="showConsumeItems" Background="LightGray" Width="400" Height="162" Canvas.Left="50" Canvas.Top="20">
                         
@@ -387,7 +388,7 @@
                     <Button x:Name="useItemBackBtn" FontSize="30" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Background="IndianRed" Canvas.Left="54" Canvas.Top="207" Click="useItemBackBtn_Click">
                         BACK
                     </Button>
-                    <Border  x:Name="confirmUse" Visibility="Visible" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
+                    <Border  x:Name="confirmUse" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
                         <Canvas>
                             <TextBlock FontSize="20" Canvas.Left="65" Canvas.Top="4">Are you sure you want to buy:</TextBlock>
                             <Image x:Name="confirmUseImg" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" Canvas.Left="27" Canvas.Top="40"></Image>

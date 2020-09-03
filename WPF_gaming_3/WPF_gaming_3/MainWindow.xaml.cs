@@ -1243,7 +1243,37 @@ namespace WPF_gaming_3
 
         private void useItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
             useItemMenu.Visibility = Visibility.Visible;
+            businessClass.selcectSound();
+            int index = Convert.ToInt32(button.Tag);
+            int loopIndex = 0;
+            int loopIndex2 = 0;
+            showConsumeItems.Children.Clear();
+            consumeItem c = businessClass.playerObject.Inventory[index] as consumeItem;
+            if (c != null)
+            { 
+                    foreach (var item in businessClass.playerObject.Inventory)
+                {
+                    Image image = new Image();
+                    image.Source = new BitmapImage(new Uri(businessClass.playerObject.Inventory[loopIndex2].IconPath));
+                    image.Height = 60;
+                    image.Width = 60;
+                    image.Stretch = Stretch.Fill;
+                    button.Content = image;
+                    button.BorderBrush = Brushes.White;
+                    button.BorderThickness = new Thickness(2);
+                    button.Margin = new Thickness(5, 5, 5, 5);
+                    button.Tag = loopIndex.ToString();
+                    showConsumeItems.Children.Add(button);
+                    loopIndex++;
+                    loopIndex2++;
+
+                }
+
+
+            }
+
         }
 
         private void useItemBackBtn_Click(object sender, RoutedEventArgs e)

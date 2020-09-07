@@ -1101,6 +1101,7 @@ namespace WPF_gaming_3
             {
                 if (businessClass.playerObject.Gold >= businessClass.consumes[itemIndex - 1].Value && businessClass.playerObject.Inventory.Count < 16)
                 {
+                    confirmBuy.Visibility = Visibility.Hidden;
                     businessClass.playerObject.Inventory.Add(businessClass.consumes[itemIndex - 1]);
                     businessClass.playerObject.Gold = businessClass.playerObject.Gold - businessClass.consumes[itemIndex - 1].Value;
                 }
@@ -1198,6 +1199,8 @@ namespace WPF_gaming_3
             weaponItem w = businessClass.playerObject.Inventory[index] as weaponItem;  
             if (w != null)
             {
+                businessClass.selcectSound();
+                confirmEquip.Visibility = Visibility.Visible;
                 itemDetailImg.Source = new BitmapImage(new Uri(w.IconPath));
                 itemDetailTxt.Text = w.ItemName;
                 detailDescriptionTxt.Text = w.Description;
@@ -1209,6 +1212,8 @@ namespace WPF_gaming_3
             armourItem a = businessClass.playerObject.Inventory[index] as armourItem;
             if (a != null)
             {
+                businessClass.selcectSound();
+                confirmEquip.Visibility = Visibility.Visible;
                 itemDetailImg.Source = new BitmapImage(new Uri(a.IconPath));
                 itemDetailTxt.Text = a.ItemName;
                 detailDescriptionTxt.Text = a.Description;
@@ -1219,6 +1224,8 @@ namespace WPF_gaming_3
             consumeItem c = businessClass.playerObject.Inventory[index] as consumeItem;
             if (c != null)
             {
+                businessClass.selcectSound();
+                confirmEquip.Visibility = Visibility.Hidden;
                 itemDetailImg.Source = new BitmapImage(new Uri(c.IconPath));
                 itemDetailTxt.Text = c.ItemName;
                 detailDescriptionTxt.Text = c.Description;
@@ -1238,58 +1245,79 @@ namespace WPF_gaming_3
 
         private void equipCancel_Click(object sender, RoutedEventArgs e)
         {
+            businessClass.selcectSound();
             itemDetail.Visibility = Visibility.Hidden;
         }
-
         private void useItemBtn_Click(object sender, RoutedEventArgs e)
         {
-           
+            showConsumeItems.Children.Clear();
+            businessClass.selcectSound();
+            useItemMenu.Visibility = Visibility.Visible;
+            int loopIndex = 0;
+            inventoryContainer.Children.Clear();
+            foreach (var item in businessClass.playerObject.Inventory)
+            {               
+                consumeItem c = item as consumeItem;
+                if (c != null)
+                { 
+                    Button button = new Button();
+                    Image image = new Image();
+                    image.Source = new BitmapImage(new Uri(businessClass.playerObject.Inventory[loopIndex].IconPath));
+                    image.Height = 60;
+                    image.Width = 60;
+                    image.Stretch = Stretch.Fill;
+                    button.Content = image;
+                    button.BorderBrush = Brushes.Black;
+                    button.BorderThickness = new Thickness(2);
+                    button.Margin = new Thickness(5, 5, 5, 5);
+                    button.Tag = loopIndex.ToString();
+                    button.Name = "openConsumeDetailBtn";
+                    button.Click += new RoutedEventHandler(openConsumeItemDetail_Click);
+                    showConsumeItems.Children.Add(button);
+                }
+                loopIndex++;
 
-            
+
+            }
+
+        }
+
+        private void openConsumeItemDetail_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int index = Convert.ToInt32(button.Tag);
+            consumeItem consumeItem = businessClass.playerObject.Inventory[index] as consumeItem;
+            businessClass.selcectSound();
+            confirmUse.Visibility = Visibility.Visible;
+            confirmUseImg.Source = new BitmapImage(new Uri(consumeItem.IconPath));
+            useItemTxt.Text = consumeItem.ItemName;
+            useDescriptionTxt.Text = consumeItem.Description;
+            useEffect.Text = consumeItem.HealEffect.ToString();
 
         }
 
         private void useItemBackBtn_Click(object sender, RoutedEventArgs e)
         {
-            useItemMenu.Visibility = Visibility.Hidden;
+            businessClass.selcectSound();
+            confirmUse.Visibility = Visibility.Hidden;
         }
+
+        private void confirmUseUse_Click(object sender, RoutedEventArgs e)
+        {
+            businessClass.selcectSound();
+            Button button = sender as Button;
+            int index = Convert.ToInt32(button.Tag);
+            consumeItem consumeItem = businessClass.playerObject.Inventory[index] as consumeItem;
+            currentPlayerHp = currentPlayerHp + consumeItem.HealEffect;
+            if (currentPlayerHp > businessClass.pClass.MaxHP)
+            {
+                currentPlayerHp = businessClass.pClass.MaxHP;
+            }
+            confirmUse.Visibility = Visibility.Hidden;
+            useItemMenu.Visibility = Visibility.Hidden;
+            enemyTurn();
+        }
+
     }
 }
 
-
-/* 
- 
-     foreach (var item in items)
-                        {
-                           Button button = new Button();
-                            Image image = new Image();
-                            if (shopIndex == 0)
-                            {
-                                image.Source = new BitmapImage(new Uri(businessClass.consumes[loopIndex].IconPath));
-
-
-                            }
-                            else if (shopIndex == 1)
-                            {
-                                image.Source = new BitmapImage(new Uri(businessClass.weaponItems[loopIndex].IconPath));
-
-                            }
-                            else if (shopIndex == 2)
-                            {
-                                image.Source =  new BitmapImage(new Uri(businessClass.armourItems[loopIndex].IconPath));
-                                
-                            }
-                            image.Height = 60;
-                            image.Width = 60;
-                            loopIndex++;
-                            image.Stretch = Stretch.Fill;
-                            button.Content = image;
-                            button.BorderBrush = Brushes.White;
-                            button.BorderThickness = new Thickness(2);
-                            button.Margin = new Thickness(5, 5, 5, 5);
-                            button.Tag = loopIndex.ToString();
-                            button.Click += new RoutedEventHandler(btnTest_Click);                            
-                            shopItemContainer.Children.Add(button);
-
-                        }       
-     */

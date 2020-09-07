@@ -279,39 +279,39 @@
 
         </Canvas>
         <Canvas Visibility="Hidden" x:Name="inventory" Width="650" Height="450" Background="White" Canvas.Left="71" Canvas.Top="12">
-                <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
-                <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
-                <Border Canvas.Left="25" Canvas.Top="25">
-                    <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="305" >
+            <Button FontSize="20" x:Name="closeInventoryBtn" Canvas.Left="14" Canvas.Top="407" Click="closeInventoryBtn_Click">Close</Button>
+            <Rectangle Fill="Black" Height="2" Width="650" Canvas.Top="400"></Rectangle>
+            <Border Canvas.Left="25" Canvas.Top="25">
+                <WrapPanel x:Name="inventoryContainer"  Background="LightGray" Height="355" Width="305" >
 
-                    </WrapPanel>
-                </Border>
-                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="29" Width="80">
-                    <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/noHelm.png" Height="54" Width="54" Canvas.Left="12" Canvas.Top="10"></Image>
-                </Canvas>
-                <Canvas Background="LightGray"  Height="72" Canvas.Left="342" Canvas.Top="238" Width="80">
-                    <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/swordIcon.png" Height="58" Width="56" Canvas.Left="12" Canvas.Top="8"></Image>
-                </Canvas>
-                <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="137" Width="80">
-                    <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/chestPlate.png" Height="58" Width="58" Canvas.Left="12" Canvas.Top="8"></Image>
-                </Canvas>
-                <Border  x:Name="itemDetail" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
+                </WrapPanel>
+            </Border>
+            <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="29" Width="80">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/noHelm.png" Height="54" Width="54" Canvas.Left="12" Canvas.Top="10"></Image>
+            </Canvas>
+            <Canvas Background="LightGray"  Height="72" Canvas.Left="342" Canvas.Top="238" Width="80">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/swordIcon.png" Height="58" Width="56" Canvas.Left="12" Canvas.Top="8"></Image>
+            </Canvas>
+            <Canvas Background="LightGray"  Height="73" Canvas.Left="340" Canvas.Top="137" Width="80">
+                <Image Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/chestPlate.png" Height="58" Width="58" Canvas.Left="12" Canvas.Top="8"></Image>
+            </Canvas>
+            <Border  x:Name="itemDetail" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
                 <Canvas>
                     <Border Canvas.Left="27" Canvas.Top="40" BorderBrush="Black" BorderThickness="2">
                         <Image x:Name="itemDetailImg" Margin="3" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" ></Image>
                     </Border>
-                        <TextBlock x:Name="itemDetailTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
-                        <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
-                        <TextBlock x:Name="detailDescriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
-                        <Button x:Name="equipCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="equipCancel_Click">BACK</Button>
-                        <Button x:Name="confirmEquip" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255">EQUIP</Button>
-                        <TextBlock x:Name="detailTypeEffect" FontWeight="Bold" FontSize="20" Canvas.Left="52" Canvas.Top="199">DMG</TextBlock>
-                        <TextBlock x:Name="detailEffect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200" RenderTransformOrigin="0.898,0.415">123</TextBlock>
-                        <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="53" Canvas.Top="222">VALUE:</TextBlock>
-                        <TextBlock x:Name="itemDetailValue" FontWeight="Bold" FontSize="20" Canvas.Left="122" Canvas.Top="223">123</TextBlock>
-                    </Canvas>
-                </Border>
-            </Canvas>
+                    <TextBlock x:Name="itemDetailTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
+                    <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
+                    <TextBlock x:Name="detailDescriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
+                    <Button x:Name="equipCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="equipCancel_Click">BACK</Button>
+                    <Button x:Name="confirmEquip" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255">EQUIP</Button>
+                    <TextBlock x:Name="detailTypeEffect" FontWeight="Bold" FontSize="20" Canvas.Left="52" Canvas.Top="199">DMG</TextBlock>
+                    <TextBlock x:Name="detailEffect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200" RenderTransformOrigin="0.898,0.415">123</TextBlock>
+                    <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="53" Canvas.Top="222">VALUE:</TextBlock>
+                    <TextBlock x:Name="itemDetailValue" FontWeight="Bold" FontSize="20" Canvas.Left="122" Canvas.Top="223">123</TextBlock>
+                </Canvas>
+            </Border>
+        </Canvas>
 
         <Canvas Visibility="Hidden" x:Name="loadingScreen">
             <Image Canvas.Left="-10" Stretch="Fill" Width="818" x:Name="loadingScreenImg" Height="537"></Image>
@@ -380,33 +380,33 @@
                 <Button x:Name="useItemBtn" FontSize="20" Canvas.Left="35" Canvas.Top="78" Height="41" Width="105" Click="useItemBtn_Click">USE ITEM</Button>
             </Canvas>
 
-            <Border x:Name="useItemMenu" Visibility="Hidden" Canvas.Top="60" Canvas.Left="150" Background="White" BorderBrush="Black" BorderThickness="2" Width="500" Height="302">
+            <Border x:Name="useItemMenu" Visibility="Hidden" Canvas.Top="60" Canvas.Left="150" Background="White" BorderBrush="Black" BorderThickness="2" Width="500" Height="378">
                 <Canvas>
-                    <WrapPanel Name="showConsumeItems" Background="LightGray" Width="400" Height="162" Canvas.Left="50" Canvas.Top="20">
-                        
+                    <WrapPanel Name="showConsumeItems" Background="LightGray" Width="461" Height="248" Canvas.Left="17" Canvas.Top="20">
+
                     </WrapPanel>
-                    <Button x:Name="useItemBackBtn" FontSize="30" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Background="IndianRed" Canvas.Left="54" Canvas.Top="207" Click="useItemBackBtn_Click">
+                    <Button x:Name="useItemBackBtn" FontSize="30" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" Background="IndianRed" Canvas.Left="21" Canvas.Top="284" Click="useItemBackBtn_Click" Height="62" Width="117">
                         BACK
                     </Button>
-                    <Border  x:Name="confirmUse" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
+                    <Border x:Name="confirmUse" Visibility="Hidden" BorderBrush="Black" BorderThickness="2" Width="400" Height="300" Background="White" Canvas.Left="150" Canvas.Top="100">
                         <Canvas>
-                            <TextBlock FontSize="20" Canvas.Left="65" Canvas.Top="4">Are you sure you want to buy:</TextBlock>
+                            <TextBlock FontSize="20" Canvas.Left="65" Canvas.Top="4">Are you sure you want to use:</TextBlock>
                             <Image x:Name="confirmUseImg" Stretch="Fill" Width="60" Height="60"  Source="C:/Users/chri45n5/source/repos/taarss/WPF_gaming_3/WPF_gaming_3/WPF_gaming_3/images/items/consumeItems/food1.png" Canvas.Left="27" Canvas.Top="40"></Image>
                             <TextBlock x:Name="useItemTxt" FontSize="20" Canvas.Left="111" Canvas.Top="54" Width="259">dfdfgdfdfdfdfdfdfdfdf</TextBlock>
                             <Rectangle Fill="Black" Height="2" Width="300" Canvas.Left="47" Canvas.Top="117"></Rectangle>
                             <TextBlock x:Name="useDescriptionTxt" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="15" TextWrapping="Wrap" Height="80" Width="288" Canvas.Left="52" Canvas.Top="123">Peasent sword, usually weilded by the lower class people.</TextBlock>
-                            <Button x:Name="confirmUseCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="confirmBuyCancel_Click">BACK</Button>
-                            <Button x:Name="confirmUseUse" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255" Click="confirmBuyBuy_Click">BUY</Button>
+                            <Button x:Name="confirmUseCancel" FontSize="20" Background="IndianRed" Height="33" Width="97" Canvas.Left="187" Canvas.Top="255" Click="useItemBackBtn_Click">BACK</Button>
+                            <Button x:Name="confirmUseUse" FontSize="20" Background="LawnGreen" Height="33" Width="97" Canvas.Left="288" Canvas.Top="255" Click="confirmUseUse_Click">USE</Button>
                             <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="52" Canvas.Top="199">Heal:</TextBlock>
-                            <TextBlock x:Name="useEffect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200" RenderTransformOrigin="0.898,0.415">123</TextBlock>
+                            <TextBlock x:Name="useEffect" FontWeight="Bold" FontSize="20" Canvas.Left="121" Canvas.Top="200">123</TextBlock>
                         </Canvas>
                     </Border>
                 </Canvas>
 
             </Border>
-            
-            
-            
+
+
+
 
             <Canvas Visibility="Hidden" x:Name="skipTurn" Width="444" Height="307" Background="White" Canvas.Left="178" Canvas.Top="110">
                 <TextBlock FontWeight="Bold" FontSize="20" Canvas.Left="78" Canvas.Top="10">Are you sure you want to skip:</TextBlock>

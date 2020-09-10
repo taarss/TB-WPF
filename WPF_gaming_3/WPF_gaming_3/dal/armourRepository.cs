@@ -17,7 +17,7 @@ namespace WPF_gaming_3.dal
             foreach (DataRow itemRow in armourTable.Rows)
             {
                 armourItems.Add(
-                    new armourItem((int)itemRow["defEffect"], (int)itemRow["value"], (string)itemRow["iconPath"], (string)itemRow["itemName"], (string)itemRow["description"])
+                    new armourItem((int)itemRow["defEffect"], (int)itemRow["value"], (string)itemRow["iconPath"], (string)itemRow["itemName"], (string)itemRow["description"], (bool)itemRow["isHelmet"])
                     );
             }
             return armourItems;

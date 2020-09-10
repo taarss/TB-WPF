@@ -125,7 +125,8 @@ namespace WPF_gaming_3.backend
                     item["imgPath"].ToString(),
                     item["imgBgPath"].ToString(),
                     GetEnemies(dungoenIndex)));
-            }              
+            }
+            
         }     
     }
 }

@@ -8,15 +8,15 @@ namespace WPF_gaming_3.backend
     public class armourItem : item
     {
         private int defEffect;
-        business business = new business();
+        private bool isHelmet;
 
-        public armourItem(int defEffect, int value, string iconPath, string itemName, string description) : base(value, iconPath, itemName, description)
+        public armourItem(int defEffect, int value, string iconPath, string itemName, string description, bool isHelmet) : base(value, iconPath, itemName, description)
         {
             this.DefEffect = defEffect;
+            this.IsHelmet = isHelmet;
         }
 
         public int DefEffect { get => defEffect; set => defEffect = value; }
-
-       
+        public bool IsHelmet { get => isHelmet; set => isHelmet = value; }
     }
 }

@@ -18,12 +18,18 @@ namespace WPF_gaming_3.CharCreation
         private int gold;
         private List<item> inventory;
         private weaponItem equipedWeapon;
-        private armourItem equipedHelm;
+        private armourItem equipedHelmet;
         private armourItem equipedChestplate;
+
 
 
         public player(string playerName, playerClass playerClass, int playerLvl, int xp, int nextLvlUp, int strength, int agility, int luck, int gold, List<item> inventory)
         {
+            if (string.IsNullOrWhiteSpace(playerName))
+            {
+                throw new ArgumentException("player name cannot be nothing or whitespace.", nameof(playerName));
+            }
+
             this.PlayerName = playerName;
             this.PlayerClass = playerClass;
             this.PlayerLvl = playerLvl;
@@ -34,9 +40,9 @@ namespace WPF_gaming_3.CharCreation
             this.Luck = luck;
             this.Gold = gold;
             this.inventory = inventory;
-            this.equipedWeapon = equipedWeapon;
-            this.equipedHelm = equipedHelm;
-            this.equipedChestplate = equipedChestplate;
+            this.EquipedWeapon = EquipedWeapon;
+            this.EquipedHelmet = EquipedHelmet;
+            this.EquipedChestplate = EquipedChestplate;
         }
 
         public string PlayerName { get => playerName; set => playerName = value; }
@@ -49,6 +55,9 @@ namespace WPF_gaming_3.CharCreation
         public int Luck { get => luck; set => luck = value; }
         public int Gold { get => gold; set => gold = value; }
         public List<item> Inventory { get => inventory; set => inventory = value; }
+        public weaponItem EquipedWeapon { get => equipedWeapon; set => equipedWeapon = value; }
+        public armourItem EquipedHelmet { get => equipedHelmet; set => equipedHelmet = value; }
+        public armourItem EquipedChestplate { get => equipedChestplate; set => equipedChestplate = value; }
     }
 }
 
